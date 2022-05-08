@@ -4,6 +4,7 @@ import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {CustomPayload} from "../../model/customPayload";
 import {catchError, Observable, retry, throwError} from "rxjs";
 import {CustomDto} from "../../model/customDto";
+import { Response } from 'src/app/model/response';
 
 @Injectable({
   providedIn: 'root'

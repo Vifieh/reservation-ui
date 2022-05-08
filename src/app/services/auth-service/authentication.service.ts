@@ -5,6 +5,7 @@ import { Observable, throwError} from "rxjs";
 import {catchError, retry, tap} from "rxjs";
 import {LoginDto} from "../../model/loginDto";
 import {environment} from "../../../environments/environment";
+import { Response } from 'src/app/model/response';
 
 
 @Injectable({

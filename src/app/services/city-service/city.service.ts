@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {environment} from "../../../environments/environment";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {CustomPayload} from "../../model/customPayload";
 import {catchError, Observable, retry, throwError} from "rxjs";
+import { Response } from 'src/app/model/response';
+import {CustomPayload} from "../../model/customPayload";
 import {CustomDto} from "../../model/customDto";
 
 @Injectable({
