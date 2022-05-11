@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {LandingPageComponent} from "./landing-page/landing-page.component";
-import {RegisterComponent} from "./register/register.component";
-import {LoginComponent} from "./login/login.component";
+import {LandingPageComponent} from "./pages/landing-page/landing-page.component";
+import {RegisterComponent} from "./pages/register/register.component";
+import {LoginComponent} from "./pages/login/login.component";
+import {PropertyLandingPageComponent} from "./pages/property-landing-page/property-landing-page.component";
+import {AuthorizeGuard} from "./guards/authentication/authorize.guard";
 
 
 const routes: Routes = [
@@ -20,6 +22,13 @@ const routes: Routes = [
    path: 'login',
    component: LoginComponent
   },
+
+  {
+    path: 'property',
+    canActivate: [AuthorizeGuard],
+    component: PropertyLandingPageComponent
+  },
+
 
 ];
 
