@@ -1,6 +1,6 @@
 import {Role} from "../enum/role.enum";
 
-export interface LoginDto {
+export interface StorageData {
   accessToken: string
   email: string
   id: string
@@ -9,3 +9,4 @@ export interface LoginDto {
   role: Role[]
   type: string
 }
+
