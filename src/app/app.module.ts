@@ -16,6 +16,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {ToastContainerModule, ToastrModule} from "ngx-toastr";
 import {AuthInterceptorService} from "./interceptors/auth-interceptor.service";
 import { PropertyLandingPageComponent } from './pages/property-landing-page/property-landing-page.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { PropertyLandingPageComponent } from './pages/property-landing-page/prop
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    CarouselModule,
     ToastrModule.forRoot({
       timeOut: 5000,
       closeButton: true,
