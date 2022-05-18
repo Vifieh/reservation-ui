@@ -1,6 +1,221 @@
 <app-landing-page-navbar></app-landing-page-navbar>
-<app-header></app-header>
 <div class="container">
+  <br>
+  <h2>Find the perfect hotel on reservation.com</h2>
+  <p class="form-text">From cheap hotels to luxurious rooms, anything in between</p>
+  <br>
+  <form>
+    <input type="text" placeholder="where are you going to?" class="input">
+    <input type="text" placeholder="check-in"   onfocus="(this.type='date')"  class="input">
+    <input type="text" placeholder="check-out" onfocus="(this.type='date')" class="input">
+    <button type="button" class="dropdown-toggle but" data-bs-toggle="dropdown">
+      <input type="text" placeholder="room" class="in" >
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">Link 1</a></li>
+      <li><a class="dropdown-item" href="#">Link 2</a></li>
+      <li><a class="dropdown-item" href="#">Link 3</a></li>
+    </ul>
+    <button class="btn btn-primary button">Search</button>
+  </form>
+  <br>
+  <br>
+  <h3>Trending hotel destinations</h3>
+  <p>Explore destinations currently popular with travellers from Cameroon</p>
+
+  <owl-carousel-o [options]="customOptions">
+    <ng-container *ngFor="let slide of slides" >
+      <ng-template carouselSlide >
+        <div class="container" style="text-align: center;">
+        <img [src]="slide.img" class="img">&nbsp;&nbsp;
+        <h5>{{slide.title}}</h5>
+        <span class="form-text">{{slide.des}}</span>
+        </div>
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+  <br>
+  <h3>Looking for a particular type of hotel?</h3>
+  <p>Find the best hotel for your trip, whatever the budget or occasion</p>
+  <hr>
   <div class="row">
+    <div class="col-md-3">
+      <div>
+        <div class="card" style="width: 18rem;">
+          <img src="assets/h5.jpg" class="card-img-top" style="height: 30vh; width: 100%" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Guest friendly hotel</h5>
+            <p class="card-text">friendly hotel in molyko </p>
+            <span class="form-text">4000 reviews</span>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="col-md-3">
+        <div>
+        <div class="card" style="width: 18rem;">
+          <img src="assets/h3.jpg" class="card-img-top" style="height: 30vh; width: 100%" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Guest friendly hotel</h5>
+            <p class="card-text">friendly hotel in molyko </p>
+           <span class="form-text">4000 reviews</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+        <div>
+        <div class="card" style="width: 18rem;">
+          <img src="assets/h1.jpg" class="card-img-top" style="height: 30vh; width: 100%" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Guest friendly hotel</h5>
+            <p class="card-text">friendly hotel in molyko </p>
+            <span class="form-text">4000 reviews</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+        <div>
+        <div class="card" style="width: 18rem;">
+          <img src="assets/h2.jpg" class="card-img-top" style="height: 30vh; width: 100%" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Guest friendly hotel</h5>
+            <p class="card-text">friendly hotel in molyko </p>
+            <span class="form-text">4000 reviews</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-</div>
+  <br>
+  <br>
+  <h3>Inspiration for finding your ideal hotel</h3>
+  <p>Discover special hotels in unique destinations all over Cameroon</p>
+  <div class="row">
+    <div class="col-md-6 hot">
+      <div class="hotel">
+        <h4>9 of the best hotels for weddings</h4>
+        <span>Read more</span>
+      </div>
+    </div>
+    <div class="col-md-6 hot">
+      <div class="hotel">
+        <h4>7 grand hotels</h4>
+        <span>Read more</span>
+        </div>
+      </div>
+    <div class="col-md-6 hot">
+      <div class="hotel1">
+        <h4>4 kid-friendly hotels</h4>
+        <span>Read more</span>
+      </div>
+    </div>
+    <div class="col-md-6 hot">
+      <div class="hotel1">
+        <h4>Top 5 spa hotels</h4>
+        <span>Read more</span>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="contain">
+    <h4>Popular cities</h4>
+    <br>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-4">
+            <img src="assets/h1.jpg" class="img-fluid size">
+          </div>
+          <div class="col-md-8">
+            <p>Hotels in molyko, Buea</p>
+            <span class="form-text">10 Hotels</span>
+          </div>
+
+        </div>
+        <hr>
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-4">
+            <img src="assets/h2.jpg" class="img-fluid size">
+          </div>
+          <div class="col-md-8">
+            <p>Hotels in muea, Buea</p>
+            <span class="form-text">10 Hotels</span>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-4">
+            <img src="assets/h3.jpg" class="img-fluid size">
+          </div>
+          <div class="col-md-8">
+            <p>Hotels in mile 4, Limbe</p>
+            <span class="form-text">10 Hotels</span>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-4">
+            <img src="assets/h1.jpg" class="img-fluid size">
+          </div>
+          <div class="col-md-8">
+            <p>Hotels in Bonaberi, Duala</p>
+            <span class="form-text">10 Hotels</span>
+          </div>
+        </div>
+        <hr>
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-4">
+            <img src="assets/h4.jpg" class="img-fluid size">
+          </div>
+          <div class="col-md-8">
+            <p>Hotels in ngwakele, Yaounde</p>
+            <span class="form-text">10 Hotels</span>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-4">
+            <img src="assets/h2.jpg" class="img-fluid size">
+          </div>
+          <div class="col-md-8">
+            <p>Hotels in Younde</p>
+            <span class="form-text">10 Hotels</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <h3>More accommodation on reservation.com</h3>
+  <p>Dive into our world of apartments, villas and other unique accommodation</p>
+  </div>
+<nav class="navbar navbar-light bg-dark">
+  <div class="container-fluid">
+    <br>
+    <div style="text-align: center; color: white">
+      <h5>Save time!, Save money!</h5>
+      <p>Sign up and we'll send the best deals to you</p>
+      <form class="d-flex">
+        <input class="form-control me-2" type="text" placeholder="Search">
+        <button class="btn btn-primary" type="button">Search</button>
+      </form>
+      <br>
+      <br>
+    </div>
+    <a class="navbar-brand" href="#" style="color: white">reservation.com</a>
+  </div>
+</nav>
+
