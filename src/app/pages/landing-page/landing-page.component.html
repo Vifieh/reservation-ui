@@ -1,5 +1,4 @@
 <app-landing-page-navbar></app-landing-page-navbar>
-<app-header></app-header>
 <div class="container">
   <br>
   <h2>Find the perfect hotel on reservation.com</h2>
@@ -17,7 +16,7 @@
       <li><a class="dropdown-item" href="#">Link 2</a></li>
       <li><a class="dropdown-item" href="#">Link 3</a></li>
     </ul>
-    <button class="btn btn-primary">Search</button>
+    <button class="btn btn-primary button">Search</button>
   </form>
   <br>
   <br>
@@ -29,7 +28,7 @@
       <ng-template carouselSlide >
         <div class="container" style="text-align: center;">
         <img [src]="slide.img" class="img">&nbsp;&nbsp;
-        <h4>{{slide.title}}</h4>
+        <h5>{{slide.title}}</h5>
         <span class="form-text">{{slide.des}}</span>
         </div>
       </ng-template>
@@ -205,6 +204,17 @@
   </div>
 <nav class="navbar navbar-light bg-dark">
   <div class="container-fluid">
+    <br>
+    <div style="text-align: center; color: white">
+      <h5>Save time!, Save money!</h5>
+      <p>Sign up and we'll send the best deals to you</p>
+      <form class="d-flex">
+        <input class="form-control me-2" type="text" placeholder="Search">
+        <button class="btn btn-primary" type="button">Search</button>
+      </form>
+      <br>
+      <br>
+    </div>
     <a class="navbar-brand" href="#" style="color: white">reservation.com</a>
   </div>
 </nav>

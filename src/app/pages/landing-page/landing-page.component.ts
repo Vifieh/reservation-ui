@@ -23,10 +23,10 @@ export class LandingPageComponent implements OnInit {
         items: 2
       },
       760: {
-        items: 3
+        items: 6
       },
       1000: {
-        items: 3
+        items: 6
       }
     },
     nav: true
@@ -45,13 +45,13 @@ export class LandingPageComponent implements OnInit {
   hotels()
   {
    const hotels = [
-      {id: 1, img: "../assets/h2.jpg", title: "Yaounde, Cameroon", des: "Avg. price per night for a 3-star hotel: XAF 55,032"},
-      {id: 2, img: "../assets/h1.jpg", title: "Yaounde, Cameroon", des: "Avg. price per night for a 3-star hotel: XAF 55,032"},
-      {id: 3, img:  "../assets/h3.jpg", title: "Yaounde, Cameroon", des: "Avg. price per night for a 3-star hotel: XAF 55,032"},
-      {id: 4, img:  "../assets/h4.jpg", title: "Yaounde, Cameroon", des: "Avg. price per night for a 3-star hotel: XAF 55,032"},
-      {id: 5, img:  "../assets/h5.jpg", title: "Yaounde, Cameroon", des: "Avg. price per night for a 3-star hotel: XAF 55,032"},
-      {id: 6, img:  "../assets/h3.jpg", title: "Yaounde, Cameroon", des: "Avg. price per night for a 3-star hotel: XAF 55,032"},
-      {id: 6, img:  "../assets/h2.jpg", title: "Yaounde, Cameroon", des: "Avg. price per night for a 3-star hotel: XAF 55,032"}
+      {id: 1, img: "../assets/h2.jpg", title: "Hotels", des: "123 hotels"},
+      {id: 2, img: "../assets/h1.jpg", title: "Apartments", des: "120 apartments"},
+      {id: 3, img:  "../assets/h3.jpg", title: "Resorts", des:"100 resorts"},
+      {id: 4, img:  "../assets/h4.jpg", title: "Villas", des: "123 villas"},
+      {id: 5, img:  "../assets/h5.jpg", title: "Hotels", des: "123 hotels"},
+      {id: 6, img:  "../assets/h3.jpg", title: "Apartments", des: "123 apartments"},
+      {id: 6, img:  "../assets/h2.jpg", title: "Villas", des: "60 villas"}
     ];
    this.slides=hotels;
   }
