@@ -1,11 +1,9 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {AbstractControl, FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AbstractControl, FormBuilder, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../services/auth-service/authentication.service";
 import {Router} from "@angular/router";
 import {NotificationMessageService} from "../../services/notification/notification-message.service";
-import {NotificationType} from "../../model/notificationMessage";
 import {Subscription} from "rxjs";
-import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-register',
@@ -51,8 +49,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
     if (!this.registerForm.valid) {
       alert("please fill all fields in the form")
     } else {
-      const registerSub = this.authenticationService.register(this.registerForm.value).subscribe(response => {
-        console.log(response.message)
+      const registerSub = this.authenticationService.register(this.registerForm.value)
+        .subscribe(response => {
+        alert(response)
       })
       this.subscriptions.push(registerSub);
     }

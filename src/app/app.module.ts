@@ -16,6 +16,10 @@ import {ToastContainerModule, ToastrModule} from "ngx-toastr";
 import {AuthInterceptorService} from "./interceptors/auth-interceptor.service";
 import { PropertyLandingPageComponent } from './pages/property-landing-page/property-landing-page.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard.component';
+import { CountryComponent } from './pages/country/country.component';
+import { CityComponent } from './pages/city/city.component';
+import { CategoryAmenityComponent } from './pages/category-amenity/category-amenity.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +32,10 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     SidebarComponent,
     LandingPageNavbarComponent,
     PropertyLandingPageComponent,
+    AdminDashboardComponent,
+    CountryComponent,
+    CityComponent,
+    CategoryAmenityComponent,
   ],
   imports: [
     BrowserModule,

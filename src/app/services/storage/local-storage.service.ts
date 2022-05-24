@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {StorageData} from "../../model/storage-data.model";
-import {LoginDto} from "../../model/loginDto";
+import {LoginDto} from "../../model/dto/loginDto";
 
 @Injectable({
   providedIn: 'root'

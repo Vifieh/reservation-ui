@@ -1,0 +1,3 @@
+export enum Reservation {
+  RESERVATION = 'RESERVATION', NO_RESERVATION = 'NO_RESERVATION'
+}
