@@ -1,0 +1,29 @@
+<app-navbar></app-navbar>
+
+<div class="row gy-5">
+  <div class="col-md-3">
+    <app-sidebar></app-sidebar>
+  </div>
+
+  <div class="col-md-8">
+    <div class="p-3 table-responsive">
+      <table class="table caption-top align-middle">
+        <caption>List of Cities</caption>
+        <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">name</th>
+          <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody *ngFor="let city of cities">
+        <tr>
+          <td>1</td>
+          <td>{{city.name}}</td>
+          <td><i class="fa-solid  fa-ellipsis-vertical"></i></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

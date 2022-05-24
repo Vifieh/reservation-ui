@@ -1,4 +1,4 @@
-import {Role} from "../enum/role.enum";
+import {Role} from "../../enum/role";
 
 export interface LoginDto {
   accessToken: string

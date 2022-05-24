@@ -9,6 +9,11 @@ import {NotificationMessage, NotificationType} from "../../model/notificationMes
 export class NotificationMessageService {
 
   private notificationSubject:Subject<NotificationMessage> = new Subject<NotificationMessage>();
+
+  sendMessage(message:NotificationMessage){
+    this.notificationSubject.next(message)
+  }
+
   constructor(private toastr:ToastrService) {
     this.notificationSubject.subscribe(message => {
       switch(message.type){
@@ -32,10 +37,6 @@ export class NotificationMessageService {
       console.log("could not process toastr message");
 
     })
-  }
-
-  sendMessage(message:NotificationMessage){
-    this.notificationSubject.next(message)
   }
 
   selectedLang: any;

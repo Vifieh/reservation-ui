@@ -1,1 +1,140 @@
-<p>sidebar works!</p>
+<div class="d-flex flex-column flex-shrink-0 p-3 text-black bg-light" style="width: 280px;">
+  <div class="dropdown">
+    <a class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-black text-decoration-none" id="dropdownMenuLink"
+       data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa-solid fa-plus-large"></i>
+      <span class="fs-4">New</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#createCountryModal">
+        <i class="fa-solid fa-globe"></i>Country</a></li>
+      <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#createCityModal">
+        <i class="fa-solid fa-city"></i>City</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+  </div>
+  <hr>
+  <ul class="ul-item nav nav-pills flex-column mb-auto">
+    <li class="nav-item">
+      <div class="dropdown dropend">
+        <a class="nav-link text-black" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-folder-gear"></i>
+          Manage
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" routerLink="/countries" routerLinkActive="active">Country</a></li>
+          <li><a class="dropdown-item" routerLink="/cities" routerLinkActive="active">City</a></li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="dropdown dropend">
+        <a class="nav-link text-black" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-house-building"></i>
+          Property
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Approved</a></li>
+          <li><a class="dropdown-item" href="#">Pending</a></li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="dropdown dropend">
+        <a class="nav-link text-black" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-users"></i>
+          Users
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Users</a></li>
+          <li><a class="dropdown-item" href="#">Managers</a></li>
+          <li><a class="dropdown-item" href="#">Admins</a></li>
+        </ul>
+      </div>
+    </li>
+    <li>
+      <div class="dropdown dropend">
+        <a class="nav-link text-black" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa-solid fa-gears"></i>
+          Others
+        </a>
+        <ul class="dropdown-menu">
+          <li><a class="dropdown-item" href="#">Country</a></li>
+          <li><a class="dropdown-item" href="#">City</a></li>
+          <li><a class="dropdown-item" href="#">Something else here</a></li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+  <hr>
+  <div class="dropdown">
+    <a href="#" class="d-flex align-items-center text-black text-decoration-none dropdown-toggle" id="dropdownUser1"
+       data-bs-toggle="dropdown" aria-expanded="false">
+      <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+      <strong>mdo</strong>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+      <li><a class="dropdown-item" href="#"><i class="fa-solid fa-user"></i>Profile</a></li>
+      <li>
+        <hr class="dropdown-divider">
+      </li>
+      <li><a class="dropdown-item" href="#"><i class="fa-solid fa-arrow-left-long-to-line"></i>logout</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- country Modal -->
+<div class="modal fade " id="createCountryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form [formGroup]="createCountryForm" (ngSubmit)="createCountry()">
+          <div class="mb-3">
+            <label class="col-form-label">New Country</label>
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control"
+            >
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="cancel btn btn-link" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-link">Create</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- city Modal -->
+<div class="modal fade " id="createCityModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create City</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <select class="form-select" aria-label="Default select example">
+              <option selected>Choose a country</option>
+              <option value="1">Cameroon</option>
+              <option value="2">Congo</option>
+              <option value="3">Dubai</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="col-form-label">New City</label>
+            <input type="text" class="form-control">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="cancel btn btn-link" data-bs-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-link">Create</button>
+      </div>
+    </div>
+  </div>
+</div>

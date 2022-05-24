@@ -1,12 +1,13 @@
 <nav class="navbar navbar-light ">
   <div class="container-fluid">
-    <a class="navbar-brand">Navbar</a>
-    <a class="nav-link d-flex" data-bs-toggle="modal" data-bs-target="#exampleModal"><img class="language" src="../../../assets/gb.png"></a>
+    <a class="navbar-brand">Reservations.com</a>
+    <a class="nav-link d-flex" data-bs-toggle="modal" data-bs-target="#languageModal">
+      <img class="language" src="../../../assets/gb.png" data-bs-toggle="tooltip"  data-bs-placement="bottom" title="Choose your language">
+    </a>
   </div>
 </nav>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="languageModal" tabindex="-1" aria-labelledby="languageModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -14,7 +15,13 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4">.col-md-4</div>
+            <div class="col-md-4">.col-md-4</div>
+            <div class="col-md-4 ms-auto">.col-md-4 .ms-auto</div>
+          </div>
+        </div>
       </div>
 
     </div>
