@@ -8,6 +8,10 @@ import {AuthorizeGuard} from './guards/authentication/authorize.guard';
 import {AdminDashboardComponent} from './pages/admin-dashboard/admin-dashboard.component';
 import {CountryComponent} from './pages/country/country.component';
 import {CityComponent} from './pages/city/city.component';
+import {PropertyDashboardComponent} from './pages/property-dashboard/property-dashboard.component';
+import {PropertyTypeComponent} from './pages/property-type/property-type.component';
+import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.component';
+import {ListPropertyComponent} from './pages/list-property/list-property.component';
 
 
 const routes: Routes = [
@@ -38,6 +42,21 @@ const routes: Routes = [
   },
 
   {
+    path: 'property-dashboard',
+    component: PropertyDashboardComponent,
+  },
+
+  {
+    path: 'property-type',
+    component: PropertyTypeComponent,
+  },
+
+  {
+    path: 'list-property',
+    component: ListPropertyComponent,
+  },
+
+  {
     path: 'admin-dashboard',
     component: AdminDashboardComponent,
   },
@@ -50,6 +69,11 @@ const routes: Routes = [
   {
     path: 'cities',
     component: CityComponent,
+  },
+
+  {
+    path: '**',
+    component: PageNotFoundComponent
   },
 
 ];
