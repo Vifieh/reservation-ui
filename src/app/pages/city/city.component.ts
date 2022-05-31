@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from 'rxjs';
 import {CustomDto} from '../../model/dto/customDto';
 import {CityService} from '../../services/city-service/city.service';
+import {CountryComponent} from '../country/country.component';
 
 @Component({
   selector: 'app-city',
@@ -17,20 +18,22 @@ export class CityComponent implements OnInit, OnDestroy {
     private cityService: CityService,
   ) { }
 
-  ngOnInit(): void {
-  }
-
   ngOnDestroy(): void {
     for (const sub of this.subscriptions) {
       sub.unsubscribe();
     }
   }
 
+  ngOnInit(): void {
+    this.getCities();
+  }
+
+
   getCities() {
     const cities =  this.cityService.getCities().subscribe(response => {
       this.cities = response;
+      console.log(response);
     });
     this.subscriptions.push(cities);
   }
-
 }

@@ -1,7 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from "rxjs";
-import {AbstractControl, FormBuilder, Validators} from "@angular/forms";
-import {CountryService} from "../../services/country-service/country.service";
+import {Subscription} from 'rxjs';
+import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
+import {CountryService} from '../../services/country-service/country.service';
+import {NotificationService} from '../../services/notification/notification.service';
+import {NotificationType} from '../../model/notificationMessage';
+import {CountryComponent} from '../../pages/country/country.component';
 
 @Component({
   selector: 'app-sidebar',
@@ -16,9 +19,11 @@ export class SidebarComponent implements OnInit, OnDestroy {
   constructor(
     public formBuilder: FormBuilder,
     private countryService: CountryService,
+    private notificationService: NotificationService,
   ) {}
 
   ngOnInit(): void {
+    // this.getCountries();
   }
 
   ngOnDestroy(): void {
@@ -44,10 +49,14 @@ export class SidebarComponent implements OnInit, OnDestroy {
     } else {
       const createCountrySub = this.countryService.createCountry(this.createCountryForm.value)
         .subscribe(response => {
-          alert(response)
-    })
+          this.notificationService.sendMessage({message: response.message, type: NotificationType.success});
+        })
     this.subscriptions.push(createCountrySub);
     }
   }
+
+  // getCountries() {
+  //    this.countryComponent.getCountries();
+  // }
 
 }

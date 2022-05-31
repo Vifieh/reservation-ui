@@ -2,11 +2,10 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
 import {AbstractControl, FormBuilder, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../services/auth-service/authentication.service";
-import {NotificationMessageService} from "../../services/notification/notification-message.service";
+import {NotificationService} from "../../services/notification/notification.service";
 import {Router} from "@angular/router";
 import {StorageData} from "../../model/storage-data.model";
 import {LocalStorageService} from "../../services/storage/local-storage.service";
-import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-login',
@@ -16,13 +15,12 @@ import {ToastrService} from "ngx-toastr";
 export class LoginComponent implements OnInit, OnDestroy {
 
   submitted = false;
-  errorMessage = '';
   subscriptions: Subscription[] = []
 
   constructor(
     public formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
-    private notificationService: NotificationMessageService,
+    private notificationService: NotificationService,
     private localStorageService: LocalStorageService,
     private router: Router) {
   }

@@ -1,0 +1,18 @@
+nav{
+  background-color: #311b92;
+}
+
+nav a {
+  cursor: pointer;
+  color: #ffffff;
+  margin-left: 100px;
+}
+
+.language {
+  height: 4vh;
+  border-radius: 50%;
+  margin-right: 100px;
+  border: 1px solid white;
+}
+
+

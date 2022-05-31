@@ -20,6 +20,11 @@ import { AdminDashboardComponent } from './pages/admin-dashboard/admin-dashboard
 import { CountryComponent } from './pages/country/country.component';
 import { CityComponent } from './pages/city/city.component';
 import { CategoryAmenityComponent } from './pages/category-amenity/category-amenity.component';
+import { PropertyDashboardComponent } from './pages/property-dashboard/property-dashboard.component';
+import {PropertyTypeComponent} from './pages/property-type/property-type.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { ListPropertyComponent } from './pages/list-property/list-property.component';
+import { ListPropertyNavbarComponent } from './pages/list-property/list-property-navbar/list-property-navbar.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +41,11 @@ import { CategoryAmenityComponent } from './pages/category-amenity/category-amen
     CountryComponent,
     CityComponent,
     CategoryAmenityComponent,
+    PropertyDashboardComponent,
+    PropertyTypeComponent,
+    PageNotFoundComponent,
+    ListPropertyComponent,
+    ListPropertyNavbarComponent,
   ],
   imports: [
     BrowserModule,

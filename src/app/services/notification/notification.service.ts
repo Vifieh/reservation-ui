@@ -6,7 +6,7 @@ import {NotificationMessage, NotificationType} from "../../model/notificationMes
 @Injectable({
   providedIn: 'root'
 })
-export class NotificationMessageService {
+export class NotificationService {
 
   private notificationSubject:Subject<NotificationMessage> = new Subject<NotificationMessage>();
 

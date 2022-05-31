@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {AbstractControl, FormBuilder, Validators} from "@angular/forms";
 import {AuthenticationService} from "../../services/auth-service/authentication.service";
 import {Router} from "@angular/router";
-import {NotificationMessageService} from "../../services/notification/notification-message.service";
+import {NotificationService} from "../../services/notification/notification.service";
 import {Subscription} from "rxjs";
 
 @Component({
@@ -13,13 +13,12 @@ import {Subscription} from "rxjs";
 export class RegisterComponent implements OnInit, OnDestroy {
 
   submitted = false;
-  errorMessage = '';
   subscriptions: Subscription[] = []
 
   constructor(
     public formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
-    private notificationService: NotificationMessageService,
+    private notificationService: NotificationService,
     private router: Router) {
   }
 
