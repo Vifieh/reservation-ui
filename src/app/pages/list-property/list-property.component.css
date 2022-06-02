@@ -1,9 +1,20 @@
 .main {
   background-color: #f2f2f2;
   color: #333;
-  height: 91vh;
+  height: 100%;
 }
 
 .highlight-fieldsets fieldset.active {
   box-shadow: 0px 0px 0px 2px #0071c2;
+}
+.card{
+  padding: 2rem;
+}
+input[type=text]
+{
+  height: 7vh;
+}
+select
+{
+  height: 7vh;
 }

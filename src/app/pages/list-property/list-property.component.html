@@ -60,18 +60,180 @@
           </div>
           <div class="row">
             <div class="col-md-9">
+              <form>
+                <div class="card">
+                  <div class="form-group col-md-8">
+                    <label><h3>What is the name of your property?</h3></label>
+                    <input type="text" id="name" class="form-control" >
+                    <span class="form-text">This name will be seen by guests when they search for a place to stay.</span>
+                  </div>
+                  <br>
+                  <div class="form-group col-md-6">
+                    <label>Star rating</label>
+                    <select  class="form-select">
+                      <option [ngValue]="null" disabled>Select star rating</option>
+                      <option *ngFor="let star of stars" [ngValue]="star">{{star}}</option>
+                    </select>
+                  </div>
+                </div>
+                <br>
+
+                <div class="card">
+                  <h3>What are the contact details for this property?</h3>
+                  <div class="form-group col-md-8">
+                    <label>Contact name</label>
+                    <input type="text"  class="form-control" >
+                  </div>
+                  <br>
+                  <p class="col-md-8">Contact number (so we can assist with your registration when needed)</p>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group col-md-8">
+                        <label>Phone number</label>
+                        <input type="text"  class="form-control" >
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group col-md-8">
+                        <label>Alternative phone number (optional)</label>
+                        <input type="text"  class="form-control" >
+                      </div>
+                    </div>
+
+                    <div class="col-md-6">
+                      <br>
+                      <span class="col-md-4">Do you own multiple hotels, or are you part of a property management company or group?</span>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="form-group col-md-8">
+                        <br>
+                        <label>Name of company, group or chain</label>
+                        <input type="text"  class="form-control" >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                     Yes
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                     No
+                    </label>
+                  </div>
+                </div>
+<br>
+                <div class="card">
+                  <h3>Do you use a channel manager?</h3>
+                  <span>A channel manager is a tool that lets you choose what you sell across all the different sites you might list your place on.
+                    You can then set your prices and open and close dates in your calendar on all of these sites in one place.</span>
+                  <br>
+                  <span>If you use a channel manager, tell us below. We’ll use this information to help you connect it to Booking.com in the future.
+                    It also helps if you tell us the brand name of your channel manager.</span>
+                  <br>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      I use a channel manager
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      I don't use a channel manager
+                    </label>
+                  </div>
+
+                  <br>
+                  <div class="form-group">
+                    <br>
+                    <label>Enter name (optional)</label>
+                    <input type="text"  class="form-control" placeholder="channel manager's name">
+                  </div>
+                </div>
+                <br>
+                <div class="card">
+                  <h3>Where is your property located?</h3>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <br>
+                        <label>Street address</label>
+                        <input type="text"  class="form-control" placeholder="e.g. 123 Easy street">
+                      </div>
+                      <br>
+                      <div class="form-group">
+                        <label>Address line 2</label>
+                        <input type="text"  class="form-control" placeholder="unit number, suit, floor, building etc">
+                      </div>
+                      <br>
+                      <div class="form-group">
+                        <label>Country/region</label>
+                        <select  class="form-select">
+                          <option [ngValue]="null" disabled>Select county</option>
+                          <option *ngFor="let star of stars" [ngValue]="star">{{star}}</option>
+                        </select>
+                      </div>
+                      <br>
+                      <div class="form-group">
+                        <label>City</label>
+                        <input type="text"  class="form-control" placeholder="e.g. Buea">
+                      </div>
+                      <br>
+                      <div class="form-group col-md-6">
+                        <label>Post code</label>
+                        <input type="text"  class="form-control" >
+                      </div>
+                      <br>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="card">
+                        <div class="row">
+                          <div class="col-md-3"><i class="fa fa-envelope fa-4x"></i></div>
+                          <div class="col-md-9">
+                            <h4>Your address matters</h4>
+                            <span>Please make sure you enter the full address of your property,
+                              including building name, number, etc. Based on the information you provide,
+                              we might send a letter to verify this address.</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <br>
+                <button class="btn btn-primary" style="width: 100%; height: 8vh; text-align: center">Continue</button>
+                <br>
+              </form>
+              <br>
             </div>
           </div>
         </div>
+
+
         <div class="tab-pane fade" id="pills-layout-pricing" role="tabpanel" aria-labelledby="layout-and-pricing">Layout
           and pricing
         </div>
+
+
         <div class="tab-pane fade" id="pills-facilities-services" role="tabpanel" aria-labelledby="facilities-services">
           Facilities & services
         </div>
+
+
         <div class="tab-pane fade" id="pills-amenities" role="tabpanel" aria-labelledby="amenities">Amenities</div>
+
+
         <div class="tab-pane fade" id="pills-photos" role="tabpanel" aria-labelledby="photos">Photos</div>
+
+
         <div class="tab-pane fade" id="pills-policies" role="tabpanel" aria-labelledby="policies">Policies</div>
+
+
         <div class="tab-pane fade" id="pills-payments" role="tabpanel" aria-labelledby="payments">Payments</div>
       </div>
     </div>
