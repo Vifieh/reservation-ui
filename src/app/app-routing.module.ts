@@ -12,6 +12,8 @@ import {PropertyDashboardComponent} from './pages/property-dashboard/property-da
 import {PropertyTypeComponent} from './pages/property-type/property-type.component';
 import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.component';
 import {ListPropertyComponent} from './pages/list-property/list-property.component';
+import {CategoryAmenityComponent} from './pages/category-amenity/category-amenity.component';
+import {AmenityComponent} from './pages/amenity/amenity.component';
 
 
 const routes: Routes = [
@@ -69,6 +71,16 @@ const routes: Routes = [
   {
     path: 'cities',
     component: CityComponent,
+  },
+
+  {
+    path: 'amenity-type',
+    component: CategoryAmenityComponent,
+  },
+
+  {
+    path: 'amenity',
+    component: AmenityComponent,
   },
 
   {

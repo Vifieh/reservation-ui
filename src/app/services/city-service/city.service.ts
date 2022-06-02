@@ -18,14 +18,14 @@ export class CityService {
 
   createCity(countryId: string, cityPayload: CustomPayload): Observable<ResponseMessage> {
     return this.http.post<ResponseMessage>(
-      `${this.baseUrlPro}/countries/countryId=${countryId}`,
+      `${this.baseUrlPro}/cities/countries/${countryId}`,
       cityPayload
     )
   }
 
   editCity(cityId: string, cityPayload: CustomPayload): Observable<ResponseMessage> {
     return this.http.patch<ResponseMessage>(
-      `${this.baseUrlPro}/cities/cityId=${cityId}`,
+      `${this.baseUrlPro}/cities/${cityId}`,
       cityPayload
     )
   }
@@ -36,20 +36,20 @@ export class CityService {
     )
   }
 
-  getCitiesByCountry(cityId: string): Observable<CustomDto[]> {
+  getCitiesByCountry(cityId?: string): Observable<CustomDto[]> {
     return this.http.get<CustomDto[]>(
       `${this.baseUrlPub}/cities/${cityId}`
     )
   }
 
-  getCity(cityId: string): Observable<CustomDto> {
+  getCity(cityId?: string): Observable<CustomDto> {
     return this.http.get<CustomDto>(
       `${this.baseUrlPub}/cities/${cityId}`
     )
   }
 
-  deleteCity(cityId: string): Observable<ResponseMessage> {
-    return this.http.get<ResponseMessage>(
+  deleteCity(cityId?: string): Observable<ResponseMessage> {
+    return this.http.delete<ResponseMessage>(
       `${this.baseUrlPro}/cities/${cityId}`
     )
   }

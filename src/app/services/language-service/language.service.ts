@@ -42,7 +42,7 @@ export class LanguageService {
   }
 
   deleteLanguage(languageId: string): Observable<ResponseMessage> {
-    return this.http.get<ResponseMessage>(
+    return this.http.delete<ResponseMessage>(
       `${this.baseUrlPro}/languages/${languageId}`
     )
   }

@@ -25,6 +25,8 @@ import {PropertyTypeComponent} from './pages/property-type/property-type.compone
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { ListPropertyComponent } from './pages/list-property/list-property.component';
 import { ListPropertyNavbarComponent } from './pages/list-property/list-property-navbar/list-property-navbar.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AmenityComponent } from './pages/amenity/amenity.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,7 @@ import { ListPropertyNavbarComponent } from './pages/list-property/list-property
     PageNotFoundComponent,
     ListPropertyComponent,
     ListPropertyNavbarComponent,
+    AmenityComponent,
   ],
   imports: [
     BrowserModule,
@@ -64,6 +67,7 @@ import { ListPropertyNavbarComponent } from './pages/list-property/list-property
       preventDuplicates: false
     }),
     ToastContainerModule,
+    BrowserAnimationsModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
