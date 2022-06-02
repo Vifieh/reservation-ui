@@ -13,3 +13,7 @@
 .cancel {
   color: #5F6368;
 }
+
+a {
+  cursor: pointer;
+}

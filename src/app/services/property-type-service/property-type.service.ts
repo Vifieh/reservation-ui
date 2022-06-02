@@ -42,7 +42,7 @@ export class PropertyTypeService {
   }
 
   deletePropertyType(propertyTypeId: string): Observable<ResponseMessage> {
-    return this.http.get<ResponseMessage>(
+    return this.http.delete<ResponseMessage>(
       `${this.baseUrlPro}/propertyTypes/${propertyTypeId}`
     )
   }

@@ -31,17 +31,17 @@ export class CategoryAmenityService {
 
   getAllCategoryAmenity(): Observable<CustomDto[]> {
     return this.http.get<CustomDto[]>(
-      `${this.baseUrlPub}/categoryAmenities`
+      `${this.baseUrlPro}/categoryAmenities`
     )
   }
 
-  getCategoryAmenity(categoryId: string): Observable<CustomDto> {
+  getCategoryAmenity(categoryId?: string): Observable<CustomDto> {
     return this.http.get<CustomDto>(`${this.baseUrlPub}/categoryAmenities/${categoryId}`)
 
   }
 
-  deleteCategoryAmenity(categoryId: string): Observable<ResponseMessage> {
-    return this.http.get<ResponseMessage>(
+  deleteCategoryAmenity(categoryId?: string): Observable<ResponseMessage> {
+    return this.http.delete<ResponseMessage>(
       `${this.baseUrlPro}/categoryAmenities/${categoryId}`
     )
   }

@@ -11,14 +11,12 @@
         <caption>List of Cities</caption>
         <thead>
         <tr>
-          <th scope="col">#</th>
           <th scope="col">name</th>
           <th scope="col">Action</th>
         </tr>
         </thead>
-        <tbody *ngFor="let city of cities">
-        <tr>
-          <td>1</td>
+        <tbody>
+        <tr *ngFor="let city of cities">
           <td>{{city.name}}</td>
           <td>
             <div class="dropdown dropend">
@@ -26,7 +24,7 @@
                 <i class="fa fa-ellipsis-v" aria-hidden="true"></i></a>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editCityModal"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></li>
-                <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteCityModal"><i class="fa fa-trash-o" aria-hidden="true" style="color: red"></i></a>
+                <li><a (click)="delete(city)" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#deleteCityModal"><i class="fa fa-trash-o" aria-hidden="true" style="color: red"></i></a>
                 </li>
               </ul>
             </div>
@@ -47,7 +45,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="cancel btn btn-link" data-bs-dismiss="modal">Cancel</button>
-        <button type="submit" class="btn btn-link" >Delete</button>
+        <button type="button" class="btn btn-link" (click)="deleteCity()">Delete</button>
       </div>
     </div>
   </div>
@@ -63,7 +61,6 @@
             <label class="col-form-label">Edit City</label>
             <input
               type="text"
-              formControlName="name"
               class="form-control"
             >
           </div>

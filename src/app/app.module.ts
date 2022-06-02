@@ -32,6 +32,8 @@ import { AmenitiesComponent } from './pages/amenities/amenities.component';
 import { PhotosComponent } from './pages/photos/photos.component';
 import { PoliciesComponent } from './pages/policies/policies.component';
 import { PaymentsComponent } from './pages/payments/payments.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { AmenityComponent } from './pages/amenity/amenity.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +62,7 @@ import { PaymentsComponent } from './pages/payments/payments.component';
     PhotosComponent,
     PoliciesComponent,
     PaymentsComponent,
+    AmenityComponent,
   ],
   imports: [
     BrowserModule,
@@ -78,6 +81,7 @@ import { PaymentsComponent } from './pages/payments/payments.component';
       preventDuplicates: false
     }),
     ToastContainerModule,
+    BrowserAnimationsModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

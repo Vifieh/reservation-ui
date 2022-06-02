@@ -42,7 +42,7 @@ export class BedAvailableService {
   }
 
   deleteBedAvailable(bedAvailableId: string): Observable<ResponseMessage> {
-    return this.http.get<ResponseMessage>(
+    return this.http.delete<ResponseMessage>(
       `${this.baseUrlPro}/bedsAvailable/${bedAvailableId}`
     )
   }

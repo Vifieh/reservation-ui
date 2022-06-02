@@ -10,7 +10,21 @@
         <i class="fa fa-globe" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp; Country</a></li>
       <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#createCityModal">
         <i class="fa fa-city" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp; City</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
+      <li>
+        <hr class="dropdown-divider">
+      </li>
+      <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#createAmenityTypeModal">Amenity Type</a></li>
+      <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#createAmenityModal">Amenity</a></li>
+      <li>
+        <hr class="dropdown-divider">
+      </li>
+      <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#createRoomTypeModal">Room Type</a></li>
+      <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#createRoomModal">Room name</a></li>
+      <li>
+        <hr class="dropdown-divider">
+      </li>
+      <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#createBedAvailableModal">Bed Available</a></li>
+      <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#createBreakfastAvailableModal">Breakfast Available</a></li>
     </ul>
   </div>
   <hr>
@@ -24,6 +38,16 @@
         <ul class="dropdown-menu">
           <li><a class="dropdown-item" routerLink="/countries" routerLinkActive="active">Country</a></li>
           <li><a class="dropdown-item" routerLink="/cities" routerLinkActive="active">City</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" routerLink="/amenity-type" routerLinkActive="active">Amenity Type</a></li>
+          <li><a class="dropdown-item" routerLink="/amenity" routerLinkActive="active">Amenity</a></li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+          <li><a class="dropdown-item" routerLink="/room-type" routerLinkActive="active">Room Type</a></li>
+          <li><a class="dropdown-item" routerLink="/room-name" routerLinkActive="active">Room Name</a></li>
         </ul>
       </div>
     </li>
@@ -116,24 +140,111 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form>
+        <form [formGroup]="createCityForm" (ngSubmit)="createCity(createCityForm.value.countryId)">
           <div class="mb-3">
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Choose a country</option>
-              <option value="1">Cameroon</option>
-              <option value="2">Congo</option>
-              <option value="3">Dubai</option>
+            <select class="form-select" aria-label="Default select example" formControlName="countryId">
+              <option
+                *ngFor="let country of countries"
+                [ngValue]="country.id">
+                {{country.name}}
+              </option>
             </select>
           </div>
           <div class="mb-3">
             <label class="col-form-label">New City</label>
-            <input type="text" class="form-control">
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="cancel btn btn-link" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-link">Create</button>
           </div>
         </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="cancel btn btn-link" data-bs-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-link">Create</button>
+    </div>
+  </div>
+</div>
+
+<!-- amenity type Modal -->
+<div class="modal fade " id="createAmenityTypeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form [formGroup]="createAmenityTypeForm" (ngSubmit)="createAmenityType()">
+          <div class="mb-3">
+            <label class="col-form-label">New Amenity type</label>
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control"
+            >
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="cancel btn btn-link" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-link">Create</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- amenity Modal -->
+<div class="modal fade " id="createAmenityModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create Amenity</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="createAmenityForm" (ngSubmit)="createAmenity(createAmenityForm.value.amenityType)">
+          <div class="mb-3">
+            <select class="form-select" aria-label="Default select example" formControlName="amenityType">
+              <option
+                *ngFor="let amenityType of amenityTypes"
+                [value]="amenityType.id">
+                {{amenityType.name}}</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label class="col-form-label">New Amenity</label>
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="cancel btn btn-link" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-link">Create</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- room type Modal -->
+<div class="modal fade " id="createRoomTypeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-sm">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form [formGroup]="createRoomTypeForm" (ngSubmit)="createRoomType()">
+          <div class="mb-3">
+            <label class="col-form-label">New Amenity type</label>
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control"
+            >
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="cancel btn btn-link" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-link">Create</button>
+          </div>
+        </form>
       </div>
     </div>
   </div>
