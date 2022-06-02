@@ -48,7 +48,7 @@ export class RoomNameService {
   }
 
   deleteRoomName(roomNameId: string): Observable<ResponseMessage> {
-    return this.http.get<ResponseMessage>(
+    return this.http.delete<ResponseMessage>(
       `${this.baseUrlPro}/roomNames/${roomNameId}`
     )
   }

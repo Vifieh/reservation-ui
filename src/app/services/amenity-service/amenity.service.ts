@@ -36,19 +36,19 @@ export class AmenityService {
     )
   }
 
-  getAmenitiesByCategory(categoryId: string): Observable<CustomDto[]> {
+  getAmenitiesByCategory(categoryId?: string): Observable<CustomDto[]> {
     return this.http.get<CustomDto[]>(
       `${this.baseUrlPro}/amenitiesamenities/categoryAmenities/${categoryId}`
     )
   }
 
-  getAmenity(amenityId: string): Observable<CustomDto> {
+  getAmenity(amenityId?: string): Observable<CustomDto> {
     return this.http.get<CustomDto>(
       `${this.baseUrlPro}/amenities/${amenityId}`
     )
   }
 
-  deleteAmenity(amenityId: string): Observable<ResponseMessage> {
+  deleteAmenity(amenityId?: string): Observable<ResponseMessage> {
     return this.http.delete<ResponseMessage>(
       `${this.baseUrlPro}/amenities/${amenityId}`
     )

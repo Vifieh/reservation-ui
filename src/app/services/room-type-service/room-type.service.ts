@@ -42,7 +42,7 @@ export class RoomTypeService {
   }
 
   deleteRoomType(roomTypeId: string): Observable<ResponseMessage> {
-    return this.http.get<ResponseMessage>(
+    return this.http.delete<ResponseMessage>(
       `${this.baseUrlPro}/roomTypes/${roomTypeId}`
     )
   }
