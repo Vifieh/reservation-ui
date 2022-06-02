@@ -12,6 +12,13 @@ import {PropertyDashboardComponent} from './pages/property-dashboard/property-da
 import {PropertyTypeComponent} from './pages/property-type/property-type.component';
 import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.component';
 import {ListPropertyComponent} from './pages/list-property/list-property.component';
+import {BasicInfoComponent} from "./pages/basic-info/basic-info.component";
+import {LayoutPricingComponent} from "./pages/layout-pricing/layout-pricing.component";
+import {FacilitiesServicesComponent} from "./pages/facilities-services/facilities-services.component";
+import {AmenitiesComponent} from "./pages/amenities/amenities.component";
+import {PhotosComponent} from "./pages/photos/photos.component";
+import {PoliciesComponent} from "./pages/policies/policies.component";
+import {PaymentsComponent} from "./pages/payments/payments.component";
 
 
 const routes: Routes = [
@@ -69,6 +76,34 @@ const routes: Routes = [
   {
     path: 'cities',
     component: CityComponent,
+  },
+  {
+    path: 'basic-info',
+    component: BasicInfoComponent,
+  },
+  {
+    path: 'layout',
+    component: LayoutPricingComponent
+  },
+  {
+    path: 'facility',
+    component: FacilitiesServicesComponent,
+  },
+  {
+    path: 'amenity',
+    component: AmenitiesComponent,
+  },
+  {
+    path: 'photo',
+    component: PhotosComponent,
+  },
+  {
+    path: 'policy',
+    component: PoliciesComponent,
+  },
+  {
+    path: 'payment',
+    component: PaymentsComponent,
   },
 
   {
