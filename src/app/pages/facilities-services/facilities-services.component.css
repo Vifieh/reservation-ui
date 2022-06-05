@@ -1,0 +1,29 @@
+.card{
+  padding: 2rem;
+}
+input[type=text]
+{
+  height: 7vh;
+}
+.input-group-text
+{
+  height: 7vh;
+}
+select
+{
+  height: 7vh;
+}
+.container
+{
+  margin-top: 5vh;
+}
+.form-check
+{
+  border-bottom: 2px dotted gray;
+  padding: 1rem;
+}
+.btn-outline-dark:hover
+{
+  background-color: gainsboro;
+  color: black;
+}

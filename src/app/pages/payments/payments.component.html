@@ -1,3 +1,111 @@
 <app-list-property-navbar></app-list-property-navbar>
 <app-list-property></app-list-property>
-
+<div class="container">
+  <h3>Payments</h3>
+  <p>Specify the types of payment you accept, tax details and other options like additional charges.</p>
+  <form class="col-md-9">
+    <div class="card">
+      <h5>Guest payment options</h5>
+      <div class="row">
+        <br>
+        <span>Can you charge credit cards at the property?</span>
+        <div class="col-md-3">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+             Yes
+            </label>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+            <label class="form-check-label" for="flexRadioDefault1">
+              No
+            </label>
+          </div>
+        </div>
+      </div>
+      <br>
+      <span class="form-text">We will inform guests that you only accept cash.</span>
+    </div>
+    <br>
+    <div class="card">
+      <h5>Commission payments</h5>
+      <div class="row">
+        <div class="col-md-6">
+          <h6>At the beginning of each month we will send you an invoice for all complete bookings in the previous month.</h6>
+          <br>
+          <div class="form-group">
+            <label>What name should be placed on the invoice (e.g. legal/company name)?</label>
+            <select  class="form-select">
+              <option [ngValue]="null" disabled>Select county</option>
+              <option value="double">double</option>
+            </select>
+          </div>
+          <br>
+          <br>
+          <div class="row">
+            <br>
+            <span>Does this recipient have the same address as your property?</span>
+            <div class="col-md-3">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Yes
+                </label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+                <label class="form-check-label" for="flexRadioDefault1">
+                  No
+                </label>
+              </div>
+            </div>
+          </div>
+          <br>
+        </div>
+        <div class="col-md-6">
+          <span>Commission percentage:</span>
+          <h5>15%</h5>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="card">
+      <h4>You’re almost done – just a few final things to consider</h4>
+      <br>
+      <h5>Your availability to guests</h5>
+      <p>To help you start earning, we automatically make your property open for
+        bookings for the next 18 months. If you would like to make changes to
+        your availability before opening, you can choose ‘complete registration and open later’.
+        Your availability can also be adjusted after you open for bookings.</p>
+      <h5>To complete your registration, please tick the boxes below:</h5>
+      <br>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+         I  certify that this is a legitimate accommodation business with all necessary licenses
+          and permits, which can be shown upon first request.
+          Booking.com B.V. reserves the right to verify and investigate any details provided in this registration.
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+          I have read, accepted and agreed to the General Delivery Terms and Privacy Statement.
+        </label>
+      </div>
+      <br>
+      <span class="form-text">reservation.com enables accommodations and guests to communicate through reservation.com,
+        which receives and processes communications in accordance with the Booking.com Privacy Statement and General Delivery Terms.</span>
+      <br>
+      <button class="btn btn-primary" style="width: 100%; height: 8vh; text-align: center">Complete registration and open for booking</button>
+    </div>
+    <br>
+    <h5 class="form-text">Almost done! You can always change the information even after you completed the registration!</h5>
+    <br>
+  </form>
+</div>
