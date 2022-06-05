@@ -42,7 +42,7 @@ export class FacilityService {
   }
 
   deleteFacility(facilityId: string): Observable<ResponseMessage> {
-    return this.http.get<ResponseMessage>(
+    return this.http.delete<ResponseMessage>(
       `${this.baseUrlPro}/facilities/${facilityId}`
     )
   }

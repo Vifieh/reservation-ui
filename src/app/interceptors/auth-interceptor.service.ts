@@ -19,12 +19,6 @@ export class AuthInterceptorService implements HttpInterceptor {
         Authorization: `Bearer ${data.accessToken}`
       }
     });
-    // if(this.localStorageService.get('accessToken') != null){
-    //   const token = this.localStorageService.get('accessToken');
-    //   const headers = new HttpHeaders().set("accessToken", token);
-    //   const AuthRequest = request.clone({headers: headers});
-    //   return  next.handle(AuthRequest)
-    // }
     return next.handle(request);
   }
 }

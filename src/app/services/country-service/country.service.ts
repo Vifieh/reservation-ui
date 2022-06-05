@@ -41,8 +41,8 @@ export class CountryService {
 
   }
 
-  deleteCountry(countryId: string): Observable<ResponseMessage> {
-    return this.http.get<ResponseMessage>(
+  deleteCountry(countryId?: string): Observable<ResponseMessage> {
+    return this.http.delete<ResponseMessage>(
       `${this.baseUrlPro}/countries/${countryId}`
     )
   }

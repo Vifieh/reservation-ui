@@ -12,9 +12,9 @@ import {NotificationService} from '../../services/notification/notification.serv
 })
 export class CountryComponent implements OnInit, OnDestroy {
 
-  count: number = 0;
   subscriptions: Subscription[] = [];
   countries: CustomDto[] = [];
+  countryId?: string;
 
   constructor(
     private countryService: CountryService,
@@ -38,9 +38,13 @@ export class CountryComponent implements OnInit, OnDestroy {
     this.subscriptions.push(countries);
   }
 
-  deleteCountry(countryId: string) {
-    const deleteCountry = this.countryService.deleteCountry(countryId).subscribe(response => {
-      this.notificationService.sendMessage({message: response.message, type: NotificationType.warning});
+  delete(country: CustomDto) {
+    this.countryId = country.id;
+  }
+
+  deleteCountry() {
+    const deleteCountry = this.countryService.deleteCountry(this.countryId).subscribe(response => {
+      this.notificationService.sendMessage({message: response.message, type: NotificationType.success});
     })
     this.subscriptions.push(deleteCountry);
   }
