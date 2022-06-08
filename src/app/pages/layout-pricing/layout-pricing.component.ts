@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class LayoutPricingComponent implements OnInit {
 isShow: boolean= false;
 room:string ='';
+isViewRoom:boolean = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -16,6 +17,13 @@ room:string ='';
   isCheck()
   {
     this.isShow = true;
+    this.isViewRoom = false;
+  }
+
+  viewRoom()
+  {
+    this.isViewRoom = true;
+
   }
 
 }
