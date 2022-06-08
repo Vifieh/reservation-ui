@@ -32,13 +32,13 @@ export class BreakfastAvailableService {
 
   getAllBreakfastAvailable(): Observable<CustomDto[]> {
     return this.http.get<CustomDto[]>(
-      `${this.baseUrlPub}/breakfastAvailable`
+      `${this.baseUrlPro}/breakfastsAvailable`
     )
   }
 
   getBreakfastAvailable(breakfastAvailableId: string): Observable<CustomDto> {
     return this.http.get<CustomDto>(
-      `${this.baseUrlPub}/breakfastAvailable/${breakfastAvailableId}`
+      `${this.baseUrlPro}/breakfastAvailable/${breakfastAvailableId}`
     )
   }
 

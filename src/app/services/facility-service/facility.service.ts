@@ -4,7 +4,7 @@ import {HttpClient} from '@angular/common/http';
 import {CustomPayload} from '../../model/payload/customPayload';
 import {Observable} from 'rxjs';
 import {ResponseMessage} from '../../model/responseMessage';
-import {CustomDto} from '../../model/dto/customDto';
+import {FacilityDto} from '../../model/dto/customDto';
 
 @Injectable({
   providedIn: 'root'
@@ -30,14 +30,14 @@ export class FacilityService {
     )
   }
 
-  getFacilities(): Observable<CustomDto[]> {
-    return this.http.get<CustomDto[]>(
-      `${this.baseUrlPub}/facilities`
+  getFacilities(): Observable<FacilityDto[]> {
+    return this.http.get<FacilityDto[]>(
+      `${this.baseUrlPro}/facilities`
     )
   }
 
-  getFacility(facilityId: string): Observable<CustomDto> {
-    return this.http.get<CustomDto>(`${this.baseUrlPub}/facilities/${facilityId}`)
+  getFacility(facilityId: string): Observable<FacilityDto> {
+    return this.http.get<FacilityDto>(`${this.baseUrlPro}/facilities/${facilityId}`)
 
   }
 

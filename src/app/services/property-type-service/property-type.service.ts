@@ -32,12 +32,12 @@ export class PropertyTypeService {
 
   getPropertyTypes(): Observable<PropertyTypeDto[]> {
     return this.http.get<PropertyTypeDto[]>(
-      `${this.baseUrlPub}/propertyTypes`
+      `${this.baseUrlPro}/propertyTypes`
     )
   }
 
   getPropertyType(propertyTypeId: string): Observable<PropertyTypeDto> {
-    return this.http.get<PropertyTypeDto>(`${this.baseUrlPub}/propertyTypes/${propertyTypeId}`)
+    return this.http.get<PropertyTypeDto>(`${this.baseUrlPro}/propertyTypes/${propertyTypeId}`)
 
   }
 

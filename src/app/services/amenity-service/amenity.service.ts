@@ -30,15 +30,15 @@ export class AmenityService {
     )
   }
 
-  getAmenities(): Observable<CustomDto[]> {
+  getAmenities(mostRequested: boolean): Observable<CustomDto[]> {
     return this.http.get<CustomDto[]>(
-      `${this.baseUrlPro}/amenities`
+      `${this.baseUrlPro}/amenities?mostRequested=${mostRequested}`
     )
   }
 
   getAmenitiesByCategory(categoryId?: string): Observable<CustomDto[]> {
     return this.http.get<CustomDto[]>(
-      `${this.baseUrlPro}/amenitiesamenities/categoryAmenities/${categoryId}`
+      `${this.baseUrlPro}/amenities/categoryAmenities/${categoryId}`
     )
   }
 

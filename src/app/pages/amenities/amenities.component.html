@@ -22,8 +22,8 @@
         </div>
         <div class="col-md-3">
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-            <label class="form-check-label" for="flexRadioDefault1">
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+            <label class="form-check-label" for="exampleRadios1">
               No
             </label>
           </div>
@@ -33,28 +33,15 @@
       <div class="form-group col-md-5">
         <label>Select the number of extra beds that can be added.</label>
         <select  class="form-select">
-          <option [ngValue]="null" disabled>Select county</option>
-          <option value="double">double</option>
+          <option *ngFor="let number of numbers" value="{{number}}">{{number}}</option>
         </select>
       </div>
       <br>
       <h6>Tick the box if you can accommodate the following guests in extra beds.</h6>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+      <div *ngFor="let guest of guests" class="form-check" style="padding-bottom: 0.5rem">
+        <input class="form-check-input" type="checkbox" value="{{guest.id}}" id="flexCheckDefault">
         <label class="form-check-label" for="flexCheckDefault">
-          Children up to 2 years old in cots
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-        <label class="form-check-label" for="flexCheckDefault">
-          Children
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-        <label class="form-check-label" for="flexCheckDefault">
-          Adults
+          {{guest.name}}
         </label>
       </div>
     </div>
@@ -64,38 +51,10 @@
       <span>Tell us about your amenities</span>
       <br>
       <div class="base">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <div *ngFor="let amenity of amenities" class="form-check" style="padding-bottom: 1rem">
+          <input class="form-check-input" type="checkbox" value="{{amenity.id}}" id="flexCheckDefault">
           <label class="form-check-label" for="flexCheckDefault">
-            Air conditioning
-          </label>
-        </div>
-        <br>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">
-            Electric kettle
-          </label>
-        </div>
-        <br>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">
-            Flat-screen TV
-          </label>
-        </div>
-        <br>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">
-            Spa bath
-          </label>
-        </div>
-        <br>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">
-            Balcony
+            {{amenity.name}}
           </label>
         </div>
       </div>
