@@ -6,10 +6,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./amenities.component.css']
 })
 export class AmenitiesComponent implements OnInit {
+  isShow = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+  showText() {
+    this.isShow = !this.isShow
   }
 
 }
