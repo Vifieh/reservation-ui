@@ -33,6 +33,8 @@ export class LayoutPricingComponent implements OnInit, OnDestroy {
   roomTypes: CustomDto[] = [];
   roomNames: CustomDto[] = [];
   bedsAvailable: CustomDto[] = [];
+room:string ='';
+isViewRoom:boolean = false;
 
   constructor(
     private roomTypeService: RoomTypeService,
@@ -53,6 +55,13 @@ export class LayoutPricingComponent implements OnInit, OnDestroy {
 
   isCheck() {
     this.isShow = true;
+    this.isViewRoom = false;
+  }
+
+  viewRoom()
+  {
+    this.isViewRoom = true;
+
   }
 
   getRoomTypes() {

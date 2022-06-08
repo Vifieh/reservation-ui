@@ -10,7 +10,7 @@ import {AmenityService} from '../../services/amenity-service/amenity.service';
   styleUrls: ['./amenities.component.css']
 })
 export class AmenitiesComponent implements OnInit, OnDestroy {
-
+  isShow = false;
   numbers: number[] = [1, 2, 3, 4];
   subscriptions: Subscription[] = [];
   guests: CustomDto[] = [];
@@ -45,6 +45,9 @@ export class AmenitiesComponent implements OnInit, OnDestroy {
       this.amenities = response;
     });
     this.subscriptions.push(amenities);
+  }
+  showText() {
+    this.isShow = !this.isShow
   }
 
 }
