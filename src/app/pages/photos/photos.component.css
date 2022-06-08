@@ -1,31 +1,30 @@
-.card{
+.card {
   padding: 2rem;
 }
-input[type=text]
-{
+
+input[type=text] {
   height: 7vh;
 }
-.input-group-text
-{
+
+.input-group-text {
   height: 7vh;
 }
-select
-{
+
+select {
   height: 7vh;
 }
-.container
-{
+
+.container {
   margin-top: 5vh;
 }
-.b
-{
+
+.b {
   text-align: center;
-  border:  3px  lightgrey dashed;
+  border: 3px lightgrey dashed;
   padding: 1rem;
 }
 
-.btn-outline-dark:hover
-{
+.btn-outline-dark:hover {
   background-color: gainsboro;
   color: black;
 }

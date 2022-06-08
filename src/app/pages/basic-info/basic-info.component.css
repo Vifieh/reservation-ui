@@ -1,15 +1,35 @@
-.card{
+.heading {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+}
+
+label {
+  padding: 0.2rem;
+}
+
+.card {
   padding: 2rem;
 }
-input[type=text]
-{
+
+input[type=text] {
   height: 7vh;
 }
-select
-{
+
+select {
   height: 7vh;
 }
-.container
-{
+
+.container {
   margin-top: 5vh;
+}
+
+.active {
+  border: 3px solid #311b92;
+}
+
+.btn-radio {
+  border: 1px solid #6B6B6B;
+  padding: 8px;
+  border-radius: 4px;
 }

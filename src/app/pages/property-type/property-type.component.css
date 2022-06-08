@@ -35,8 +35,11 @@ a {
   border: 2px solid blue;
 }
 
+#main-card:active {
+  border: 2px solid gainsboro;
+}
+
 .limitTextHeight {
   height: 52vh;
   overflow: hidden;
 }
-
