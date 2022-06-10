@@ -34,8 +34,10 @@ import { PoliciesComponent } from './pages/policies/policies.component';
 import { PaymentsComponent } from './pages/payments/payments.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AmenityComponent } from './pages/amenity/amenity.component';
+import { CityDetailComponent } from './pages/city-detail/city-detail.component';
 import { MapComponent } from './pages/map/map.component';
 import { EnumToArrayPipe } from './pipes/enum-to-array/enum-to-array.pipe';
+
 
 @NgModule({
   declarations: [
@@ -65,6 +67,7 @@ import { EnumToArrayPipe } from './pipes/enum-to-array/enum-to-array.pipe';
     PoliciesComponent,
     PaymentsComponent,
     AmenityComponent,
+    CityDetailComponent,
     MapComponent,
     EnumToArrayPipe,
   ],

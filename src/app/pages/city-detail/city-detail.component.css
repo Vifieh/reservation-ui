@@ -1,0 +1,19 @@
+.main
+{
+  background-color: white;
+  height: 100%;
+}
+.card-body{
+  padding: 2rem;
+  padding-bottom: 4rem;
+}
+
+form
+{
+  background-color: orange;
+  padding: 2rem;
+}
+.card
+{
+  padding: 2rem;
+}
