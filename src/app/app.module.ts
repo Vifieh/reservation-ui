@@ -34,6 +34,7 @@ import { PoliciesComponent } from './pages/policies/policies.component';
 import { PaymentsComponent } from './pages/payments/payments.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AmenityComponent } from './pages/amenity/amenity.component';
+import { CityDetailComponent } from './pages/city-detail/city-detail.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { AmenityComponent } from './pages/amenity/amenity.component';
     PoliciesComponent,
     PaymentsComponent,
     AmenityComponent,
+    CityDetailComponent,
   ],
   imports: [
     BrowserModule,

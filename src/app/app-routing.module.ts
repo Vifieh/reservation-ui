@@ -21,6 +21,7 @@ import {PoliciesComponent} from "./pages/policies/policies.component";
 import {PaymentsComponent} from "./pages/payments/payments.component";
 import {CategoryAmenityComponent} from './pages/category-amenity/category-amenity.component';
 import {AmenityComponent} from './pages/amenity/amenity.component';
+import {CityDetailComponent} from "./pages/city-detail/city-detail.component";
 
 
 
@@ -79,6 +80,10 @@ const routes: Routes = [
   {
     path: 'cities',
     component: CityComponent,
+  },
+  {
+    path: 'city-detail',
+    component: CityDetailComponent,
   },
   {
     path: 'basic-info',
