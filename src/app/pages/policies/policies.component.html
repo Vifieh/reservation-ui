@@ -9,17 +9,15 @@
       <h4>Cancellations</h4>
       <div class="form-group col-md-6">
         <label>How many days in advance can guests cancel free of charge?</label>
-        <select  class="form-select">
-          <option [ngValue]="null" disabled>Select county</option>
-          <option value="double">double</option>
+        <select class="form-select">
+          <option *ngFor="let day of days" value="{{day}}">{{day}}</option>
         </select>
       </div>
       <br>
       <div class="form-group col-md-6">
         <label>or guests will pay 100%</label>
-        <select  class="form-select">
-          <option [ngValue]="null" disabled>Select county</option>
-          <option value="double">double</option>
+        <select class="form-select">
+          <option *ngFor="let pay of pays" value="{{pay}}">{{pay}}</option>
         </select>
       </div>
       <br>
@@ -30,18 +28,18 @@
         <br>
       </div>
     </div>
-      <br>
-      <div class="card">
-        <div class="row">
-          <div class="col-md-10"><h5>Protect against accidental bookings</h5></div>
-          <div class="col-md-2">
-            <div class="form-check form-switch">
-              <input class="form-check-input in" type="checkbox" id="flexSwitchCheckChecked" checked>
-              <label class="form-check-label" for="flexSwitchCheckChecked"></label>
-            </div>
+    <br>
+    <div class="card">
+      <div class="row">
+        <div class="col-md-10"><h5>Protect against accidental bookings</h5></div>
+        <div class="col-md-2">
+          <div class="form-check form-switch">
+            <input class="form-check-input in" type="checkbox" id="flexSwitchCheckChecked" checked>
+            <label class="form-check-label" for="flexSwitchCheckChecked"></label>
           </div>
         </div>
-        <span class="form-text">To save you time handling accidental bookings, we automatically
+      </div>
+      <span class="form-text">To save you time handling accidental bookings, we automatically
           waive cancellation fees for guests that cancel within the first 24 hours of a booking being made.
           You can change this period of time later in your property management platform.
         </span>
@@ -51,9 +49,33 @@
       <div class="col-md-6">
         <div class="card">
           <h4>Check-in</h4>
-          <div class="form-group">
-            <label>from:</label>
-            <input type="time" class="form-control">
+          <label style="{margin-right: 5px;width: 100%;}">from:</label>
+          <div class="row">
+            <div class="col-md-3">
+              <div class="form-check form-check-inline">
+                <input type="radio" class="btn-check form-check-input" name="options" id="option1" autocomplete="off"
+                       checked>
+                <label class="btn btn-outline-dark" for="option1">12:00</label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-check form-check-inline">
+                <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+                <label style="{margin-right: 5px;width: 100%;}" class="btn btn-outline-dark" for="option2">14:00</label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-check form-check-inline">
+                <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+                <label style="{margin-right: 5px;width: 100%;}" class="btn btn-outline-dark" for="option2">14:00</label>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="form-check form-check-inline">
+                <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
+                <label style="{margin-right: 5px;width: 100%;}" class="btn btn-outline-dark" for="option2">14:00</label>
+              </div>
+            </div>
           </div>
           <br>
           <div class="form-group">
@@ -108,15 +130,27 @@
     <br>
     <div class="card">
       <h4>Pets</h4>
-      <span class="form-text"  style="background-color: gainsboro; padding: 0.5rem">Some guests like to travel with their furry friends. Indicate if you allow pets and if any charges apply.</span>
-      <div class="form-group">
-        <br>
-        <label>Do you allow pets?</label>
-        <select  class="form-select">
-          <option [ngValue]="null" disabled>Select county</option>
-          <option value="double">double</option>
-        </select>
-        <br>
+      <span class="form-text" style="background-color: gainsboro; padding: 0.5rem">Some guests like to travel with their furry friends. Indicate if you allow pets and if any charges apply.</span>
+      <br>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Do you allow pets?</label>
+            <select class="form-select" (change)="checkStatus($event)">
+              <option *ngFor="let pets of petsAllowed" value="{{pets.key}}">{{pets.value}}</option>
+            </select>
+            <br>
+          </div>
+        </div>
+        <div class="col-md-4" *ngIf="isDisplayed">
+          <div class="form-group">
+            <label>Are there additional charges for pets?</label>
+            <select class="form-select">
+              <option *ngFor="let charge of charges" value="{{charge.key}}">{{charge.value}}</option>
+            </select>
+            <br>
+          </div>
+        </div>
       </div>
     </div>
     <br>

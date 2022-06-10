@@ -31,19 +31,19 @@ export class RoomNameService {
 
   getRoomNames(): Observable<CustomDto[]> {
     return this.http.get<CustomDto[]>(
-      `${this.baseUrlPub}/roomNames`
+      `${this.baseUrlPro}/roomNames`
     )
   }
 
-  getRoomNamesByRoomType(roomNameId: string): Observable<CustomDto[]> {
+  getRoomNamesByRoomType(roomTypeId: string): Observable<CustomDto[]> {
     return this.http.get<CustomDto[]>(
-      `${this.baseUrlPub}/roomNames/${roomNameId}`
+      `${this.baseUrlPro}/roomNames/roomTypes/${roomTypeId}`
     )
   }
 
   getRoomName(roomNameId: string): Observable<CustomDto> {
     return this.http.get<CustomDto>(
-      `${this.baseUrlPub}/roomNames/${roomNameId}`
+      `${this.baseUrlPro}/roomNames/${roomNameId}`
     )
   }
 

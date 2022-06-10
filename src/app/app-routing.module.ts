@@ -22,6 +22,7 @@ import {PaymentsComponent} from "./pages/payments/payments.component";
 import {CategoryAmenityComponent} from './pages/category-amenity/category-amenity.component';
 import {AmenityComponent} from './pages/amenity/amenity.component';
 import {CityDetailComponent} from "./pages/city-detail/city-detail.component";
+import {MapComponent} from './pages/map/map.component';
 
 
 
@@ -82,11 +83,15 @@ const routes: Routes = [
     component: CityComponent,
   },
   {
+
     path: 'city-detail',
     component: CityDetailComponent,
   },
   {
     path: 'basic-info',
+
+    path: 'basic-info/:id',
+
     component: BasicInfoComponent,
   },
   {
@@ -122,6 +127,11 @@ const routes: Routes = [
   {
     path: 'amenity',
     component: AmenityComponent,
+  },
+
+  {
+    path: 'map',
+    component: MapComponent,
   },
 
   {

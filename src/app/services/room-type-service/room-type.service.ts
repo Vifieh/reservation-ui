@@ -32,12 +32,12 @@ export class RoomTypeService {
 
   getRoomTypes(): Observable<CustomDto[]> {
     return this.http.get<CustomDto[]>(
-      `${this.baseUrlPub}/roomTypes`
+      `${this.baseUrlPro}/roomTypes`
     )
   }
 
   getRoomType(roomTypeId: string): Observable<CustomDto> {
-    return this.http.get<CustomDto>(`${this.baseUrlPub}/roomTypes/${roomTypeId}`)
+    return this.http.get<CustomDto>(`${this.baseUrlPro}/roomTypes/${roomTypeId}`)
 
   }
 
