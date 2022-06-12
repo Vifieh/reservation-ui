@@ -8,3 +8,9 @@ export interface FacilityDto {
   name: string;
   choice: boolean;
 }
+
+export interface AmenityDto {
+  id: string;
+  name: string;
+  mostRequested: boolean;
+}

@@ -31,3 +31,9 @@ select {
   background-color: gainsboro;
   color: black;
 }
+
+.remove_type_link {
+  color: #a30000;
+  text-decoration: none;
+  text-align: center;
+}

@@ -7,6 +7,11 @@ import {Policy} from '../../enum/policy';
 import {BedAvailableService} from '../../services/bed-available-service/bed-available.service';
 import {Size} from '../../enum/size';
 import {Currency} from '../../enum/currency';
+import {ActivatedRoute, Router} from '@angular/router';
+import {AbstractControl, FormArray, FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {RoomService} from '../../services/room-service/room.service';
+import {NotificationType} from '../../model/notificationMessage';
+import {NotificationService} from '../../services/notification/notification.service';
 
 @Component({
   selector: 'app-layout-pricing',
@@ -15,6 +20,12 @@ import {Currency} from '../../enum/currency';
 })
 export class LayoutPricingComponent implements OnInit, OnDestroy {
 
+  submitted = false;
+  isShow: boolean = false;
+  isDisplayed: boolean = false;
+  isBedOption: boolean = false;
+  isViewRoom: boolean = false;
+  showDelete: boolean = false;
   numbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   smokingPolicies = [
     {key: Policy.NO, value: 'Non-smoking'},
@@ -26,20 +37,22 @@ export class LayoutPricingComponent implements OnInit, OnDestroy {
     {key: Size.SQUARE_FEET, value: 'square feet'}
   ];
   currencies = Currency;
-  isShow: boolean = false;
-  isDisplayed: boolean = false;
   room: string = '';
   subscriptions: Subscription[] = [];
   roomTypes: CustomDto[] = [];
   roomNames: CustomDto[] = [];
   bedsAvailable: CustomDto[] = [];
-room:string ='';
-isViewRoom:boolean = false;
+  propertyId?: string | null;
 
   constructor(
     private roomTypeService: RoomTypeService,
     private roomNameService: RoomNameService,
     private bedAvailableService: BedAvailableService,
+    private roomService: RoomService,
+    private route: ActivatedRoute,
+    private router: Router,
+    public formBuilder: FormBuilder,
+    private notificationService: NotificationService,
   ) { }
 
   ngOnDestroy(): void {
@@ -51,6 +64,46 @@ isViewRoom:boolean = false;
   ngOnInit(): void {
     this.getRoomTypes();
     this.getBedAvailable();
+    this.propertyId = this.route.snapshot.paramMap.get('id');
+  }
+
+  createRoomForm = this.formBuilder.group({
+    name: [''],
+    numberOfRooms: ['1', [Validators.required]],
+    smokingPolicy: ['', [Validators.required]],
+    roomSize: [''],
+    unitPrice: ['', [Validators.required]],
+    numberOfGuests: ['1'],
+    currency: ['', [Validators.required]],
+    size: [''],
+    roomNameId: ['', [Validators.required]],
+    roomBedAvailablePayloadList: this.formBuilder.array([
+      this.bedAvailableItems(),
+    ]),
+  });
+
+  get formValues(): { [key: string]: AbstractControl } {
+    return this.createRoomForm.controls;
+  }
+
+  bedAvailableItems():  FormGroup {
+    return this.formBuilder.group({
+      bedAvailableId: ['', [Validators.required]],
+      numberOfBeds: ['1', [Validators.required]],
+    });
+  }
+
+  get roomBedAvailablePayloadList() {
+    return this.createRoomForm.get('roomBedAvailablePayloadList') as FormArray;
+  }
+
+  addBedAvailable() {
+    this.roomBedAvailablePayloadList.push(this.bedAvailableItems());
+    this.showDelete = true;
+  }
+
+  deleteBedAvailable(bedAvailableIndex: number) {
+    this.roomBedAvailablePayloadList.removeAt(bedAvailableIndex);
   }
 
   isCheck() {
@@ -61,7 +114,13 @@ isViewRoom:boolean = false;
   viewRoom()
   {
     this.isViewRoom = true;
+  }
 
+  roomTypeChanged(event: any) {
+    this.isBedOption = event.target.value !== '25ffbd72-0ff9-49f1-aaa1-3d1e828019e0';
+    const roomTypeId = event.target.value;
+    this.getRoomNameByRoomType(roomTypeId);
+    this.isDisplayed = event.target.value !== 'null';
   }
 
   getRoomTypes() {
@@ -69,12 +128,6 @@ isViewRoom:boolean = false;
       this.roomTypes = response;
     });
     this.subscriptions.push(roomTypes);
-  }
-
-  roomTypeChanged(event: any) {
-    const roomTypeId = event.target.value;
-    this.getRoomNameByRoomType(roomTypeId);
-    this.isDisplayed = event.target.value !== 'null';
   }
 
   getRoomNameByRoomType(roomTypeId: string) {
@@ -91,5 +144,21 @@ isViewRoom:boolean = false;
     this.subscriptions.push(bedsAvailable);
   }
 
+  creatRoom() {
+    this.submitted = true;
+    if (!this.createRoomForm.valid) {
+      const message = "please fill all fields in the form";
+      this.notificationService.sendMessage({message: message, type: NotificationType.info});
+    } else {
+      const createRoomSub = this.roomService.createRoom(this.propertyId, this.createRoomForm.value)
+        .subscribe(response => {
+          this.viewRoom();
+        });
+      this.subscriptions.push(createRoomSub);
+    }
+  }
 
+  continue() {
+    this.router.navigate(['/facility', this.propertyId]);
+  }
 }

@@ -4,8 +4,11 @@ import {CustomDto} from '../../model/dto/customDto';
 import {CountryService} from '../../services/country-service/country.service';
 import {NotificationService} from '../../services/notification/notification.service';
 import {CityService} from '../../services/city-service/city.service';
-import {FormBuilder, Validators} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
+import {AbstractControl, FormBuilder, Validators} from '@angular/forms';
+import {ActivatedRoute, Router} from '@angular/router';
+import {CustomPayload} from '../../model/payload/customPayload';
+import {PropertyService} from '../../services/property-service/property.service';
+import {NotificationType} from '../../model/notificationMessage';
 
 @Component({
   selector: 'app-basic-info',
@@ -13,6 +16,7 @@ import {ActivatedRoute} from '@angular/router';
   styleUrls: ['./basic-info.component.css']
 })
 export class BasicInfoComponent implements OnInit, OnDestroy {
+  submitted = false;
   subscriptions: Subscription[] = [];
   countries: CustomDto[] = [];
   citiesByCountry: CustomDto[] = [];
@@ -23,7 +27,10 @@ export class BasicInfoComponent implements OnInit, OnDestroy {
     public formBuilder: FormBuilder,
     private countryService: CountryService,
     private cityService: CityService,
+    private propertyService: PropertyService,
     private route: ActivatedRoute,
+    private router: Router,
+    private notificationService: NotificationService,
   ) { }
 
   ngOnDestroy(): void {
@@ -35,6 +42,29 @@ export class BasicInfoComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.getCountries();
     this.propertyTypeId = this.route.snapshot.paramMap.get('id');
+  }
+
+  createPropertyForm = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      rating: ['', [Validators.required]],
+      propertyContactDetailsPayload: this.formBuilder.group({
+        name: ['', [Validators.required]],
+        phoneNumber: ['', [Validators.required]],
+        alternativeNumber: [''],
+        companyName: [''],
+      }),
+      propertyAddressPayload: this.formBuilder.group({
+        streetAddress: ['', [Validators.required]],
+        addressLine2: ['', [Validators.required]],
+        code: ['', [Validators.required]],
+        cityPayload: this.formBuilder.group({
+          id: ['', [Validators.required]],
+        }),
+      }),
+    });
+
+  get formValues(): { [key: string]: AbstractControl } {
+    return this.createPropertyForm.controls;
   }
 
   checkRadioButton(event: any) {
@@ -60,10 +90,19 @@ export class BasicInfoComponent implements OnInit, OnDestroy {
     this.subscriptions.push(cities);
   }
 
-  createPropertyForm = this.formBuilder.group(
-    {
-      name: ['', [Validators.required]],
-      rating: ['', [Validators.required]],
+  createProperty() {
+    this.submitted = true;
+    if (!this.createPropertyForm.valid) {
+      const message = "please fill all fields in the form";
+      this.notificationService.sendMessage({message: message, type: NotificationType.info});
+    } else {
+      const createPropertySub = this.propertyService.createProperty(this.propertyTypeId, this.createPropertyForm.value)
+        .subscribe(response => {
+          this.router.navigate(['/layout', response.id])
+        });
+      this.subscriptions.push(createPropertySub);
     }
-  )
+  }
+
+
 }

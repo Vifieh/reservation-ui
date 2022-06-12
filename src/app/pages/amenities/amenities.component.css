@@ -27,3 +27,22 @@ select
   border: 2px solid lightgrey;
   padding: 1rem;
 }
+
+.base-1{
+  border: 2px solid lightgrey;
+}
+
+.amenities-title {
+  margin: 30px 0 20px !important;
+}
+.pull-left {
+  float: left!important;
+}
+
+.accordion-header {
+  padding: 10px 12px;
+  font-size: 16px;
+  margin: 0;
+  cursor: pointer;
+  position: relative;
+}

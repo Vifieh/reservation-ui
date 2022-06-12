@@ -44,14 +44,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   register() {
-    this.submitted = true
+    this.submitted = true;
     if (!this.registerForm.valid) {
       alert("please fill all fields in the form")
     } else {
       const registerSub = this.authenticationService.register(this.registerForm.value)
         .subscribe(response => {
-        alert(response)
-      })
+      });
       this.subscriptions.push(registerSub);
     }
   }

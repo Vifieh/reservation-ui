@@ -1,3 +1,7 @@
 export interface CustomPayload {
-  name: string;
+  name?: string;
+}
+
+export interface DefaultPayload {
+  id?: string;
 }

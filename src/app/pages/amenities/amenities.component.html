@@ -12,17 +12,37 @@
         <br>
         <br>
         <span>Can you provide extra beds?</span>
-        <div class="col-md-3">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-            <label class="form-check-label" for="flexRadioDefault1">
-              Yes
-            </label>
+<!--        <div class="col-md-3">-->
+<!--          <div class="form-check">-->
+<!--            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">-->
+<!--            <label class="form-check-label" for="flexRadioDefault1">-->
+<!--              Yes-->
+<!--            </label>-->
+<!--          </div>-->
+<!--        </div>-->
+        <div class="row">
+          <div class="col-md-3 btn-radio" style="margin-right: 1rem">
+            <div class="form-check">
+              <input (change)="checkRadioButton($event)" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <label class="form-check-label" for="flexRadioDefault1">
+                Yes
+              </label>
+            </div>
+          </div>
+          <div class="col-md-3 btn-radio">
+            <div class="form-check">
+              <input (change)="checkRadioButton($event)" class="form-check-input" value="no" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+              <label class="form-check-label" for="flexRadioDefault2">
+                No
+              </label>
+            </div>
           </div>
         </div>
+
         <div class="col-md-3">
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
+                   checked>
             <label class="form-check-label" for="exampleRadios1">
               No
             </label>
@@ -32,7 +52,7 @@
       <br>
       <div class="form-group col-md-5">
         <label>Select the number of extra beds that can be added.</label>
-        <select  class="form-select">
+        <select class="form-select">
           <option *ngFor="let number of numbers" value="{{number}}">{{number}}</option>
         </select>
       </div>
@@ -51,20 +71,28 @@
       <span>Tell us about your amenities</span>
       <br>
       <div class="base">
-        <div *ngFor="let amenity of amenities" class="form-check" style="padding-bottom: 1rem">
-          <input class="form-check-input" type="checkbox" value="{{amenity.id}}" id="flexCheckDefault">
         <div class="row">
-          <div class="col-md-6">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                Air conditioning
-              </label>
-              <br>
+          <div *ngFor="let amenity of amenities"  class="col-md-12">
+            <div  class="row">
+              <div class="col-md-6">
+                <div class="form-check" style="padding-bottom: 1rem">
+                  <input class="form-check-input" type="checkbox" value="{{amenity.id}}" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    {{amenity.name}}
+                  </label>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <input type="radio" id="yes1" name="fav_language" value="yes">
+                <label for="yes1">All rooms</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" id="no1" name="fav_language" value="no" checked>
+                <label for="no1">Some rooms</label>
+              </div>
+            </div>
               <p class="form-text">Select where this amenity is available.</p>
               <div class="form-check">
                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
+                <label style="color: #333;" class="form-check-label" for="flexCheckDefault">
                   Deluxe Double Room
                 </label>
               </div>
@@ -75,264 +103,193 @@
                   Single Room with Garden View
                 </label>
               </div>
+            <br>
             </div>
           </div>
-          <div class="col-md-6">
-            <input type="radio" id="yes1" name="fav_language" value="yes">
-            <label for="yes1">All rooms</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="radio" id="no1" name="fav_language" value="no" checked>
-            <label for="no1">Some rooms</label>
-          </div>
-        </div>
-
-        <br>
-
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-               Terrace
-              </label>
-
-              <br>
-              <p class="form-text">Select where this amenity is available.</p>
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  Deluxe Double Room
-                </label>
-              </div>
-
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  Single Room with Garden View
-                </label>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <input type="radio" id="yes" name="fav_language" value="yes">
-            <label for="yes">All rooms</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <input type="radio" id="no" name="fav_language" value="no" checked>
-            <label for="no">Some rooms</label>
-          </div>
-        </div>
-<br>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">
-            Electric kettle
-          </label>
-        </div>
-        <br>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">
-            Flat-screen TV
-          </label>
-        </div>
-        <br>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">
-            Spa bath
-          </label>
-        </div>
-        <br>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">
-            {{amenity.name}}
-          </label>
-        </div>
+          <br>
       </div>
-    <br>
-
-
-      <button class="col-md-2" style="height: 5vh;" (click)="showText()" > {{ isShow ?'Hide all amenities ':  'Show all amenities '}}</button>
       <br>
+      <button class="col-md-2" style="height: 5vh;"
+              (click)="showText()"> {{ isShow ? 'Hide all amenities ' : 'Show all amenities '}}</button>
+
+      <legend *ngIf="isShow" class="amenities-title">All amenities by category</legend>
+
       <div *ngIf="isShow">
-    <h5>All amenities by category</h5>
-    <div class="accordion accordion-flush" id="accordionFlushExample">
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="flush-headingOne">
-          <span style="float: right; font-size: 15px">2/28</span>
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-            <h6>Room amenity</h6>
-          </button>
-        </h2>
+        <div class="accordion" id="accordionExample">
+          <div *ngFor="let amenityType of amenityTypes" class="accordion-item"
+               (click)="getAmenityTypeId(amenityType.id)">
+            <h2 class="accordion-header" id="headingOne">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                      aria-expanded="true" aria-controls="collapseOne">
+                <span aria-expanded="false" style="width: 50%;" class="pull-left">{{amenityType.name}}</span>
+                <span class="pull-left" style="width: 44%; text-align: right;">0/{{numberOfAmenities}} selected</span>
+              </button>
+            </h2>
+            <div class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                 data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                <div class="row">
+                    <ul class="list-group list-group-flush">
+                      <li *ngFor="let amenity of amenitiesByAmenityType" class="list-group-item">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="{{amenity.id}}" id="flexCheckDefault">
+                              <label class="form-check-label" for="flexCheckDefault">
+                                {{amenity.name}}
+                              </label>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <input type="radio" id="yes" name="fav_language" value="yes">
+                            <label for="yes">All rooms</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input type="radio" id="no" name="fav_language" value="no" checked>
+                            <label for="no">Some rooms</label>
+                          </div>
+                        </div>
+                        <br>
+                        <p class="form-text">Select where this amenity is available.</p>
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                          <label class="form-check-label" for="flexCheckDefault">
+                            Deluxe Double Room
+                          </label>
+                        </div>
 
-        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">
-            <div class="row">
-              <div class="col-md-6">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                          <label class="form-check-label" for="flexCheckDefault">
+                            Single Room with Garden View
+                          </label>
+                        </div>
+                      </li>
+                    </ul>
+                </div>
+                <br>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingTwo">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                <h6>Food and drink</h6>
+              </button>
+            </h2>
+            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
+                 data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Terrace
+                      </label>
+
+                      <br>
+                      <p class="form-text">Select where this amenity is available.</p>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Deluxe Double Room
+                        </label>
+                      </div>
+
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Single Room with Garden View
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <input type="radio" id="yes" name="fav_language" value="yes">
+                    <label for="yes">All rooms</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" id="no" name="fav_language" value="no" checked>
+                    <label for="no">Some rooms</label>
+                  </div>
+                </div>
+                <br>
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                   <label class="form-check-label" for="flexCheckDefault">
-                    Terrace
+                    Electric kettle
                   </label>
-
-                  <br>
-                  <p class="form-text">Select where this amenity is available.</p>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                      Deluxe Double Room
-                    </label>
-                  </div>
-
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                      Single Room with Garden View
-                    </label>
-                  </div>
                 </div>
-              </div>
-              <div class="col-md-6">
-                <input type="radio" id="yes" name="fav_language" value="yes">
-                <label for="yes">All rooms</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" id="no" name="fav_language" value="no" checked>
-                <label for="no">Some rooms</label>
-              </div>
-            </div>
-            <br>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                Electric kettle
-              </label>
-            </div>
-            <br>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                Flat-screen TV
-              </label>
-            </div>
-            <br>
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="flush-headingTwo">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-            <h6>Food and drink</h6>
-          </button>
-        </h2>
-        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">
-            <div class="row">
-              <div class="col-md-6">
+                <br>
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                   <label class="form-check-label" for="flexCheckDefault">
-                    Terrace
+                    Flat-screen TV
                   </label>
+                </div>
+                <br>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="flush-headingThree">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                      data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                <h6>Bathroom</h6>
+              </button>
+            </h2>
+            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree"
+                 data-bs-parent="#accordionFlushExample">
+              <div class="accordion-body">
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                      <label class="form-check-label" for="flexCheckDefault">
+                        Terrace
+                      </label>
 
-                  <br>
-                  <p class="form-text">Select where this amenity is available.</p>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                      Deluxe Double Room
-                    </label>
+                      <br>
+                      <p class="form-text">Select where this amenity is available.</p>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Deluxe Double Room
+                        </label>
+                      </div>
+
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Single Room with Garden View
+                        </label>
+                      </div>
+                    </div>
                   </div>
-
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                      Single Room with Garden View
-                    </label>
+                  <div class="col-md-6">
+                    <input type="radio" id="yes" name="fav_language" value="yes">
+                    <label for="yes">All rooms</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" id="no" name="fav_language" value="no" checked>
+                    <label for="no">Some rooms</label>
                   </div>
                 </div>
-              </div>
-              <div class="col-md-6">
-                <input type="radio" id="yes" name="fav_language" value="yes">
-                <label for="yes">All rooms</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" id="no" name="fav_language" value="no" checked>
-                <label for="no">Some rooms</label>
-              </div>
-            </div>
-            <br>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                Electric kettle
-              </label>
-            </div>
-            <br>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                Flat-screen TV
-              </label>
-            </div>
-            <br>
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header" id="flush-headingThree">
-          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-            <h6>Bathroom</h6>
-          </button>
-        </h2>
-        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body">
-            <div class="row">
-              <div class="col-md-6">
+                <br>
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
                   <label class="form-check-label" for="flexCheckDefault">
-                    Terrace
+                    Electric kettle
                   </label>
-
-                  <br>
-                  <p class="form-text">Select where this amenity is available.</p>
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                      Deluxe Double Room
-                    </label>
-                  </div>
-
-                  <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                    <label class="form-check-label" for="flexCheckDefault">
-                      Single Room with Garden View
-                    </label>
-                  </div>
                 </div>
+                <br>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    Flat-screen TV
+                  </label>
+                </div>
+                <br>
               </div>
-              <div class="col-md-6">
-                <input type="radio" id="yes" name="fav_language" value="yes">
-                <label for="yes">All rooms</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" id="no" name="fav_language" value="no" checked>
-                <label for="no">Some rooms</label>
-              </div>
             </div>
-            <br>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                Electric kettle
-              </label>
-            </div>
-            <br>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                Flat-screen TV
-              </label>
-            </div>
-            <br>
           </div>
         </div>
-      </div>
-    </div>
       </div>
     </div>
     <br>

@@ -3,7 +3,7 @@ import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 import {CustomPayload} from '../../model/payload/customPayload';
 import {Observable} from 'rxjs';
-import {CustomDto} from '../../model/dto/customDto';
+import {AmenityDto, CustomDto} from '../../model/dto/customDto';
 import {ResponseMessage} from '../../model/responseMessage';
 
 @Injectable({
@@ -30,15 +30,15 @@ export class AmenityService {
     )
   }
 
-  getAmenities(mostRequested: boolean): Observable<CustomDto[]> {
-    return this.http.get<CustomDto[]>(
+  getAmenities(mostRequested: boolean): Observable<AmenityDto[]> {
+    return this.http.get<AmenityDto[]>(
       `${this.baseUrlPro}/amenities?mostRequested=${mostRequested}`
     )
   }
 
-  getAmenitiesByCategory(categoryId?: string): Observable<CustomDto[]> {
-    return this.http.get<CustomDto[]>(
-      `${this.baseUrlPro}/amenities/categoryAmenities/${categoryId}`
+  getAmenitiesByCategory(categoryId?: string, mostRequested?: boolean): Observable<AmenityDto[]> {
+    return this.http.get<AmenityDto[]>(
+      `${this.baseUrlPro}/amenities/categoryAmenities?categoryId=${categoryId}&mostRequested=${mostRequested}`
     )
   }
 
