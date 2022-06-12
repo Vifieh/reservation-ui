@@ -95,7 +95,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
   createCountry() {
     this.submitted  = true
     if (!this.createCountryForm.valid) {
-      alert("please fill field in the form")
+      const message = "please fill all fields in the form";
+      this.notificationService.sendMessage({message: message, type: NotificationType.info});
     } else {
       const createCountrySub = this.countryService.createCountry(this.createCountryForm.value)
         .subscribe(response => {
@@ -115,7 +116,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
   createCity(countryId: string) {
     this.submitted  = true
     if (!this.createCityForm.valid) {
-      alert("please fill field in the form")
+      const message = "please fill all fields in the form";
+      this.notificationService.sendMessage({message: message, type: NotificationType.info});
     } else {
       const createCitySub = this.cityService.createCity(countryId, this.createCityForm.value)
         .subscribe(response => {
@@ -128,7 +130,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
   createAmenityType() {
     this.submitted  = true
     if (!this.createAmenityTypeForm.valid) {
-      alert("please fill field in the form")
+      const message = "please fill all fields in the form";
+      this.notificationService.sendMessage({message: message, type: NotificationType.info});
     } else {
       const createAmenityTypeSub = this.categoryAmenityService.createCategoryAmenity(this.createAmenityTypeForm.value)
         .subscribe(response => {
@@ -148,7 +151,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
   createAmenity(amenityTypeId: string) {
     this.submitted  = true
     if (!this.createAmenityForm.valid) {
-      alert("please fill field in the form")
+      const message = "please fill all fields in the form";
+      this.notificationService.sendMessage({message: message, type: NotificationType.info});
     } else {
       const createAmenitySub = this.amenityService.createAmenity(amenityTypeId, this.createAmenityForm.value)
         .subscribe(response => {
@@ -163,7 +167,8 @@ export class SidebarComponent implements OnInit, OnDestroy {
   createRoomType() {
     this.submitted  = true
     if (!this.createRoomTypeForm.valid) {
-      alert("please fill field in the form")
+      const message = "please fill all fields in the form";
+      this.notificationService.sendMessage({message: message, type: NotificationType.info});
     } else {
       const createRoomTypeSub = this.roomTypeService.createRoomType(this.createRoomTypeForm.value)
         .subscribe(response => {

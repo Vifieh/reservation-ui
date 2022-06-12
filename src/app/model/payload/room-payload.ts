@@ -11,6 +11,7 @@ export interface RoomPayload {
   size?: Size;
   smokingPolicy?: Policy;
   currency?: Currency;
+  roomNameId?: string,
   roomBedAvailablePayloadList?: RoomBedAvailablePayload[];
 }
 

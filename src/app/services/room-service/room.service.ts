@@ -5,6 +5,7 @@ import {RoomPayload} from '../../model/payload/room-payload';
 import {Observable} from 'rxjs';
 import {ResponseMessage} from '../../model/responseMessage';
 import {RoomAmenityPayload} from '../../model/payload/room-amenity-payload';
+import {FormGroup} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +17,9 @@ export class RoomService {
 
   constructor(private http: HttpClient) { }
 
-  createRoom(propertyId: string, roomNameId: string, roomPayload: RoomPayload): Observable<ResponseMessage> {
+  createRoom(propertyId?: string | null | undefined, roomPayload?: RoomPayload): Observable<ResponseMessage> {
     return this.http.post<ResponseMessage>(
-      `${this.baseUrlPro}/rooms`,
+      `${this.baseUrlPro}/rooms?propertyId=${propertyId}`,
       roomPayload
     )
   }
