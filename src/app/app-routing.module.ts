@@ -23,11 +23,13 @@ import {CategoryAmenityComponent} from './pages/category-amenity/category-amenit
 import {AmenityComponent} from './pages/amenity/amenity.component';
 import {CityDetailComponent} from './pages/city-detail/city-detail.component';
 import {MapComponent} from './pages/map/map.component';
+import { HomeLandingPageComponent } from './pages/home-landing-page/home-landing-page.component';
+
 
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'landing-Page',
     component: LandingPageComponent
   },
 
@@ -129,7 +131,10 @@ const routes: Routes = [
     path: 'map',
     component: MapComponent,
   },
-
+  {
+    path: '',
+    component: HomeLandingPageComponent,
+  },
   {
     path: '**',
     component: PageNotFoundComponent
