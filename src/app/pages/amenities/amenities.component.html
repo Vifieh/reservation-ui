@@ -12,18 +12,11 @@
         <br>
         <br>
         <span>Can you provide extra beds?</span>
-<!--        <div class="col-md-3">-->
-<!--          <div class="form-check">-->
-<!--            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">-->
-<!--            <label class="form-check-label" for="flexRadioDefault1">-->
-<!--              Yes-->
-<!--            </label>-->
-<!--          </div>-->
-<!--        </div>-->
         <div class="row">
-          <div class="col-md-3 btn-radio" style="margin-right: 1rem">
+          <div class="col-md-3 btn-radio" style="margin-right: 1.5rem">
             <div class="form-check">
-              <input (change)="checkRadioButton($event)" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+              <input  (change)="checkRadioButton($event)" class="form-check-input" type="radio" name="flexRadioDefault"
+                     id="flexRadioDefault1">
               <label class="form-check-label" for="flexRadioDefault1">
                 Yes
               </label>
@@ -31,38 +24,32 @@
           </div>
           <div class="col-md-3 btn-radio">
             <div class="form-check">
-              <input (change)="checkRadioButton($event)" class="form-check-input" value="no" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+              <input (change)="checkRadioButton($event)" class="form-check-input" value="no" type="radio"
+                     name="flexRadioDefault" id="flexRadioDefault2" checked>
               <label class="form-check-label" for="flexRadioDefault2">
                 No
               </label>
             </div>
           </div>
         </div>
-
-        <div class="col-md-3">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
-                   checked>
-            <label class="form-check-label" for="exampleRadios1">
-              No
-            </label>
-          </div>
-        </div>
       </div>
-      <br>
-      <div class="form-group col-md-5">
+
+      <div *ngIf="isDisplayed" class="form-group col-md-5">
+        <br>
         <label>Select the number of extra beds that can be added.</label>
         <select class="form-select">
           <option *ngFor="let number of numbers" value="{{number}}">{{number}}</option>
         </select>
+        <br>
       </div>
-      <br>
-      <h6>Tick the box if you can accommodate the following guests in extra beds.</h6>
-      <div *ngFor="let guest of guests" class="form-check" style="padding-bottom: 0.5rem">
-        <input class="form-check-input" type="checkbox" value="{{guest.id}}" id="flexCheckDefault">
-        <label class="form-check-label" for="flexCheckDefault">
-          {{guest.name}}
-        </label>
+      <div *ngIf="isDisplayed">
+        <h6>Tick the box if you can accommodate the following guests in extra beds.</h6>
+        <div *ngFor="let guest of guests" class="form-check" style="padding-bottom: 0.5rem">
+          <input class="form-check-input" type="checkbox" value="{{guest.id}}" id="flexCheckDefault">
+          <label class="form-check-label" for="flexCheckDefault">
+            {{guest.name}}
+          </label>
+        </div>
       </div>
     </div>
     <br>
@@ -72,8 +59,8 @@
       <br>
       <div class="base">
         <div class="row">
-          <div *ngFor="let amenity of amenities"  class="col-md-12">
-            <div  class="row">
+          <div *ngFor="let amenity of amenities; let i = index" class="col-md-12">
+            <div class="row">
               <div class="col-md-6">
                 <div class="form-check" style="padding-bottom: 1rem">
                   <input class="form-check-input" type="checkbox" value="{{amenity.id}}" id="flexCheckDefault">
@@ -82,31 +69,31 @@
                   </label>
                 </div>
               </div>
-              <div class="col-md-6">
-                <input type="radio" id="yes1" name="fav_language" value="yes">
-                <label for="yes1">All rooms</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <input type="radio" id="no1" name="fav_language" value="no" checked>
+              <div class="col-md-6">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input (click)="checkSomeRooms($event)" type="radio" id="no1" name="fav_language" value="no">
                 <label for="no1">Some rooms</label>
               </div>
             </div>
+            <div *ngIf="showRooms">
               <p class="form-text">Select where this amenity is available.</p>
               <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label style="color: #333;" class="form-check-label" for="flexCheckDefault">
-                  Deluxe Double Room
-                </label>
-              </div>
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label style="color: #333;" class="form-check-label" for="flexCheckDefault">
+                Deluxe Double Room
+              </label>
+            </div>
 
-              <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                <label class="form-check-label" for="flexCheckDefault">
-                  Single Room with Garden View
-                </label>
-              </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+              <label class="form-check-label" for="flexCheckDefault">
+                Single Room with Garden View
+              </label>
+            </div>
             <br>
             </div>
           </div>
-          <br>
+        </div>
+        <br>
       </div>
       <br>
       <button class="col-md-2" style="height: 5vh;"
@@ -116,54 +103,60 @@
 
       <div *ngIf="isShow">
         <div class="accordion" id="accordionExample">
-          <div *ngFor="let amenityType of amenityTypes" class="accordion-item"
+          <div *ngFor="let amenityType of amenityTypes; let i = index" class="accordion-item"
                (click)="getAmenityTypeId(amenityType.id)">
-            <h2 class="accordion-header" id="headingOne">
-              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
-                      aria-expanded="true" aria-controls="collapseOne">
-                <span aria-expanded="false" style="width: 50%;" class="pull-left">{{amenityType.name}}</span>
-                <span class="pull-left" style="width: 44%; text-align: right;">0/{{numberOfAmenities}} selected</span>
+            <h2 class="accordion-header" [id]="'heading'+i">
+              <button class="accordion-button"
+                      [ngClass]="{ 'collapsed': i != 0 }"
+                      type="button" data-bs-toggle="collapse"
+                      [attr.data-bs-target]="'#collapse'+i"
+                      aria-expanded="true" [attr.aria-controls]="'collapse'+i">
+                <span style="width: 50%;" class="pull-left">{{amenityType.name}}</span>
+                <span class="pull-left" style="width: 44%; text-align: right;">0/0</span>
               </button>
             </h2>
-            <div class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                 data-bs-parent="#accordionExample">
+            <div
+              [id]="'collapse'+i" class="accordion-collapse collapse"
+              [ngClass]="{ 'show': i == 0 }" [attr.aria-labelledby]="'heading'+i"
+              data-bs-parent="#accordionExample">
               <div class="accordion-body">
                 <div class="row">
-                    <ul class="list-group list-group-flush">
-                      <li *ngFor="let amenity of amenitiesByAmenityType" class="list-group-item">
-                        <div class="row">
-                          <div class="col-md-6">
-                            <div class="form-check">
-                              <input class="form-check-input" type="checkbox" value="{{amenity.id}}" id="flexCheckDefault">
-                              <label class="form-check-label" for="flexCheckDefault">
-                                {{amenity.name}}
-                              </label>
-                            </div>
-                          </div>
-                          <div class="col-md-6">
-                            <input type="radio" id="yes" name="fav_language" value="yes">
-                            <label for="yes">All rooms</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input type="radio" id="no" name="fav_language" value="no" checked>
-                            <label for="no">Some rooms</label>
+                  <ul class="list-group list-group-flush">
+                    <li *ngFor="let amenity of amenitiesByAmenityType" class="list-group-item">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="{{amenity.id}}"
+                                   id="flexCheckDefault">
+                            <label class="form-check-label" for="flexCheckDefault">
+                              {{amenity.name}}
+                            </label>
                           </div>
                         </div>
-                        <br>
-                        <p class="form-text">Select where this amenity is available.</p>
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                          <label class="form-check-label" for="flexCheckDefault">
-                            Deluxe Double Room
-                          </label>
+                        <div class="col-md-6">
+                          <input type="radio" id="yes" name="fav_language" value="yes">
+                          <label for="yes">All rooms</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                          <input type="radio" id="no" name="fav_language" value="no" checked>
+                          <label for="no">Some rooms</label>
                         </div>
+                      </div>
+                      <br>
+                      <p class="form-text">Select where this amenity is available.</p>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Deluxe Double Room
+                        </label>
+                      </div>
 
-                        <div class="form-check">
-                          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                          <label class="form-check-label" for="flexCheckDefault">
-                            Single Room with Garden View
-                          </label>
-                        </div>
-                      </li>
-                    </ul>
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        <label class="form-check-label" for="flexCheckDefault">
+                          Single Room with Garden View
+                        </label>
+                      </div>
+                    </li>
+                  </ul>
                 </div>
                 <br>
               </div>
@@ -293,7 +286,7 @@
       </div>
     </div>
     <br>
-    <button class="btn btn-primary" style="width: 100%; height: 8vh; text-align: center">Continue</button>
+    <button type="submit" class="btn btn-primary" style="width: 100%; height: 8vh; text-align: center">Continue</button>
     <br>
     <br>
   </form>

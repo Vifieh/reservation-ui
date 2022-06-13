@@ -23,3 +23,10 @@ a {
 label {
   padding: 0.4rem;
 }
+
+.btn-radio {
+  border: 1px solid lightgray;
+  padding: 6px 4px 4px 15px;
+  border-radius: 4px;
+  width: 15%;
+}

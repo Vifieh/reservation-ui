@@ -29,7 +29,7 @@ import { HomeLandingPageComponent } from './pages/home-landing-page/home-landing
 
 const routes: Routes = [
   {
-    path: 'landing-Page',
+    path: '',
     component: LandingPageComponent
   },
 
@@ -41,11 +41,6 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
-  },
-
-  {
-    path: 'landing-page',
-    component: LandingPageComponent
   },
 
   {
@@ -132,7 +127,7 @@ const routes: Routes = [
     component: MapComponent,
   },
   {
-    path: '',
+    path: 'property-landing-Page',
     component: HomeLandingPageComponent,
   },
   {

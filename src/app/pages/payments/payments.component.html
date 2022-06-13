@@ -9,22 +9,27 @@
       <div class="row">
         <br>
         <span>Can you charge credit cards at the property?</span>
-        <div class="col-md-3">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-            <label class="form-check-label" for="flexRadioDefault1">
-             Yes
-            </label>
+        <div class="row">
+          <div class="col-md-3 btn-radio" style="margin-right: 1.5rem">
+            <div class="form-check">
+              <input  (change)="checkRadioButton($event)" class="form-check-input" type="radio" name="flexRadioDefault"
+                      id="flexRadioDefault1">
+              <label class="form-check-label" for="flexRadioDefault1">
+                Yes
+              </label>
+            </div>
+          </div>
+          <div class="col-md-3 btn-radio">
+            <div class="form-check">
+              <input (change)="checkRadioButton($event)" class="form-check-input" value="no" type="radio"
+                     name="flexRadioDefault" id="flexRadioDefault2" checked>
+              <label class="form-check-label" for="flexRadioDefault2">
+                No
+              </label>
+            </div>
           </div>
         </div>
-        <div class="col-md-3">
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-            <label class="form-check-label" for="flexRadioDefault1">
-              No
-            </label>
-          </div>
-        </div>
+
       </div>
       <br>
       <span class="form-text">We will inform guests that you only accept cash.</span>
@@ -36,35 +41,35 @@
         <div class="col-md-6">
           <h6>At the beginning of each month we will send you an invoice for all complete bookings in the previous month.</h6>
           <br>
-          <div class="form-group">
-            <label>What name should be placed on the invoice (e.g. legal/company name)?</label>
-            <select  class="form-select">
-              <option [ngValue]="null" disabled>Select county</option>
-              <option value="double">double</option>
-            </select>
-          </div>
-          <br>
-          <br>
-          <div class="row">
-            <br>
-            <span>Does this recipient have the same address as your property?</span>
-            <div class="col-md-3">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">
-                  Yes
-                </label>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                <label class="form-check-label" for="flexRadioDefault1">
-                  No
-                </label>
-              </div>
-            </div>
-          </div>
+<!--          <div class="form-group">-->
+<!--            <label>What name should be placed on the invoice (e.g. legal/company name)?</label>-->
+<!--            <select  class="form-select">-->
+<!--              <option [ngValue]="null" disabled>Select county</option>-->
+<!--              <option value="double">double</option>-->
+<!--            </select>-->
+<!--          </div>-->
+<!--          <br>-->
+<!--          <br>-->
+<!--          <div class="row">-->
+<!--            <br>-->
+<!--            <span>Does this recipient have the same address as your property?</span>-->
+<!--            <div class="col-md-3">-->
+<!--              <div class="form-check">-->
+<!--                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">-->
+<!--                <label class="form-check-label" for="flexRadioDefault1">-->
+<!--                  Yes-->
+<!--                </label>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--            <div class="col-md-3">-->
+<!--              <div class="form-check">-->
+<!--                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">-->
+<!--                <label class="form-check-label" for="flexRadioDefault1">-->
+<!--                  No-->
+<!--                </label>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
           <br>
         </div>
         <div class="col-md-6" style="text-align: right">

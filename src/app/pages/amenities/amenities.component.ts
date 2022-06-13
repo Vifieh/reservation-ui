@@ -25,6 +25,7 @@ export class AmenitiesComponent implements OnInit, OnDestroy {
   numberOfAmenities?: number;
   propertyId?: string | null;
   isDisplayed: boolean = false;
+  showRooms: false | number  = false;
 
 
   constructor(
@@ -51,6 +52,10 @@ export class AmenitiesComponent implements OnInit, OnDestroy {
 
   showText() {
     this.isShow = !this.isShow
+  }
+
+  checkSomeRooms(event: any) {
+    this.showRooms = event.target.value;
   }
 
   checkRadioButton(event: any) {
