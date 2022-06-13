@@ -37,6 +37,7 @@ import { AmenityComponent } from './pages/amenity/amenity.component';
 import { CityDetailComponent } from './pages/city-detail/city-detail.component';
 import { MapComponent } from './pages/map/map.component';
 import { EnumToArrayPipe } from './pipes/enum-to-array/enum-to-array.pipe';
+import { HomeLandingPageComponent } from './pages/home-landing-page/home-landing-page.component';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { EnumToArrayPipe } from './pipes/enum-to-array/enum-to-array.pipe';
     CityDetailComponent,
     MapComponent,
     EnumToArrayPipe,
+    HomeLandingPageComponent,
   ],
   imports: [
     BrowserModule,
