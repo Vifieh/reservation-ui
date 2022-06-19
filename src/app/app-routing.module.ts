@@ -22,6 +22,7 @@ import {PaymentsComponent} from "./pages/payments/payments.component";
 import {CategoryAmenityComponent} from './pages/category-amenity/category-amenity.component';
 import {AmenityComponent} from './pages/amenity/amenity.component';
 import {CityDetailComponent} from "./pages/city-detail/city-detail.component";
+import {SingleHotelComponent} from "./pages/single-hotel/single-hotel.component";
 
 
 
@@ -122,6 +123,11 @@ const routes: Routes = [
   {
     path: 'amenity',
     component: AmenityComponent,
+  },
+
+  {
+    path: 'single-hotel',
+    component: SingleHotelComponent,
   },
 
   {

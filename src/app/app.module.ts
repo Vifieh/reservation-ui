@@ -35,6 +35,7 @@ import { PaymentsComponent } from './pages/payments/payments.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AmenityComponent } from './pages/amenity/amenity.component';
 import { CityDetailComponent } from './pages/city-detail/city-detail.component';
+import { SingleHotelComponent } from './pages/single-hotel/single-hotel.component';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { CityDetailComponent } from './pages/city-detail/city-detail.component';
     PaymentsComponent,
     AmenityComponent,
     CityDetailComponent,
+    SingleHotelComponent,
   ],
   imports: [
     BrowserModule,
