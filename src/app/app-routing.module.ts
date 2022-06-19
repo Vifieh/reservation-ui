@@ -21,9 +21,11 @@ import {PoliciesComponent} from './pages/policies/policies.component';
 import {PaymentsComponent} from './pages/payments/payments.component';
 import {CategoryAmenityComponent} from './pages/category-amenity/category-amenity.component';
 import {AmenityComponent} from './pages/amenity/amenity.component';
-import {CityDetailComponent} from './pages/city-detail/city-detail.component';
+import {CityDetailComponent} from "./pages/city-detail/city-detail.component";
+import {SingleHotelComponent} from "./pages/single-hotel/single-hotel.component";
 import {MapComponent} from './pages/map/map.component';
 import { HomeLandingPageComponent } from './pages/home-landing-page/home-landing-page.component';
+
 
 
 
@@ -128,6 +130,12 @@ const routes: Routes = [
   },
 
   {
+
+    path: 'single-hotel',
+    component: SingleHotelComponent,
+  },
+  {
+
     path: 'map',
     component: MapComponent,
   },
@@ -135,6 +143,7 @@ const routes: Routes = [
     path: '',
     component: HomeLandingPageComponent,
   },
+
   {
     path: '**',
     component: PageNotFoundComponent

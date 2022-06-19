@@ -35,10 +35,10 @@ import { PaymentsComponent } from './pages/payments/payments.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AmenityComponent } from './pages/amenity/amenity.component';
 import { CityDetailComponent } from './pages/city-detail/city-detail.component';
+import { SingleHotelComponent } from './pages/single-hotel/single-hotel.component';
 import { MapComponent } from './pages/map/map.component';
 import { EnumToArrayPipe } from './pipes/enum-to-array/enum-to-array.pipe';
 import { HomeLandingPageComponent } from './pages/home-landing-page/home-landing-page.component';
-
 
 @NgModule({
   declarations: [
@@ -69,9 +69,11 @@ import { HomeLandingPageComponent } from './pages/home-landing-page/home-landing
     PaymentsComponent,
     AmenityComponent,
     CityDetailComponent,
+    SingleHotelComponent,
     MapComponent,
     EnumToArrayPipe,
     HomeLandingPageComponent,
+
   ],
   imports: [
     BrowserModule,
