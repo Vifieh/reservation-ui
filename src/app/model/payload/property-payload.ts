@@ -1,4 +1,4 @@
-import {CustomPayload} from './customPayload';
+import {DefaultPayload} from './customPayload';
 
 export interface PropertyPayload {
   name?: string;
@@ -18,6 +18,5 @@ export interface PropertyAddressPayload {
   streetAddress?: string;
   addressLine2?: string;
   code?: string;
-  country?: CustomPayload;
-  city?: CustomPayload;
+  cityPayload?: DefaultPayload;
 }

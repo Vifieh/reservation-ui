@@ -38,7 +38,7 @@ export class CityService {
 
   getCitiesByCountry(cityId?: string): Observable<CustomDto[]> {
     return this.http.get<CustomDto[]>(
-      `${this.baseUrlPub}/cities/${cityId}`
+      `${this.baseUrlPub}/cities/countries/${cityId}`
     )
   }
 

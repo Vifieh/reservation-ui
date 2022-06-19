@@ -12,23 +12,26 @@ import {PropertyDashboardComponent} from './pages/property-dashboard/property-da
 import {PropertyTypeComponent} from './pages/property-type/property-type.component';
 import {PageNotFoundComponent} from './pages/page-not-found/page-not-found.component';
 import {ListPropertyComponent} from './pages/list-property/list-property.component';
-import {BasicInfoComponent} from "./pages/basic-info/basic-info.component";
-import {LayoutPricingComponent} from "./pages/layout-pricing/layout-pricing.component";
-import {FacilitiesServicesComponent} from "./pages/facilities-services/facilities-services.component";
-import {AmenitiesComponent} from "./pages/amenities/amenities.component";
-import {PhotosComponent} from "./pages/photos/photos.component";
-import {PoliciesComponent} from "./pages/policies/policies.component";
-import {PaymentsComponent} from "./pages/payments/payments.component";
+import {BasicInfoComponent} from './pages/basic-info/basic-info.component';
+import {LayoutPricingComponent} from './pages/layout-pricing/layout-pricing.component';
+import {FacilitiesServicesComponent} from './pages/facilities-services/facilities-services.component';
+import {AmenitiesComponent} from './pages/amenities/amenities.component';
+import {PhotosComponent} from './pages/photos/photos.component';
+import {PoliciesComponent} from './pages/policies/policies.component';
+import {PaymentsComponent} from './pages/payments/payments.component';
 import {CategoryAmenityComponent} from './pages/category-amenity/category-amenity.component';
 import {AmenityComponent} from './pages/amenity/amenity.component';
 import {CityDetailComponent} from "./pages/city-detail/city-detail.component";
 import {SingleHotelComponent} from "./pages/single-hotel/single-hotel.component";
+import {MapComponent} from './pages/map/map.component';
+import { HomeLandingPageComponent } from './pages/home-landing-page/home-landing-page.component';
+
 
 
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'landing-Page',
     component: LandingPageComponent
   },
 
@@ -83,23 +86,24 @@ const routes: Routes = [
     component: CityComponent,
   },
   {
+
     path: 'city-detail',
     component: CityDetailComponent,
   },
   {
-    path: 'basic-info',
+    path: 'basic-info/:id',
     component: BasicInfoComponent,
   },
   {
-    path: 'layout',
+    path: 'layout/:id',
     component: LayoutPricingComponent
   },
   {
-    path: 'facility',
+    path: 'facility/:id',
     component: FacilitiesServicesComponent,
   },
   {
-    path: 'amenity',
+    path: 'amenities/:id',
     component: AmenitiesComponent,
   },
   {
@@ -126,8 +130,18 @@ const routes: Routes = [
   },
 
   {
+
     path: 'single-hotel',
     component: SingleHotelComponent,
+  },
+  {
+
+    path: 'map',
+    component: MapComponent,
+  },
+  {
+    path: '',
+    component: HomeLandingPageComponent,
   },
 
   {

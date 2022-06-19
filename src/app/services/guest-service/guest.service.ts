@@ -32,12 +32,12 @@ export class GuestService {
 
   getGuests(): Observable<CustomDto[]> {
     return this.http.get<CustomDto[]>(
-      `${this.baseUrlPub}/guests`
+      `${this.baseUrlPro}/guests`
     )
   }
 
   getGuest(guestId: string): Observable<CustomDto> {
-    return this.http.get<CustomDto>(`${this.baseUrlPub}/guests/${guestId}`)
+    return this.http.get<CustomDto>(`${this.baseUrlPro}/guests/${guestId}`)
 
   }
 

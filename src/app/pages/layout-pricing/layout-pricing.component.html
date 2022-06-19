@@ -3,21 +3,21 @@
 <div class="container">
   <h3>Layout and pricing</h3>
   <div class="row" *ngIf="!isShow && !isViewRoom">
-  <div class="card col-md-9" style="text-align: center; padding: 5rem">
-    <i class="fa fa-bed fa-5x"></i>
-    <br>
-    <span>
+    <div class="card col-md-9" style="text-align: center; padding: 5rem">
+      <i class="fa fa-bed fa-5x"></i>
+      <br>
+      <span>
     No rooms have been added to your property. Start adding rooms to describe bed options, layout and pricing for guests.
     </span>
-    <br>
-    <button class="btn btn-primary" (click)="isCheck()">Add room</button>
-  </div>
+      <br>
+      <button class="btn btn-primary" (click)="isCheck()">Add room</button>
+    </div>
   </div>
 
   <div class="row" *ngIf="isShow && !isViewRoom">
     <a>Go back to overview</a>
 
-    <form class="col-md-9">
+    <form [formGroup]="createRoomForm" (ngSubmit)="creatRoom()" class="col-md-9">
       <br>
       <div class="card">
         <div class="row">
@@ -26,100 +26,144 @@
             <br>
             <div class="form-group">
               <label>Room type</label>
-              <select  class="form-select">
-                <option [ngValue]="null" disabled>Select county</option>
-                <option value="double">double</option>
-                <option value="double">single</option>
-                <option value="double">twin</option>
-              </select>
-            </div>
-            <br>
-            <div class="form-group">
-              <label>Room name</label>
-              <select  class="form-select">
-                <option [ngValue]="null" disabled>Select county</option>
-                <option value="double">double</option>
-              </select>
-            </div>
-            <br>
-            <div class="form-group">
-              <label>Smoking policy</label>
-              <select  class="form-select">
-                <option [ngValue]="null" disabled>Select county</option>
-                <option value="double">double</option>
-              </select>
-            </div>
-            <br>
-            <div class="form-group col-md-4">
-              <label>Number of rooms (of this type)</label>
-              <input type="text"  class="form-control" >
-            </div>
-            <br>
-          </div>
-          <div class="col-md-6" style="margin-top: 25vh">
-            <div class="form-group ">
-              <label>Custom name (optional)</label>
-              <input type="text"  class="form-control" >
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <br>
-      <div class="card">
-            <h3>Bed options</h3>
-            <span class="form-text"  style="background-color: gainsboro ; padding: 0.5rem">Tell us only about the existing beds in a room. Do not include extra beds.</span>
-            <br>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Room type</label>
-              <select  class="form-select">
-                <option [ngValue]="null" disabled>Select county</option>
-                <option value="double">double</option>
+              <select class="form-select" (change)="roomTypeChanged($event)">
+                <option value="null">Please select</option>
+                <option *ngFor="let roomType of roomTypes" value="{{roomType.id}}">{{roomType.name}}</option>
               </select>
             </div>
             <br>
           </div>
-
-          <div class="col-md-6">
-            <div class="form-group">
-              <label>Room type</label>
-              <select  class="form-select">
-                <option [ngValue]="null" disabled>Select county</option>
-                <option value="double">double</option>
-              </select>
-            </div>
-            <br>
-          </div>
-        </div>
-        <a><i class="fa fa-plus-circle fa-2x"></i> Add another bed</a>
-            <br>
-            <div class="form-group col-md-4">
-              <label style="margin-bottom: 0.8rem">How many guests can stay in this room?</label>
-              <div class="row">
-                <div class="col-md-8">  <input type="text"  class="form-control" ></div>
-                <div class="col-md-4">  <i class="fa fa-user fa-2x"></i></div>
+          <div class="row" *ngIf="isDisplayed">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Room name</label>
+                <select
+                  formControlName="roomNameId"
+                  class="form-select">
+                  <option>Please select</option>
+                  <option *ngFor="let roomName of roomNames" value="{{roomName.id}}">{{roomName.name}}</option>
+                </select>
+                <span class="help-block">This is the name guests will see on the Reservations.com website.</span>
               </div>
-
+              <br>
             </div>
-            <br>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Custom name (optional)</label>
+                <input
+                  type="text"
+                  formControlName="name"
+                  class="form-control">
+                <span class="help-block"> Create an optional, custom name for your reference. </span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label>Smoking policy</label>
+                <select
+                  formControlName="smokingPolicy"
+                  class="form-select">
+                  <option
+                    *ngFor="let smoking of smokingPolicies"
+                    value="{{smoking.key}}">{{smoking.value}}</option>
+                </select>
+              </div>
+              <br>
+              <div class="form-group col-md-8">
+                <label>Number of rooms (of this type)</label>
+                <input
+                  type="text"
+                  formControlName="numberOfRooms"
+                  class="form-control"
+                  value="1"
+                  style="width: 25%">
+              </div>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="isBedOption">
+        <br>
+        <div class="card">
+          <legend>Bed options</legend>
+          <span class="form-text" style="background-color: gainsboro ; padding: 0.2rem">Tell us only about the existing beds in a room. Do not include extra beds.</span>
+          <br>
+          <div formArrayName="roomBedAvailablePayloadList"
+               *ngFor="let bedAvailableForm of roomBedAvailablePayloadList.controls; let i  = index;" class="row">
+            <div [formGroupName]="i" class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label>What kind of beds are available in this room?</label>
+                  <select
+                    formControlName="bedAvailableId"
+                    class="form-select">
+                    <option *ngFor="let bedAvailable of bedsAvailable"
+                            value="{{bedAvailable.id}}">{{bedAvailable.name}}</option>
+                  </select>
+                </div>
+                <br>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label>.</label>
+                  <select
+                    formControlName="numberOfBeds"
+                    class="form-select"
+                    style="width: 50%">
+                    <option disabled>Select the number of beds</option>
+                    <option *ngFor="let number of numbers" value="{{number}}">{{number}}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-1">
+                <button *ngIf="showDelete" (click)="deleteBedAvailable(i)" type="button"
+                        class="remove_bed_link btn btn-link">
+                  <i class="fa fa-remove"></i>
+                  <br>
+                  <span style="text-decoration: none">Remove</span>
+                </button>
+              </div>
+            </div>
+          </div>
+          <a (click)="addBedAvailable()" style="color: #2A6496"><i class="fa fa-plus-circle fa-1x"></i> Add another bed</a>
+
+          <br>
+          <div class="form-group col-md-4">
+            <label style="margin-bottom: 0.8rem">How many guests can stay in this room?</label>
+            <div class="row">
+              <div class="col-md-8">
+                <input
+                  type="text"
+                  formGroupName="numberOfGuests"
+                  class="form-control"></div>
+              <div class="col-md-4"><i class="fa fa-user fa-2x"></i></div>
+            </div>
+          </div>
+          <br>
+        </div>
       </div>
       <br>
       <div class="card">
-        <h3>Room size (optional)
-        </h3>
-        <div class="row">
-          <div class="col-md-4">
+        <legend>Room size (optional)</legend>
+        <div class="row g-0">
+          <div class="col-md-3">
             <div class="form-group">
-              <input type="text"  class="form-control" >
+              <input
+                type="text"
+                formControlName="roomSize"
+                class="form-control"
+                placeholder="0">
             </div>
           </div>
-          <div class="col-md-4">
+          <div class="col-md-3">
             <div class="form-group">
-              <select  class="form-select">
-                <option [ngValue]="null" disabled>Select county</option>
-                <option value="double">double</option>
+              <select
+                formControlName="size"
+                class="form-select">
+                <option *ngFor="let size of roomSizes" value="{{size.key}}">{{size.value}}</option>
               </select>
             </div>
           </div>
@@ -127,17 +171,43 @@
       </div>
       <br>
       <div class="card">
-        <h3>Base price per night</h3>
-        <span class="form-text"  style="background-color: gainsboro; padding: 0.5rem">This is the lowest price that we automatically apply to this room for all dates.
+        <legend>Base price per night</legend>
+        <span class="form-text" style="background-color: gainsboro; padding: 0.2rem">This is the lowest price that we automatically apply to this room for all dates.
           Before your property goes live, you can set seasonal pricing in your property dashboard.</span>
+        <br>
+        <label>Price for 1 person</label>
+        <div class="row g-0">
+          <div class="col-md-2">
+            <div class="form-group">
+              <select
+                formControlName="currency"
+                class="form-select">
+                <option *ngFor="let currency of currencies | enumToArray" value="{{currency}}">{{currency}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-2">
+            <div class="form-group">
+              <input
+                type="text"
+                formControlName="unitPrice"
+                class="form-control"
+                placeholder="0">
+            </div>
+          </div>
+        </div>
       </div>
       <br>
       <div class="row">
         <div class="col-md-6">
-          <button class="btn btn-outline-dark" style="width: 100%; height: 8vh; text-align: center">Go back to overview</button>
+          <button class="btn btn-outline-dark" style="width: 100%; height: 8vh; text-align: center">Go back to
+            overview
+          </button>
         </div>
         <div class="col-md-6">
-          <button class="btn btn-primary" style="width: 100%; height: 8vh; text-align: center" (click)="viewRoom()">Continue</button>
+          <button type="submit" class="btn btn-primary" style="width: 100%; height: 8vh; text-align: center">
+            Continue
+          </button>
         </div>
       </div>
       <br>
@@ -179,10 +249,11 @@
 
       <div class="row offset-2">
         <div class="col-md-6">
-          <button class="btn btn-outline-dark" style="width: 100%; height: 8vh; text-align: center">Add another room</button>
+          <button class="btn btn-outline-dark" style="width: 100%; height: 8vh; text-align: center">Add another room
+          </button>
         </div>
         <div class="col-md-6">
-          <button class="btn btn-primary" style="width: 100%; height: 8vh; text-align: center">Continue</button>
+          <button class="btn btn-primary" style="width: 100%; height: 8vh; text-align: center" (click)="continue()">Continue</button>
         </div>
       </div>
     </div>

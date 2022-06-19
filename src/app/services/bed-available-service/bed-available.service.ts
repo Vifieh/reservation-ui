@@ -32,12 +32,12 @@ export class BedAvailableService {
 
   getBedsAvailable(): Observable<CustomDto[]> {
     return this.http.get<CustomDto[]>(
-      `${this.baseUrlPub}/bedsAvailable`
+      `${this.baseUrlPro}/bedsAvailable`
     )
   }
 
   getBedAvailable(bedAvailableId: string): Observable<CustomDto> {
-    return this.http.get<CustomDto>(`${this.baseUrlPub}/bedsAvailable/${bedAvailableId}`)
+    return this.http.get<CustomDto>(`${this.baseUrlPro}/bedsAvailable/${bedAvailableId}`)
 
   }
 

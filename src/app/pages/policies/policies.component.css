@@ -1,37 +1,44 @@
-.card{
+input[type="radio" i] {
+  cursor: pointer;
+}
+
+.card {
   padding: 2rem;
 }
-input[type=text]
-{
+
+input[type=text] {
   height: 7vh;
 }
-.input-group-text
-{
+
+.input-group-text {
   height: 7vh;
 }
-select
-{
+
+select {
   height: 7vh;
 }
-.in
-{
+
+.in {
   width: 3rem;
   height: 3vh;
 }
-.container
-{
+
+.container {
   margin-top: 5vh;
 }
 
-.btn-outline-dark:hover
-{
+.btn-outline-dark:hover {
   background-color: gainsboro;
   color: black;
 }
 
-.notification
-{
+.notification {
   background-color: honeydew;
   padding: 1rem;
+}
+
+.btn-outline-dark {
+  margin-right: 5px;
+  width: 100%;
 }
 

@@ -4,181 +4,230 @@
   <h3>Facilities ans Services</h3>
   <p>Now, tell us some general details about your property, such as facilities available,
     internet, parking and the languages you speak.</p>
-  <form class="col-md-9">
-    <div class="card">
-      <h4>Parking</h4>
-      <span class="form-text"  style="background-color: gainsboro; padding: 0.5rem ">This information is especially
+  <form [formGroup]="addFacilitiesAndServicesForm" (ngSubmit)="addFacilitiesAndServices()" class="col-md-9">
+    <div formGroupName="parkingPayload" class="card">
+      <legend>Parking</legend>
+      <span class="form-text" style="background-color: gainsboro; padding: 0.5rem ">This information is especially
         important for those travelling to your accommodation by car.</span>
       <br>
       <div class="row">
         <label>Is parking available to guests?</label>
         <div class="col-md-6">
           <div class="form-group">
-            <select  class="form-select">
-              <option [ngValue]="null" disabled>Select county</option>
-              <option value="double">double</option>
+            <select
+              formControlName="available"
+              class="form-select"
+              (change)="checkStatus($event)">
+              <option *ngFor="let parkingFacility of parkingFacilities"
+                      value="{{parkingFacility.key}}">{{parkingFacility.value}}</option>
             </select>
           </div>
-          <br>
-          <div class="form-group">
+          <div *ngIf="isDisplayed" class="form-group">
+            <br>
             <label>Do guests need to reserve a parking space?</label>
-            <select  class="form-select">
-              <option [ngValue]="null" disabled>Select county</option>
-              <option value="double">double</option>
+            <select
+              formControlName="reservation"
+              class="form-select">
+              <option *ngFor="let reservation of reservations"
+                      value="{{reservation.key}}">{{reservation.value}}</option>
             </select>
           </div>
-          <br>
         </div>
-        <div class="col-md-6">
+        <div *ngIf="isDisplayed" class="col-md-6">
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
-                <select  class="form-select">
-                  <option [ngValue]="null" disabled>Select county</option>
-                  <option value="double">double</option>
+                <select
+                  formControlName="type"
+                  class="form-select">
+                  <option *ngFor="let parkingType of parkingTypes"
+                          value="{{parkingType.key}}">{{parkingType.value}}</option>
                 </select>
               </div>
               <br>
             </div>
             <div class="col-md-6">
               <div class="form-group">
-                <select  class="form-select">
-                  <option [ngValue]="null" disabled>Select county</option>
-                  <option value="double">double</option>
+                <select
+                  formControlName="site"
+                  class="form-select">
+                  <option *ngFor="let site of sites" value="{{site.key}}">{{site.value}}</option>
                 </select>
               </div>
               <br>
             </div>
           </div>
-          <div class="form-group">
+          <div *ngIf="isPriceShown" class="form-group">
             <label>Price for parking (per day)</label>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
-                <div class="input-group-text">XAF</div>
+                <div class="form-group">
+                  <select
+                    formControlName="currency"
+                    class="form-select">
+                    <option *ngFor="let currency of currencies | enumToArray" value="{{currency}}">{{currency}}</option>
+                  </select>
+                </div>
               </div>
-              <input type="text" class="form-control" id="inlineFormInputGroup" placeholder="0">
+              <input
+                type="text"
+                formControlName="unitPrice"
+                class="form-control"
+                id="inlineFormInputGroup"
+                placeholder="0">
             </div>
-
           </div>
-          <br>
         </div>
       </div>
     </div>
     <br>
-    <div class="card">
+    <div
+      formGroupName="breakfastPayload"
+      class="card">
       <div class="row">
-        <div class="col-md-8">
-          <h4>Breakfast</h4>
+        <div class="col-md-6">
+          <legend>Breakfast</legend>
           <div class="form-group">
             <label>Is breakfast available to guests?</label>
-            <select  class="form-select">
-              <option [ngValue]="null" disabled>Select county</option>
-              <option value="double">double</option>
+            <select
+              formControlName="available"
+              class="form-select"
+              (change)="checkBreakfast($event)">
+              <option
+                *ngFor="let breakfastAvailable of breakfastAvailability"
+                value="{{breakfastAvailable.key}}">{{breakfastAvailable.value}}</option>
             </select>
           </div>
-          <br>
-          <div class="form-group">
+          <div *ngIf="isShowed && isIncluded" class="form-group">
+            <br>
             <label>Price for breakfast (per person, per day including all fees and taxes)</label>
             <div class="input-group mb-2">
               <div class="input-group-prepend">
-                <div class="input-group-text">XAF</div>
+                <div class="form-group">
+                  <select
+                    formControlName="currency"
+                    class="form-select">
+                    <option *ngFor="let currency of currencies | enumToArray" value="{{currency}}">{{currency}}</option>
+                  </select>
+                </div>
               </div>
-              <input type="text" class="form-control" placeholder="0">
+              <input
+                type="text"
+                formControlName="unitPrice"
+                class="form-control"
+                placeholder="0">
+            </div>
+            <br>
+          </div>
+        </div>
+        <div *ngIf="isShowed" class="row">
+          <br>
+          <div
+            formArrayName="breakfastAvailablePayload"
+            *ngFor="let breakfastAvailable of breakfastAvailablePayload.controls; let i  = index;" class="row">
+            <br>
+            <label>What kind of breakfast is available?</label>
+            <div [formGroupName]="i" class="col-md-6">
+              <div class=" form-group">
+                <select
+                  formControlName="id"
+                  class="form-select">
+                  <option>Select select</option>
+                  <option
+                    *ngFor="let breakfast of breakfastsAvailable"
+                    value="{{breakfast.id}}">{{breakfast.name}}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-2" style="padding: -2rem">
+              <button *ngIf="showBreakfastDelete" (click)="deleteBreakfastAvailablePayload(i)" type="button"
+                      class="remove_type_link btn btn-link">
+                <i class="fa fa-remove"></i>&nbsp;Remove
+              </button>
             </div>
           </div>
-          <br>
-          <div class="form-group">
-            <label>What kind of breakfast is available?</label>
-            <select  class="form-select">
-              <option [ngValue]="null" disabled>Select county</option>
-              <option value="double">double</option>
-            </select>
+          <div *ngIf="isShowed">
+            <br>
+            <a (click)="addBreakfastAvailablePayload()" style="color: dodgerblue">
+              <i class="fa fa-plus-circle fa-1x"></i> &nbsp;
+              Add another breakfast type</a>
           </div>
-          <br>
-          <a style="color: dodgerblue"><i class="fa fa-plus-circle fa-1x"></i>Add another breakfast type</a>
         </div>
       </div>
     </div>
     <br>
     <div class="card">
-      <h4>Languages spoken</h4>
-      <span class="form-text"  style="background-color: gainsboro; padding: 0.5rem">What languages do you or your staff speak?</span>
+      <legend>Languages spoken</legend>
+      <span class="form-text" style="background-color: gainsboro; padding: 0.5rem">What languages do you or your staff speak?</span>
       <br>
-      <div class="row">
-        <div class="col-md-6">
+      <div
+        formArrayName="languagePayload"
+        *ngFor="let language of languagePayload.controls; let i  = index;"
+        class="row">
+        <div [formGroupName]="i" class="col-md-6">
           <div class="form-group">
-            <select  class="form-select">
-              <option [ngValue]="null" disabled>Select county</option>
-              <option value="double">double</option>
+            <select
+              formControlName="name"
+              class="form-select">
+              <option *ngFor="let language of languages" value="{{language.name}}">{{language.name}}</option>
             </select>
           </div>
           <br>
-          <a style="color: dodgerblue"><i class="fa fa-plus-circle fa-1x"></i>Add another language</a>
+        </div>
+        <div class="col-md-2">
+          <button *ngIf="showLanguageDelete" (click)="deleteLanguagePayload(i)" type="button"
+                  class="remove_type_link btn btn-link">
+            <i class="fa fa-remove"></i>&nbsp;Remove
+          </button>
         </div>
       </div>
-
+      <a (click)="addLanguagePayload()" style="color: dodgerblue">
+        <i class="fa fa-plus-circle fa-1x"></i>&nbsp;
+        Add another language</a>
     </div>
     <br>
     <div class="card">
-      <h3>Facilities that are popular with guests</h3>
-
+      <legend>Facilities that are popular with guests</legend>
       <span class="form-text" style="background-color: gainsboro; padding: 0.5rem">Guests look for these facilities the
         most when they’re searching for properties.</span>
       <br>
-      <div class="row">
-        <div class="col-md-6">
+      <div formArrayName="propertyFacilityPayloadList"
+           *ngFor="let propertyFacility of propertyFacilityPayloadList.controls; let i  = index;"
+           formGroupName="propertyFacilityDetails"
+           class="row">
+        <div
+          *ngFor="let facility of facilities"
+             class="col-md-6">
           <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Free WiFi
-            </label>
+            <div class="row">
+              <div class="col-md-5">
+                <input
+                  formControlName="facilityId"
+                  (change)="checkChange(facility, $event)"
+                  class="form-check-input"
+                  type="checkbox"
+                  [value]="facility.id" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  {{facility.name}}
+                </label>
+              </div>
+              <div *ngIf="displaySelect && displayField && facility.choice" class="col-md-5">
+                <div class="form-group">
+                  <select
+                    formControlName="status"
+                    class="form-select">
+                    <option>Please select</option>
+                    <option *ngFor="let status of facilityStatus" value="{{status.key}}">{{status.value}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-md-6">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Non-smoking rooms
-            </label>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Restaurant
-            </label>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Room service
-            </label>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Swimming pool
-            </label>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Air conditioning
-            </label>
-          </div>
-          <br>
-        </div>
-
-        <button class="btn btn-primary" style="width: 100%; height: 8vh; text-align: center">Continue</button>
       </div>
     </div>
+    &nbsp;
+    <button type="submit" class="btn btn-primary" style="width: 100%; height: 8vh; text-align: center">Continue</button>
     <br>
   </form>
 </div>

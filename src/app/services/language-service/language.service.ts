@@ -32,12 +32,12 @@ export class LanguageService {
 
   getLanguages(): Observable<CustomDto[]> {
     return this.http.get<CustomDto[]>(
-      `${this.baseUrlPub}/languages`
+      `${this.baseUrlPro}/languages`
     )
   }
 
   getLanguage(languageId: string): Observable<CustomDto> {
-    return this.http.get<CustomDto>(`${this.baseUrlPub}/languages/${languageId}`)
+    return this.http.get<CustomDto>(`${this.baseUrlPro}/languages/${languageId}`)
 
   }
 

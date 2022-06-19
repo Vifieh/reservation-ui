@@ -15,6 +15,7 @@ export class AmenityComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
   amenities: CustomDto[] = [];
   amenityId?: string;
+  mostRequired = false;
 
   constructor(
     private amenityService: AmenityService,
@@ -28,11 +29,11 @@ export class AmenityComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.getCountries();
+    this.getAmenities();
   }
 
-  getCountries() {
-    const amenities = this.amenityService.getAmenities().subscribe(response => {
+  getAmenities() {
+    const amenities = this.amenityService.getAmenities(this.mostRequired).subscribe(response => {
       this.amenities = response;
     });
     this.subscriptions.push(amenities);
