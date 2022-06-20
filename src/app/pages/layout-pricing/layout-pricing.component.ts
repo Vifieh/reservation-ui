@@ -12,6 +12,8 @@ import {AbstractControl, FormArray, FormBuilder, FormGroup, Validators} from '@a
 import {RoomService} from '../../services/room-service/room.service';
 import {NotificationType} from '../../model/notificationMessage';
 import {NotificationService} from '../../services/notification/notification.service';
+import {RoomDto} from '../../model/dto/roomDto';
+import {EmitService} from '../../services/emit-service/emit.service';
 
 @Component({
   selector: 'app-layout-pricing',
@@ -20,12 +22,13 @@ import {NotificationService} from '../../services/notification/notification.serv
 })
 export class LayoutPricingComponent implements OnInit, OnDestroy {
 
-  submitted = false;
+  submitted: boolean = false;
   isShow: boolean = false;
   isDisplayed: boolean = false;
   isBedOption: boolean = false;
   isViewRoom: boolean = false;
   showDelete: boolean = false;
+  showListOfRooms: boolean = false;
   numbers: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
   smokingPolicies = [
     {key: Policy.NO, value: 'Non-smoking'},
@@ -42,6 +45,7 @@ export class LayoutPricingComponent implements OnInit, OnDestroy {
   roomTypes: CustomDto[] = [];
   roomNames: CustomDto[] = [];
   bedsAvailable: CustomDto[] = [];
+  rooms: RoomDto[] = [];
   propertyId?: string | null;
 
   constructor(
@@ -53,6 +57,7 @@ export class LayoutPricingComponent implements OnInit, OnDestroy {
     private router: Router,
     public formBuilder: FormBuilder,
     private notificationService: NotificationService,
+    private emitService: EmitService,
   ) { }
 
   ngOnDestroy(): void {
@@ -65,6 +70,8 @@ export class LayoutPricingComponent implements OnInit, OnDestroy {
     this.getRoomTypes();
     this.getBedAvailable();
     this.propertyId = this.route.snapshot.paramMap.get('id');
+    this.getRoomsByPropertyId(this.propertyId);
+    this.emitService.eventEmitter.emit(this.propertyId);
   }
 
   createRoomForm = this.formBuilder.group({
@@ -107,13 +114,23 @@ export class LayoutPricingComponent implements OnInit, OnDestroy {
   }
 
   isCheck() {
+    this.isViewRoom = true;
     this.isShow = true;
-    this.isViewRoom = false;
   }
 
-  viewRoom()
-  {
+  viewRoom() {
+    this.isViewRoom =false;
+    this.showListOfRooms = true;
+  }
+
+  addAnotherRoom() {
     this.isViewRoom = true;
+    this.showListOfRooms = false;
+  }
+
+  goBackToOverview() {
+    this.isViewRoom = false;
+    this.showListOfRooms = true;
   }
 
   roomTypeChanged(event: any) {
@@ -159,6 +176,18 @@ export class LayoutPricingComponent implements OnInit, OnDestroy {
   }
 
   continue() {
-    this.router.navigate(['/facility', this.propertyId]);
+    this.router.navigate(['/facilities', this.propertyId]);
   }
+
+  getRoomsByPropertyId(propertyId?: string | null) {
+    const roomsSub = this.roomService.getRoomsByProperty(propertyId).subscribe(response => {
+      this.rooms = response;
+      if (this.rooms.length !== 0) {
+        this.showListOfRooms = true;
+        this.isShow = true;
+      }
+    });
+    this.subscriptions.push(roomsSub);
+  }
+
 }

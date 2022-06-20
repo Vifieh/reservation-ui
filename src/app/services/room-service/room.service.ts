@@ -4,8 +4,8 @@ import {HttpClient} from '@angular/common/http';
 import {RoomPayload} from '../../model/payload/room-payload';
 import {Observable} from 'rxjs';
 import {ResponseMessage} from '../../model/responseMessage';
-import {RoomAmenityPayload} from '../../model/payload/room-amenity-payload';
-import {FormGroup} from '@angular/forms';
+import {RoomDto} from '../../model/dto/roomDto';
+import {ExtraBedOptionAndRoomAmenitiesPayload} from '../../model/payload/ExtraBedOptionAndRoomAmenitiesPayload';
 
 @Injectable({
   providedIn: 'root'
@@ -24,10 +24,16 @@ export class RoomService {
     )
   }
 
-  addRoomAmenities(roomAmenityPayloadList: RoomAmenityPayload[]): Observable<ResponseMessage> {
+  getRoomsByProperty(propertyId?: string | null | undefined): Observable<RoomDto[]> {
+      return this.http.get<RoomDto[]>(
+        `${this.baseUrlPub}/rooms?propertyId=${propertyId}`
+      )
+  }
+
+    addExtraOptionAndRoomAmenities(propertyId?: string | null | undefined, bedOptionAndRoomAmenitiesPayload?: ExtraBedOptionAndRoomAmenitiesPayload): Observable<ResponseMessage> {
     return this.http.post<ResponseMessage>(
-      `${this.baseUrlPro}/roomAmenities`,
-      roomAmenityPayloadList
+      `${this.baseUrlPro}/rooms/properties/${propertyId}`,
+      bedOptionAndRoomAmenitiesPayload
     )
   }
 }

@@ -1,0 +1,176 @@
+<app-list-property-navbar></app-list-property-navbar>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <form>
+        <div class="card">
+          <div class="form-group col-md-8">
+            <label><legend>What is the name of your property?</legend></label>
+            <input
+              type="text"
+              id="name"
+              formControlName="name"
+              class="form-control"
+              style="width: 75%">
+            <span class="form-text">This name will be seen by guests when they search for a place to stay.</span>
+          </div>
+          <br>
+          <div class="form-group col-md-6">
+            <label>Star rating</label>
+            <select
+              formControlName="rating"
+              class="form-select"
+              style="width: 60%">
+              <option value="0" selected="selected">N/A</option>
+              <option value="1">1 ✯</option>
+              <option value="2">2 ✯✯</option>
+              <option value="3">3 ✯✯✯</option>
+              <option value="4">4 ✯✯✯✯</option>
+              <option value="5">5 ✯✯✯✯✯</option>
+            </select>
+          </div>
+        </div>
+        <br>
+
+        <div formGroupName="propertyContactDetailsPayload" class="card">
+          <legend>What are the contact details for this property?</legend>
+          <div class="form-group col-md-8">
+            <label>Contact name</label>
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control"
+              style="width: 75%">
+          </div>
+          <br>
+          <p class="col-md-8">Contact number (so we can assist with your registration when needed)</p>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group col-md-8">
+                <label>Phone number</label>
+                <input
+                  type="text"
+                  formControlName="phoneNumber"
+                  class="form-control">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group col-md-8">
+                <label>Alternative phone number (optional)</label>
+                <input
+                  type="text"
+                  formControlName="alternativeNumber"
+                  class="form-control">
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <br>
+              <span class="col-md-4">Do you own multiple hotels, or are you part of a property management company or group?</span>
+              <div class="row">
+                <div class="col-md-3 btn-radio" style="margin-right: 1.5rem">
+                  <div class="form-check">
+                    <input (change)="checkRadioButton($event)" class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                    <label class="form-check-label" for="flexRadioDefault1">
+                      Yes
+                    </label>
+                  </div>
+                </div>
+                <div class="col-md-3 btn-radio">
+                  <div class="form-check">
+                    <input (change)="checkRadioButton($event)" class="form-check-input" value="no" type="radio" name="flexRadioDefault" id="flexRadioDefault2" checked>
+                    <label class="form-check-label" for="flexRadioDefault2">
+                      No
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="isDisplayed" class="col-md-6">
+              <div class="form-group col-md-8">
+                <br>
+                <label>Name of company, group or chain</label>
+                <input
+                  type="text"
+                  formControlName="companyName"
+                  class="form-control">
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <br>
+        <div formGroupName="propertyAddressPayload" class="card">
+          <legend>Where is your property located?</legend>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <br>
+                <label>Street address</label>
+                <input
+                  type="text"
+                  formControlName="streetAddress"
+                  class="form-control"
+                  placeholder="e.g. 123 Easy street">
+              </div>
+              <br>
+              <div class="form-group">
+                <label>Address line 2</label>
+                <input
+                  type="text"
+                  formControlName="addressLine2"
+                  class="form-control"
+                  placeholder="unit number, suit, floor, building etc">
+              </div>
+              <br>
+              <div class="form-group">
+                <label>Country/region</label>
+                <select class="form-select" (change)="countryChanged($event)">
+                  <option>Select county</option>
+                  <option *ngFor="let country of countries" value="{{country.id}}">{{country.name}}</option>
+                </select>
+              </div>
+              <br>
+              <div formGroupName="cityPayload" class="form-group">
+                <label>City</label>
+                <select
+                  formControlName="id"
+                  class="form-select">
+                  <option disabled>Select city</option>
+                  <option *ngFor="let city of citiesByCountry" value="{{city.id}}">{{city.name}}</option>
+                </select>
+              </div>
+              <br>
+              <div class="form-group col-md-6">
+                <label>Post code</label>
+                <input
+                  type="text"
+                  formControlName="code"
+                  class="form-control" >
+              </div>
+              <br>
+            </div>
+            <div class="col-md-6">
+              <div class="card">
+                <div class="row">
+                  <div class="col-md-3"><i class="fa fa-envelope fa-4x"></i></div>
+                  <div class="col-md-9">
+                    <h4>Your address matters</h4>
+                    <span>Please make sure you enter the full address of your property,
+                              including building name, number, etc. Based on the information you provide,
+                              we might send a letter to verify this address.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-primary" style="width: 100%; height: 8vh; text-align: center">Continue</button>
+        <br>
+      </form>
+      <br>
+    </div>
+  </div>
+</div>

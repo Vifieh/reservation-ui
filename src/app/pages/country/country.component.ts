@@ -32,10 +32,10 @@ export class CountryComponent implements OnInit, OnDestroy {
   }
 
   getCountries() {
-      const countries = this.countryService.getCountries().subscribe(response => {
+      const countriesSub = this.countryService.getCountries().subscribe(response => {
         this.countries = response;
       });
-    this.subscriptions.push(countries);
+    this.subscriptions.push(countriesSub);
   }
 
   delete(country: CustomDto) {
