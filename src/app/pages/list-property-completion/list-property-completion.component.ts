@@ -4,6 +4,8 @@ import {FormBuilder} from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NotificationService} from '../../services/notification/notification.service';
 import {Subscription} from 'rxjs';
+import {PropertyDto} from '../../model/dto/propertyDto';
+import {NotificationType} from '../../model/notificationMessage';
 
 @Component({
   selector: 'app-list-property-completion',
@@ -13,8 +15,10 @@ import {Subscription} from 'rxjs';
 export class ListPropertyCompletionComponent implements OnInit, OnDestroy {
 
   submit: boolean = true;
-  propertyId?: string;
+  propertyId?: string | null;
   subscriptions: Subscription[] = [];
+  property?: PropertyDto;
+  propertyName?: string;
 
   constructor(
     private propertyService: PropertyService,
@@ -31,10 +35,25 @@ export class ListPropertyCompletionComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.propertyId = this.route.snapshot.paramMap.get('id');
+    this.getProperty();
   }
 
-  getProperty(propertyId: string)  {
-
+  getProperty()  {
+    const propertySub = this.propertyService.getProperty(this.propertyId).subscribe(response => {
+      this.property = response;
+      this.propertyName = this.property.name;
+    });
+    this.subscriptions.push(propertySub);
   }
+
+  completeRegistration() {
+    const completeRegistrationSub = this.propertyService.completeRegistration(this.propertyId, null)
+      .subscribe(response => {
+        this.notificationService.sendMessage({message: response.message, type: NotificationType.success});
+      })
+  }
+
+
 
 }

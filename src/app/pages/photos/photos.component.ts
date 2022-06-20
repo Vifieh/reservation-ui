@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {UploadFileService} from '../../services/upload-file-service/upload-file.service';
+import {FileService} from '../../services/file-service/file.service';
 import {Observable, Subscription} from 'rxjs';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NotificationService} from '../../services/notification/notification.service';
@@ -20,7 +20,7 @@ export class PhotosComponent implements OnInit, OnDestroy {
   subscriptions: Subscription[] = [];
 
   constructor(
-    private uploadService: UploadFileService,
+    private uploadService: FileService,
     private route: ActivatedRoute,
     private router: Router,
     private notificationService: NotificationService,

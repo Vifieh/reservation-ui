@@ -34,21 +34,20 @@ export class CityComponent implements OnInit, OnDestroy {
 
 
   getCities() {
-    const cities =  this.cityService.getCities().subscribe(response => {
+    const citiesSub =  this.cityService.getCities().subscribe(response => {
       this.cities = response;
     });
-    this.subscriptions.push(cities);
+    this.subscriptions.push(citiesSub);
   }
 
   delete(city: CustomDto) {
     this.cityId = city.id;
-    console.log(this.cityId);
   }
 
   deleteCity() {
-    const deleteCity = this.cityService.deleteCity(this.cityId).subscribe(response => {
+    const deleteCitySub = this.cityService.deleteCity(this.cityId).subscribe(response => {
       this.notificationService.sendMessage({message: response.message, type: NotificationType.success});
     });
-    this.subscriptions.push(deleteCity);
+    this.subscriptions.push(deleteCitySub);
   }
 }
