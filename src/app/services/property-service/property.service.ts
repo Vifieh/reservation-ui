@@ -48,7 +48,7 @@ export class PropertyService {
     )
   }
 
-  getProperty(propertyId: string): Observable<PropertyDto> {
+  getProperty(propertyId: string | null | undefined): Observable<PropertyDto> {
     return this.http.get<PropertyDto>(
       `${this.baseUrlPub}/properties/${propertyId}`
     )
@@ -65,4 +65,17 @@ export class PropertyService {
       `${this.baseUrlPro}/properties/users`
     )
   }
+
+  completeRegistration(propertyId?: string | null | undefined, body?: null): Observable<ResponseMessage> {
+    return this.http.patch<ResponseMessage>(
+      `${this.baseUrlPro}/registration/properties/${propertyId}`,
+      body
+    )
+  }
+
+  // completeRegistration(propertyId?: string): Observable<ResponseMessage> {
+  //   return this.http.patch<ResponseMessage>(
+  //     `${this.baseUrlPro}/registration/properties/${propertyId}`
+  //   )
+  // }
 }

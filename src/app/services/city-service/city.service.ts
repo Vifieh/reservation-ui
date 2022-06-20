@@ -5,6 +5,8 @@ import {Observable} from "rxjs";
 import {ResponseMessage} from 'src/app/model/responseMessage';
 import {CustomPayload} from "../../model/payload/customPayload";
 import {CustomDto} from "../../model/dto/customDto";
+import {PropertyAddressDto} from '../../model/dto/propertyDto';
+import {CityDto} from '../../model/dto/cityDto';
 
 @Injectable({
   providedIn: 'root'
@@ -30,14 +32,14 @@ export class CityService {
     )
   }
 
-  getCities(): Observable<CustomDto[]> {
-    return this.http.get<CustomDto[]>(
+  getCities(): Observable<CityDto[]> {
+    return this.http.get<CityDto[]>(
       `${this.baseUrlPub}/cities`
     )
   }
 
-  getCitiesByCountry(cityId?: string): Observable<CustomDto[]> {
-    return this.http.get<CustomDto[]>(
+  getCitiesByCountry(cityId?: string): Observable<CityDto[]> {
+    return this.http.get<CityDto[]>(
       `${this.baseUrlPub}/cities/countries/${cityId}`
     )
   }
@@ -45,6 +47,12 @@ export class CityService {
   getCity(cityId?: string): Observable<CustomDto> {
     return this.http.get<CustomDto>(
       `${this.baseUrlPub}/cities/${cityId}`
+    )
+  }
+
+  getPropertyAddressByCity(cityId?: string): Observable<PropertyAddressDto[]> {
+    return this.http.get<PropertyAddressDto[]>(
+      `${this.baseUrlPub}/propertyAddress/cities/${cityId}`
     )
   }
 

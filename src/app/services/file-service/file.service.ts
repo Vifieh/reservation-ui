@@ -8,7 +8,7 @@ import {FileInfoDto} from '../../model/dto/fileInfoDto';
 @Injectable({
   providedIn: 'root'
 })
-export class UploadFileService {
+export class FileService {
 
   baseUrlPro: string = environment.baseUrlPro;
   baseUrlPub: string = environment.baseUrlPub;

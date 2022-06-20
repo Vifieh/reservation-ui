@@ -108,7 +108,7 @@ const routes: Routes = [
   },
   {
 
-    path: 'city-detail',
+    path: 'city-detail/:id',
     component: CityDetailComponent,
   },
   {
