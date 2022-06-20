@@ -191,22 +191,17 @@
       <span class="form-text" style="background-color: gainsboro; padding: 0.5rem">Guests look for these facilities the
         most when they’re searching for properties.</span>
       <br>
-      <div formArrayName="propertyFacilityPayloadList"
-           *ngFor="let propertyFacility of propertyFacilityPayloadList.controls; let i  = index;"
-           formGroupName="propertyFacilityDetails"
-           class="row">
-        <div
-          *ngFor="let facility of facilities"
-             class="col-md-6">
+      <div class="row">
+        <div *ngFor="let facility of facilities; let i = index" class="col-md-6">
           <div class="form-check">
             <div class="row">
               <div class="col-md-5">
                 <input
-                  formControlName="facilityId"
-                  (change)="checkChange(facility, $event)"
+                  (click)="addPropertyFacilityPayloadItem($event)"
                   class="form-check-input"
                   type="checkbox"
-                  [value]="facility.id" id="flexCheckDefault">
+                  [value]="facility.id"
+                  id="flexCheckDefault">
                 <label class="form-check-label" for="flexCheckDefault">
                   {{facility.name}}
                 </label>
@@ -214,9 +209,8 @@
               <div *ngIf="displaySelect && displayField && facility.choice" class="col-md-5">
                 <div class="form-group">
                   <select
-                    formControlName="status"
                     class="form-select">
-                    <option>Please select</option>
+                    <option value="">Please select</option>
                     <option *ngFor="let status of facilityStatus" value="{{status.key}}">{{status.value}}</option>
                   </select>
                 </div>

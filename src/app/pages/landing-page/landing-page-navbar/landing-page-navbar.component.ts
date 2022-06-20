@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {LocalStorageService} from "../../services/storage/local-storage.service";
+import {LocalStorageService} from "../../../services/storage/local-storage.service";
 
 @Component({
   selector: 'app-landing-page-navbar',

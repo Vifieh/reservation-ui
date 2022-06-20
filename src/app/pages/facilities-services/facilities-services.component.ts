@@ -65,7 +65,6 @@ export class FacilitiesServicesComponent implements OnInit, OnDestroy {
   showBreakfastDelete: boolean = false;
   propertyId?: string | null;
 
-
   constructor(
     private breakfastAvailableService: BreakfastAvailableService,
     private languageService: LanguageService,
@@ -98,7 +97,7 @@ export class FacilitiesServicesComponent implements OnInit, OnDestroy {
       site: [''],
       reservation: [''],
       unitPrice: [''],
-      currency: [''],
+      currency: ['XAF'],
     }),
     breakfastPayload: this.formBuilder.group({
       unitPrice: [''],
@@ -112,28 +111,12 @@ export class FacilitiesServicesComponent implements OnInit, OnDestroy {
       this.customPayload(),
     ]),
     propertyFacilityPayloadList: this.formBuilder.array([
-      this.propertyFacilityForm(),
     ]),
   });
 
   defaultPayload(): FormGroup {
     return this.formBuilder.group({
       id: [''],
-    });
-  }
-
-  customPayload(): FormGroup {
-    return this.formBuilder.group({
-      name: [''],
-    });
-  }
-
-  propertyFacilityForm(): FormGroup {
-    return this.formBuilder.group({
-      propertyFacilityDetails:  this.formBuilder.group({
-        facilityId: [''],
-        status: [''],
-      })
     });
   }
 
@@ -148,6 +131,12 @@ export class FacilitiesServicesComponent implements OnInit, OnDestroy {
 
   deleteBreakfastAvailablePayload(breakfastIndex: number) {
     this.breakfastAvailablePayload.removeAt(breakfastIndex);
+  }
+
+  customPayload(): FormGroup {
+    return this.formBuilder.group({
+      name: [''],
+    });
   }
 
   get languagePayload() {
@@ -167,10 +156,22 @@ export class FacilitiesServicesComponent implements OnInit, OnDestroy {
     return this.addFacilitiesAndServicesForm.get('propertyFacilityPayloadList') as FormArray;
   }
 
-  addPropertyFacilityPayloadList() {
-    this.propertyFacilityPayloadList.push(this.propertyFacilityForm());
+  propertyFacilityForm(id: string): FormGroup {
+    return this.formBuilder.group({
+        facilityId: [id],
+        status: ['FREE'],
+    });
   }
 
+  addPropertyFacilityPayloadItem(event: any) {
+    this.displaySelect = event.currentTarget.checked;
+    if (event.target.checked) {
+      this.propertyFacilityPayloadList.push(this.propertyFacilityForm(event.target.value));
+    }else {
+      const index = this.propertyFacilityPayloadList.controls.findIndex(x => x.value === event.target.value);
+      this.propertyFacilityPayloadList.removeAt(index);
+    }
+  }
 
   checkStatus(event: any) {
     this.isDisplayed = event.target.value !== 'NO';
@@ -209,16 +210,6 @@ export class FacilitiesServicesComponent implements OnInit, OnDestroy {
       if (facility.choice) {
         this.displayField = true;
       }
-    }
-  }
-
-  checkChange(facility: FacilityDto, event: any) {
-    this.displaySelect = event.target.checked;
-    if (event.target.checked) {
-      this.addPropertyFacilityPayloadList();
-    }else {
-      const index = this.propertyFacilityPayloadList.controls.findIndex(x => x.value === facility.id);
-      this.propertyFacilityPayloadList.removeAt(index);
     }
   }
 

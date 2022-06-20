@@ -14,15 +14,16 @@ import {LocalStorageService} from "../../services/storage/local-storage.service"
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
-  submitted = false;
-  subscriptions: Subscription[] = []
+  submitted: boolean = false;
+  subscriptions: Subscription[] = [];
 
   constructor(
     public formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
     private notificationService: NotificationService,
     private localStorageService: LocalStorageService,
-    private router: Router) {
+    private router: Router,
+    ) {
   }
 
   ngOnDestroy(): void {
@@ -70,6 +71,4 @@ export class LoginComponent implements OnInit, OnDestroy {
       this.subscriptions.push(loginSub);
     }
   }
-
-
 }

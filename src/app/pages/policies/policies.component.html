@@ -1,7 +1,7 @@
 <app-list-property-navbar></app-list-property-navbar>
 <app-list-property></app-list-property>
 <div class="container">
-  <form class="col-md-9">
+  <form [formGroup]="addPolicyForm" (ngSubmit)="addPolicy()" class="col-md-9">
     <h3>Policies</h3>
     <p>Specify some basic policies. Do you allow children or pets? How flexible are you with cancellations?</p>
     <br>
@@ -9,14 +9,18 @@
       <h4>Cancellations</h4>
       <div class="form-group col-md-6">
         <label>How many days in advance can guests cancel free of charge?</label>
-        <select class="form-select">
+        <select
+          formControlName="guestCanCancel"
+          class="form-select">
           <option *ngFor="let day of days" value="{{day}}">{{day}}</option>
         </select>
       </div>
       <br>
       <div class="form-group col-md-6">
         <label>or guests will pay 100%</label>
-        <select class="form-select">
+        <select
+          formControlName="guestPay"
+          class="form-select">
           <option *ngFor="let pay of pays" value="{{pay}}">{{pay}}</option>
         </select>
       </div>
@@ -34,60 +38,24 @@
           <h4>Check-in</h4>
           <label style="{margin-right: 5px;width: 100%;}">from:</label>
           <div class="row">
-            <div class="col-md-3">
-              <div class="form-check form-check-inline">
-                <input type="radio" class="btn-check form-check-input" name="options" id="option1" autocomplete="off"
-                       checked>
-                <label class="btn btn-outline-dark" for="option1">12:00</label>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="form-check form-check-inline">
-                <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off">
-                <label style="{margin-right: 5px;width: 100%;}" class="btn btn-outline-dark" for="option2">14:00</label>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="form-check form-check-inline">
-                <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off">
-                <label style="{margin-right: 5px;width: 100%;}" class="btn btn-outline-dark" for="option3">14:00</label>
-              </div>
-            </div>
-            <div class="col-md-3">
-              <div class="form-check form-check-inline">
-                <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off">
-                <label style="{margin-right: 5px;width: 100%;}" class="btn btn-outline-dark" for="option4">14:00</label>
-              </div>
+            <div class="form-group">
+              <select
+                formControlName="checkInFrom"
+                class="form-select">
+                <option *ngFor="let checkInFrom of checkInFromSelect" value="{{checkInFrom}}">{{checkInFrom}}</option>
+              </select>
             </div>
           </div>
           <br>
           <div class="form-group">
             <label>to:</label>
             <div class="row">
-              <div class="col-md-3">
-                <div class="form-check form-check-inline">
-                  <input type="radio" class="btn-check form-check-input" name="options" id="option5" autocomplete="off"
-                         checked>
-                  <label class="btn btn-outline-dark" for="option5">12:00</label>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-check form-check-inline">
-                  <input type="radio" class="btn-check" name="options" id="option6" autocomplete="off">
-                  <label style="{margin-right: 5px;width: 100%;}" class="btn btn-outline-dark" for="option6">14:00</label>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-check form-check-inline">
-                  <input type="radio" class="btn-check" name="options" id="option7" autocomplete="off">
-                  <label style="{margin-right: 5px;width: 100%;}" class="btn btn-outline-dark" for="option7">14:00</label>
-                </div>
-              </div>
-              <div class="col-md-3">
-                <div class="form-check form-check-inline">
-                  <input type="radio" class="btn-check" name="options" id="option8" autocomplete="off">
-                  <label style="{margin-right: 5px;width: 100%;}" class="btn btn-outline-dark" for="option8">14:00</label>
-                </div>
+              <div class="form-group">
+                <select
+                  formControlName="checkInTo"
+                  class="form-select">
+                  <option *ngFor="let checkInTo of checkInToSelect" value="{{checkInTo}}">{{checkInTo}}</option>
+                </select>
               </div>
             </div>
           </div>
@@ -100,12 +68,20 @@
           <h4>Check-out</h4>
           <div class="form-group">
             <label>from(optional):</label>
-            <input type="time" class="form-control">
+            <select
+              formControlName="checkOutFrom"
+              class="form-select">
+              <option *ngFor="let checkOutFrom of checkOutFromSelect" value="{{checkOutFrom}}">{{checkOutFrom}}</option>
+            </select>
           </div>
           <br>
           <div class="form-group">
             <label>to:</label>
-            <input type="time" class="form-control">
+            <select
+              formControlName="checkOutTo"
+              class="form-select">
+              <option *ngFor="let checkOutTo of checkInFromSelect" value="{{checkOutTo}}">{{checkOutTo}}</option>
+            </select>
           </div>
           <br>
         </div>
@@ -118,8 +94,8 @@
       <div class="row">
         <div class="col-md-3 btn-radio" style="margin-right: 1.5rem">
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                    id="flexRadioDefault1">
+            <input formControlName="canAccommodateChildren" name="canAccommodateChildren" value="YES" class="form-check-input" type="radio"
+                   id="flexRadioDefault1">
             <label class="form-check-label" for="flexRadioDefault1">
               Yes
             </label>
@@ -127,8 +103,8 @@
         </div>
         <div class="col-md-3 btn-radio">
           <div class="form-check">
-            <input class="form-check-input" value="no" type="radio"
-                   name="flexRadioDefault" id="flexRadioDefault2" checked>
+            <input formControlName="canAccommodateChildren" name="canAccommodateChildren" value="NO" class="form-check-input" type="radio"
+                   id="flexRadioDefault2" checked>
             <label class="form-check-label" for="flexRadioDefault2">
               No
             </label>
@@ -142,11 +118,13 @@
       <h4>Pets</h4>
       <span class="form-text" style="background-color: gainsboro; padding: 0.5rem">Some guests like to travel with their furry friends. Indicate if you allow pets and if any charges apply.</span>
       <br>
-      <div class="row">
+      <div formGroupName="petPayload" class="row">
         <div class="col-md-4">
           <div class="form-group">
             <label>Do you allow pets?</label>
-            <select class="form-select" (change)="checkStatus($event)">
+            <select
+              formControlName="allowPets"
+              class="form-select" (change)="checkStatus($event)">
               <option *ngFor="let pets of petsAllowed" value="{{pets.key}}">{{pets.value}}</option>
             </select>
             <br>
@@ -155,7 +133,9 @@
         <div class="col-md-5" *ngIf="isDisplayed">
           <div class="form-group">
             <label>Are there additional charges for pets?</label>
-            <select class="form-select">
+            <select
+              formControlName="charge"
+              class="form-select">
               <option *ngFor="let charge of charges" value="{{charge.key}}">{{charge.value}}</option>
             </select>
             <br>
@@ -164,7 +144,7 @@
       </div>
     </div>
     <br>
-    <button class="btn btn-primary" style="width: 100%; height: 8vh; text-align: center">Continue</button>
+    <button type="submit" class="btn btn-primary" style="width: 100%; height: 8vh; text-align: center">Continue</button>
     <br>
     <br>
   </form>

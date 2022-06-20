@@ -23,8 +23,11 @@ import {CategoryAmenityComponent} from './pages/category-amenity/category-amenit
 import {AmenityComponent} from './pages/amenity/amenity.component';
 import {CityDetailComponent} from './pages/city-detail/city-detail.component';
 import {MapComponent} from './pages/map/map.component';
-import { HomeLandingPageComponent } from './pages/home-landing-page/home-landing-page.component';
-
+import {ListPropertyRegisterComponent} from './pages/list-property-register/list-property-register.component';
+import {ListPropertyLoginComponent} from './pages/list-property-login/list-property-login.component';
+import {MyPropertiesComponent} from './pages/my-properties/my-properties.component';
+import {PropertyDetailsComponent} from './pages/property-details/property-details.component';
+import {ListPropertyCompletionComponent} from './pages/list-property-completion/list-property-completion.component';
 
 
 const routes: Routes = [
@@ -65,6 +68,31 @@ const routes: Routes = [
   },
 
   {
+    path: 'list-property-login',
+    component: ListPropertyLoginComponent,
+  },
+
+  {
+    path: 'list-property-register',
+    component: ListPropertyRegisterComponent,
+  },
+
+  {
+    path: 'list-property-completion/:id',
+    component: ListPropertyCompletionComponent,
+  },
+
+  {
+    path: 'my-properties',
+    component: MyPropertiesComponent,
+  },
+
+  {
+    path: 'property-details/:id',
+    component: PropertyDetailsComponent,
+  },
+
+  {
     path: 'admin-dashboard',
     component: AdminDashboardComponent,
   },
@@ -88,11 +116,11 @@ const routes: Routes = [
     component: BasicInfoComponent,
   },
   {
-    path: 'layout/:id',
+    path: 'layouts/:id',
     component: LayoutPricingComponent
   },
   {
-    path: 'facility/:id',
+    path: 'facilities/:id',
     component: FacilitiesServicesComponent,
   },
   {
@@ -100,15 +128,15 @@ const routes: Routes = [
     component: AmenitiesComponent,
   },
   {
-    path: 'photo',
+    path: 'photos/:id',
     component: PhotosComponent,
   },
   {
-    path: 'policy',
+    path: 'policies/:id',
     component: PoliciesComponent,
   },
   {
-    path: 'payment',
+    path: 'payments/:id',
     component: PaymentsComponent,
   },
 
@@ -128,7 +156,7 @@ const routes: Routes = [
   },
   {
     path: 'property-landing-Page',
-    component: HomeLandingPageComponent,
+    component: PropertyLandingPageComponent,
   },
   {
     path: '**',

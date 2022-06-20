@@ -18,6 +18,7 @@ body {
 
 a {
   cursor: pointer;
+  text-decoration: none;
 }
 
 label {
@@ -28,5 +29,4 @@ label {
   border: 1px solid lightgray;
   padding: 6px 4px 4px 15px;
   border-radius: 4px;
-  width: 15%;
 }

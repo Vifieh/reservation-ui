@@ -4,6 +4,7 @@ import {AuthenticationService} from "../../services/auth-service/authentication.
 import {Router} from "@angular/router";
 import {NotificationService} from "../../services/notification/notification.service";
 import {Subscription} from "rxjs";
+import {Role} from '../../enum/role';
 
 @Component({
   selector: 'app-register',
@@ -12,14 +13,15 @@ import {Subscription} from "rxjs";
 })
 export class RegisterComponent implements OnInit, OnDestroy {
 
-  submitted = false;
-  subscriptions: Subscription[] = []
+  submitted: boolean = false;
+  subscriptions: Subscription[] = [];
 
   constructor(
     public formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
     private notificationService: NotificationService,
-    private router: Router) {
+    private router: Router,
+  ) {
   }
 
   ngOnDestroy(): void {
@@ -35,7 +37,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(256)]],
-      role: ['USER', [Validators.required]]
+      role: [Role.ROLE_USER, [Validators.required]]
     }
   );
 
@@ -50,7 +52,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     } else {
       const registerSub = this.authenticationService.register(this.registerForm.value)
         .subscribe(response => {
-      });
+          this.router.navigate(['/login']);
+        });
       this.subscriptions.push(registerSub);
     }
   }
