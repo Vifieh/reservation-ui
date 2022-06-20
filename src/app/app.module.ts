@@ -44,7 +44,12 @@ import {MyPropertiesComponent} from './pages/my-properties/my-properties.compone
 import {PropertyDetailsComponent} from './pages/property-details/property-details.component';
 import {PropertyDetailsNavbarComponent} from './pages/property-details/property-details-navbar/property-details-navbar.component';
 import {ListPropertyCompletionComponent} from './pages/list-property-completion/list-property-completion.component';
-
+import { AmenityComponent } from './pages/amenity/amenity.component';
+import { CityDetailComponent } from './pages/city-detail/city-detail.component';
+import { SingleHotelComponent } from './pages/single-hotel/single-hotel.component';
+import { MapComponent } from './pages/map/map.component';
+import { EnumToArrayPipe } from './pipes/enum-to-array/enum-to-array.pipe';
+import { HomeLandingPageComponent } from './pages/home-landing-page/home-landing-page.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +80,7 @@ import {ListPropertyCompletionComponent} from './pages/list-property-completion/
     PaymentsComponent,
     AmenityComponent,
     CityDetailComponent,
+    SingleHotelComponent,
     MapComponent,
     EnumToArrayPipe,
     PropertyNavbarComponent,
@@ -84,6 +90,8 @@ import {ListPropertyCompletionComponent} from './pages/list-property-completion/
     PropertyDetailsComponent,
     PropertyDetailsNavbarComponent,
     ListPropertyCompletionComponent,
+    HomeLandingPageComponent,
+
   ],
   imports: [
     BrowserModule,

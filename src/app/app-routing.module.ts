@@ -21,13 +21,15 @@ import {PoliciesComponent} from './pages/policies/policies.component';
 import {PaymentsComponent} from './pages/payments/payments.component';
 import {CategoryAmenityComponent} from './pages/category-amenity/category-amenity.component';
 import {AmenityComponent} from './pages/amenity/amenity.component';
-import {CityDetailComponent} from './pages/city-detail/city-detail.component';
+import {CityDetailComponent} from "./pages/city-detail/city-detail.component";
+import {SingleHotelComponent} from "./pages/single-hotel/single-hotel.component";
 import {MapComponent} from './pages/map/map.component';
 import {ListPropertyRegisterComponent} from './pages/list-property-register/list-property-register.component';
 import {ListPropertyLoginComponent} from './pages/list-property-login/list-property-login.component';
 import {MyPropertiesComponent} from './pages/my-properties/my-properties.component';
 import {PropertyDetailsComponent} from './pages/property-details/property-details.component';
 import {ListPropertyCompletionComponent} from './pages/list-property-completion/list-property-completion.component';
+
 
 
 const routes: Routes = [
@@ -151,6 +153,12 @@ const routes: Routes = [
   },
 
   {
+
+    path: 'single-hotel',
+    component: SingleHotelComponent,
+  },
+  {
+
     path: 'map',
     component: MapComponent,
   },
@@ -158,6 +166,7 @@ const routes: Routes = [
     path: 'property-landing-Page',
     component: PropertyLandingPageComponent,
   },
+
   {
     path: '**',
     component: PageNotFoundComponent

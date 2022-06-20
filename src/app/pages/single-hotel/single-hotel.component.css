@@ -1,0 +1,40 @@
+.main
+{
+  background-color: white;
+  height: 100%;
+}
+.card-body{
+  padding: 2rem;
+  padding-bottom: 4rem;
+}
+
+.form
+{
+  background-color: orange;
+  padding: 2rem;
+}
+.form1
+{
+  background-color: sandybrown;
+  padding: 2rem;
+  border: 2px solid orange;
+}
+th{
+  background-color: dodgerblue;
+}
+.card1
+{
+  background-color: paleturquoise;
+  border: 2px solid green;
+}
+.card
+{
+  padding: 2rem;
+}
+ img
+{
+  height: 30vh;
+  width: 100%;
+  object-fit: fill;
+  margin-bottom: 2vh;
+}
