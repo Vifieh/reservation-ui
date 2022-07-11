@@ -16,8 +16,8 @@ export class RoomReservationService {
 
   constructor(private http: HttpClient) { }
 
-  reserveRoom(propertyId: string | null | undefined, roomReservationPayload: RoomReservationItemPayload): Observable<SuccessResponse> {
-    return this.http.post<SuccessResponse>(
+  reserveRoom(propertyId: string | null | undefined, roomReservationPayload: RoomReservationItemPayload): Observable<RoomReservationResponse> {
+    return this.http.post<RoomReservationResponse>(
       `${this.baseUrlPro}/roomReservations?propertyId=${propertyId}`,
       roomReservationPayload
     )

@@ -16,7 +16,7 @@ import {NotificationType} from '../../model/notificationMessage';
 import {Currency} from '../../enum/currency';
 import {FacilityService} from '../../services/facility-service/facility.service';
 import {PropertyFacilityDto} from '../../model/dto/propertyFacilityDto';
-import {RoomReservationResponse} from '../../model/dto/roomReservationDto';
+import {RoomReservationDto, RoomReservationResponse} from '../../model/dto/roomReservationDto';
 
 @Component({
   selector: 'app-single-hotel',
@@ -74,6 +74,7 @@ export class SingleHotelComponent implements OnInit, OnDestroy {
   submitted: boolean = false;
   reference: string = '';
   price: number = 0;
+  newReservation: any;
 
   constructor(
     private propertyService: PropertyService,
@@ -224,31 +225,26 @@ export class SingleHotelComponent implements OnInit, OnDestroy {
       const message = 'please fill all fields in the form';
       this.notificationService.sendMessage({message: message, type: NotificationType.info});
     } else {
-      const reserveRoomSub = this.reservationService.reserveRoom(this.propertyId, this.reserveRoomForm.value)
+      const reserveRoomSub =this.reservationService.reserveRoom(this.propertyId, this.reserveRoomForm.value)
         .subscribe(response => {
-          console.log(response);
-          this.getReservation(response.id);
-          console.log("ref1: " + this.getReservation(response.id).ref);
-
-          this.reference = this.reservation?.ref!;
-          this.price = this.reservation?.totalPrice!;
-          console.log("ref: " + this.reservation?.ref!);
-          console.log("price: " + this.reservation?.totalPrice!);
-          this.router.navigate(['/payment-page']);
+         console.log(response);
+          this.reference = response.ref;
+          this.price = response.totalPrice;
+          this.router.navigate(['/payment-page', this.price, this.reference]);
         });
       this.subscriptions.push(reserveRoomSub);
     }
   }
 
-  getReservation(reservationId: string): RoomReservationResponse {
-    const reservationSub = this.reservationService.getReservation(reservationId).subscribe(response => {
-      this.reservation = response;
-      console.log(this.reservation);
-
-    });
-    this.subscriptions.push(reservationSub);
-    return this.reservation;
-  }
+  // getReservation(reservationId: string): RoomReservationResponse{
+  //   const reservationSub = this.reservationService.getReservation(reservationId).subscribe(response => {
+  //     this.reservation = response;
+  //     console.log(this.reservation);
+  //
+  //   });
+  //   this.subscriptions.push(reservationSub);
+  //   return this.reservation;
+  // }
 
   getPropertyFacilities() {
     const propertyFacilitiesSub = this.facilityService.getFacilitiesByProperty(this.propertyId)
