@@ -1,9 +1,10 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {environment} from "../../../environments/environment";
-import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {CustomPayload} from "../../model/customPayload";
-import {catchError, Observable, retry, throwError} from "rxjs";
-import {CustomDto} from "../../model/customDto";
+import {HttpClient} from "@angular/common/http";
+import {CustomPayload} from "../../model/payload/customPayload";
+import {Observable} from "rxjs";
+import {CustomDto} from "../../model/dto/customDto";
+import {ResponseMessage} from 'src/app/model/responseMessage';
 
 @Injectable({
   providedIn: 'root'
@@ -12,50 +13,37 @@ export class CountryService {
   baseUrlPro: string = environment.baseUrlPro;
   baseUrlPub: string = environment.baseUrlPub;
 
-  constructor(private http: HttpClient) { }
-
-  createCountry(country: CustomPayload): Observable<Response> {
-    return this.http.post<Response>(this.baseUrlPro + 'countries', country)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      );
+  constructor(private http: HttpClient) {
   }
 
-  editCountry(countryId: string, country: CustomPayload): Observable<Response> {
-    return this.http.patch<Response>(this.baseUrlPro + `countries/${countryId}`, country)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      );
+  createCountry(countryPayload: CustomPayload): Observable<ResponseMessage> {
+    return this.http.post<ResponseMessage>(
+      `${this.baseUrlPro}/countries`,
+      countryPayload
+    )
+  }
+
+  editCountry(countryId: string, countryPayload: CustomPayload): Observable<ResponseMessage> {
+    return this.http.patch<ResponseMessage>(
+      `${this.baseUrlPro}/countries/${countryId}`,
+      countryPayload
+    )
   }
 
   getCountries(): Observable<CustomDto[]> {
-    return this.http.get<CustomDto[]>(this.baseUrlPub + 'countries')
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      );
-}
+    return this.http.get<CustomDto[]>(
+      `${this.baseUrlPub}/countries`
+    )
+  }
 
   getCountry(countryId: string): Observable<CustomDto> {
-    return this.http.get<CustomDto>(this.baseUrlPub + `countries/${countryId}`)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      );
+    return this.http.get<CustomDto>(`${this.baseUrlPub}/countries/${countryId}`)
+
   }
 
-  deleteCountry(countryId: string): Observable<Response> {
-    return this.http.get<Response>(this.baseUrlPro + `countries/${countryId}`)
-      .pipe(
-        retry(1),
-        catchError(this.handleError)
-      );
-  }
-
-  handleError(error: HttpErrorResponse): Observable<never> {
-    console.log(error);
-    return throwError(`An error occurred - Error code: ${error.status}`);
+  deleteCountry(countryId?: string): Observable<ResponseMessage> {
+    return this.http.delete<ResponseMessage>(
+      `${this.baseUrlPro}/countries/${countryId}`
+    )
   }
 }

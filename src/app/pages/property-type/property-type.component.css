@@ -1,0 +1,45 @@
+.main {
+  background-color: #f2f2f2;
+  color: #333;
+  height: 100%;
+}
+
+.heading__primary {
+  font-size: 1.2rem;
+}
+
+.section {
+  padding: 15rem 0;
+  background-color: #ffffff;
+}
+
+.card-display {
+  background-color: #ffffff;
+  padding-bottom: 2rem;
+}
+
+.card-display__top {
+  /*padding-top: -1rem;*/
+}
+
+.card
+{
+  height: 100%;
+}
+
+a {
+  cursor: pointer;
+}
+.card:active
+{
+  border: 2px solid blue;
+}
+
+#main-card:active {
+  border: 2px solid gainsboro;
+}
+
+.limitTextHeight {
+  height: 52vh;
+  overflow: hidden;
+}

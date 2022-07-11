@@ -1,0 +1,27 @@
+<app-navbar></app-navbar>
+
+<div class="row gy-5">
+  <div class="col-md-3">
+    <app-sidebar></app-sidebar>
+  </div>
+
+  <div class="col-md-8">
+    <div class="p-3 table-responsive">
+      <table class="table caption-top align-middle">
+        <caption>{{properties.length}} Properties approved </caption>
+        <thead>
+        <tr>
+          <th scope="col">name</th>
+          <th scope="col">rating</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let property of properties">
+          <td>{{property.name}}</td>
+          <td>{{property.rating}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

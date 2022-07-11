@@ -1,0 +1,30 @@
+.main {
+  background-color: #f2f2f2;
+  color: #333;
+  height: 91vh;
+}
+
+.heading__primary {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.heading__secondary
+{
+  font-size: 1.1rem;
+}
+.card{
+  text-align: center;
+  position: relative;
+}
+span{
+  font-size: 0.8rem;
+}
+button
+{
+  width: 85%;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+
+}
+

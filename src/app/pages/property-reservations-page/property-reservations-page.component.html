@@ -1,0 +1,34 @@
+<app-navbar></app-navbar>
+<app-property-details-navbar></app-property-details-navbar>
+<div class="container">
+  <br><br>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="col-md-4">
+        <legend>Reservations
+          <span class="badge bg-primary">{{reservations.length}}</span>
+          </legend>
+      </div>
+    </div>
+    <br><br>
+    <div  class="col-md-9">
+      <div *ngFor="let reservation of reservations" class="card" style="margin-bottom: 1.5rem">
+        <div class="row">
+          <div class="col-md-3">
+            CheckIn: {{reservation?.checkOut | date}}
+          </div>
+          <div class="col-md-3">
+            CheckOut: {{reservation?.checkOut | date}}
+          </div>
+          <div class="col-md-3">
+            Total price: {{reservation.totalPrice!}} {{reservation.currency!}}
+          </div>
+          <div class="col-md-3" style="color: blue">
+            <a>Checkout guest</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

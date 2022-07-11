@@ -1,0 +1,40 @@
+.app-name {
+  color: #ffffff;
+}
+
+nav {
+  background-color: #003580;
+  padding: 12px 32px 0;
+  height: 14vh;
+}
+
+.brand-style {
+  margin-left: 106px;
+}
+
+.btn-color {
+  background-color: #ffffff;
+  color: #673ab7;
+  border-color: #311b92;
+}
+
+.btn-list {
+  background-color: #311b92;
+  color: #ffffff;
+  font-weight: 400;
+  border-color: #ffffff;
+}
+
+.ul-list {
+  margin-right: 106px;
+}
+
+.language {
+  border: 1px solid white;
+}
+
+img {
+  height: 35px;
+  width: 35px;
+  border-radius: 35px;
+}

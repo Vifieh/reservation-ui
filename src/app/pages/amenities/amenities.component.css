@@ -1,0 +1,60 @@
+.card {
+  padding: 2rem;
+}
+
+label {
+  padding: 0.4rem;
+}
+
+input[type=text] {
+  height: 7vh;
+}
+
+.input-group-text {
+  height: 7vh;
+}
+
+select {
+  height: 7vh;
+}
+
+.container {
+  margin-top: 5vh;
+}
+
+.btn-outline-dark:hover {
+  background-color: gainsboro;
+  color: black;
+}
+
+.base {
+  border: 2px solid lightgrey;
+  padding: 1rem;
+}
+
+.base-1 {
+  border: 2px solid lightgrey;
+}
+
+.amenities-title {
+  margin: 30px 0 20px !important;
+}
+
+.pull-left {
+  float: left !important;
+}
+
+.accordion-header {
+  padding: 10px 12px;
+  font-size: 16px;
+  margin: 0;
+  cursor: pointer;
+  position: relative;
+}
+
+.btn-radio {
+  border: 1px solid lightgray;
+  padding: 6px 4px 4px 15px;
+  border-radius: 4px;
+  width: 15%;
+}

@@ -13,5 +13,21 @@ html {
 
 body {
   box-sizing: border-box;
-  font-family: "Lato", sans-serif;
+  background-color: #f2f2f2;
+  /*filter: blur(4px) !important;*/
 }
+
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
+
+.btn-radio {
+  border: 1px solid lightgray;
+  padding: 6px 4px 4px 15px;
+  border-radius: 4px;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

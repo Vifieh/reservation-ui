@@ -1,0 +1,29 @@
+.main {
+  background-color: white;
+  height: 100%;
+}
+
+.card-body {
+  padding: 2rem 2rem 4rem;
+}
+
+form {
+  background-color: orange;
+  padding: 2rem;
+}
+
+.card {
+  padding: 2rem;
+}
+
+.card-title {
+  font-size: 30px;
+  color: #0071c2;
+  cursor: pointer;
+}
+
+.active {
+  background: #ebf3ff;
+  border-color: #a3d7fc;
+  box-shadow: 0 0 8px #a3d7fc;
+}

@@ -1,0 +1,151 @@
+<app-list-property-navbar></app-list-property-navbar>
+<app-list-property></app-list-property>
+<div class="container">
+  <form [formGroup]="addPolicyForm" (ngSubmit)="addPolicy()" class="col-md-9">
+    <h3>Policies</h3>
+    <p>Specify some basic policies. Do you allow children or pets? How flexible are you with cancellations?</p>
+    <br>
+    <div class="card">
+      <h4>Cancellations</h4>
+      <div class="form-group col-md-6">
+        <label>How many days in advance can guests cancel free of charge?</label>
+        <select
+          formControlName="guestCanCancel"
+          class="form-select">
+          <option *ngFor="let day of days" value="{{day}}">{{day}}</option>
+        </select>
+      </div>
+      <br>
+      <div class="form-group col-md-6">
+        <label>or guests will pay 100%</label>
+        <select
+          formControlName="guestPay"
+          class="form-select">
+          <option *ngFor="let pay of pays" value="{{pay}}">{{pay}}</option>
+        </select>
+      </div>
+      <br>
+      <div class="notification">
+        <h6><i class="fa fa-bell fa-1x"></i> The guest must cancel by 18:00 on the day of arrival or pay
+          100% of the price for the first night.</h6>
+        <span class="form-text">Please note: You'll be able to make changes to your policies later on. This is just to get you started.</span>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <h4>Check-in</h4>
+          <label style="{margin-right: 5px;width: 100%;}">from:</label>
+          <div class="row">
+            <div class="form-group">
+              <select
+                formControlName="checkInFrom"
+                class="form-select">
+                <option *ngFor="let checkInFrom of checkInFromSelect" value="{{checkInFrom}}">{{checkInFrom}}</option>
+              </select>
+            </div>
+          </div>
+          <br>
+          <div class="form-group">
+            <label>to:</label>
+            <div class="row">
+              <div class="form-group">
+                <select
+                  formControlName="checkInTo"
+                  class="form-select">
+                  <option *ngFor="let checkInTo of checkInToSelect" value="{{checkInTo}}">{{checkInTo}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <br>
+        </div>
+        <br>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <h4>Check-out</h4>
+          <div class="form-group">
+            <label>from(optional):</label>
+            <select
+              formControlName="checkOutFrom"
+              class="form-select">
+              <option *ngFor="let checkOutFrom of checkOutFromSelect" value="{{checkOutFrom}}">{{checkOutFrom}}</option>
+            </select>
+          </div>
+          <br>
+          <div class="form-group">
+            <label>to:</label>
+            <select
+              formControlName="checkOutTo"
+              class="form-select">
+              <option *ngFor="let checkOutTo of checkInFromSelect" value="{{checkOutTo}}">{{checkOutTo}}</option>
+            </select>
+          </div>
+          <br>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h4>Children</h4>
+      <p>Can you accommodate children? (You can specify the ages and prices later)</p>
+      <br>
+      <div class="row">
+        <div class="col-md-3 btn-radio" style="margin-right: 1.5rem">
+          <div class="form-check">
+            <input formControlName="canAccommodateChildren" name="canAccommodateChildren" value="YES" class="form-check-input" type="radio"
+                   id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">
+              Yes
+            </label>
+          </div>
+        </div>
+        <div class="col-md-3 btn-radio">
+          <div class="form-check">
+            <input formControlName="canAccommodateChildren" name="canAccommodateChildren" value="NO" class="form-check-input" type="radio"
+                   id="flexRadioDefault2" checked>
+            <label class="form-check-label" for="flexRadioDefault2">
+              No
+            </label>
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+    <br>
+    <div class="card">
+      <h4>Pets</h4>
+      <span class="form-text" style="background-color: gainsboro; padding: 0.5rem">Some guests like to travel with their furry friends. Indicate if you allow pets and if any charges apply.</span>
+      <br>
+      <div formGroupName="petPayload" class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label>Do you allow pets?</label>
+            <select
+              formControlName="allowPets"
+              class="form-select" (change)="checkStatus($event)">
+              <option *ngFor="let pets of petsAllowed" value="{{pets.key}}">{{pets.value}}</option>
+            </select>
+            <br>
+          </div>
+        </div>
+        <div class="col-md-5" *ngIf="isDisplayed">
+          <div class="form-group">
+            <label>Are there additional charges for pets?</label>
+            <select
+              formControlName="charge"
+              class="form-select">
+              <option *ngFor="let charge of charges" value="{{charge.key}}">{{charge.value}}</option>
+            </select>
+            <br>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary" style="width: 100%; height: 8vh; text-align: center">Continue</button>
+    <br>
+    <br>
+  </form>
+</div>

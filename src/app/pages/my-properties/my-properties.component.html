@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <br><br>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="col-md-4">
+        <legend>My Properties</legend>
+      </div>
+      <div class="col-md-3" style="float: left">
+        <a routerLink="/property-dashboard" class="btn btn-outline-primary">Add another property</a>
+      </div>
+    </div>
+    <br><br>
+    <div class="col-md-9">
+      <div *ngFor="let property of properties" class="card">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>{{property.name}}</h5>
+          </div>
+          <div class="col-md-3">
+            Pending: {{property.pending}}
+          </div>
+          <div class="col-md-3" style="color: blue">
+            <a routerLink="/reservations/{{property.id}}">View Details</a>
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>

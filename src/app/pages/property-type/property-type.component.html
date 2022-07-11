@@ -1,0 +1,136 @@
+<app-navbar></app-navbar>
+
+<div class="main">
+  <div class="container">
+    <div class="row" *ngIf="!isHide">
+      <div class="heading">
+        <br>
+        <p class="heading__primary">From the list below, which property type is most similar to your place?</p>
+
+      </div>
+      <div class="card-display row row-cols-4 g-4" [ngClass]="{'limitTextHeight': isOption}">
+        <div *ngFor="let propertyType of propertyTypes" class="card-display__top col-sm-4"
+             (click)="property(propertyType)">
+          <a>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">{{propertyType.name}}</h5>
+                <p class="card-text">{{propertyType.description}}</p>
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="card col-md-3" (click)="showTOption()"
+           style="cursor: pointer; text-align: center; margin-top: 3vh; margin-bottom: 2vh">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fa fa-arrow-down fa-1x"></i>
+            {{ isOption ? 'More options' : 'Less options' }}</h5>
+        </div>
+      </div>
+      <hr>
+
+      <div class="row">
+        <div class="col-md-2">
+          <button class="btn btn-outline-primary" style="width: 100%; height: 8vh" [disabled]="!isClicked"
+                  (click)="property2()"><i class="fa fa-arrow-left fa-1x"></i></button>
+        </div>
+        <div class="col-md-10">
+          <button class="btn btn-primary" style="width: 100%; height: 8vh" [disabled]="!isClicked"
+                  (click)="property1()">Continue
+          </button>
+        </div>
+        <br>
+        <br>
+      </div>
+
+    </div>
+
+
+    <div class="row" *ngIf="isClicked1">
+      <div class="heading">
+        <br>
+        <p class="heading__primary">How many {{propertyTypeName | lowercase}}s are you listing?</p>
+        <br>
+      </div>
+      <div class="card col-md-6" id="main-card">
+        <br>
+        <div class="col-md-12">
+          <div class="card" (click)="clickOne()">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-2">
+                  <i class="fa fa-home fa-4x" style="color: #311b92"></i>
+                </div>
+                <div class="col-md-10">
+                  <p id="oneRoom" class="card-text">One {{propertyTypeName | lowercase}} with one or multiple rooms that guests can
+                    book</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="col-md-12">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-2">
+                  <i class="fa fa-home fa-4x" style="color: #311b92"></i>
+                </div>
+                <div class="col-md-10">
+                  <p class="card-text">Multiple {{propertyTypeName | lowercase}}s with one or multiple rooms that guests
+                    can book</p></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+      </div>
+      <div class="col-md-6"></div>
+      <br>
+      <hr class="col-md-6" style="margin-top: 4vh">
+      <br>
+      <br>
+      <div class="row">
+        <div class="col-md-1">
+          <button class="btn btn-outline-primary" style="width: 100%; height: 8vh" (click)="hotel()"><i
+            class="fa fa-arrow-left fa-1x"></i></button>
+        </div>
+        <div class="col-md-5">
+          <button class="btn btn-primary" style="width: 100%; height: 8vh" (click)="hotel1()">Continue</button>
+        </div>
+
+      </div>
+      <br>
+      <br>
+    </div>
+
+    <div class="row" *ngIf="isHide1">
+      <div class="col-md-5" style="margin-top: 5vh">
+        <div class="card" style="text-align: center">
+          <div class="card-body">
+            <br>
+            <p>You're listing:</p>
+            <br>
+            <i class="fa fa-home fa-5x" style="color: #311b92"></i>
+            <br>
+            <br>
+            <h3>One hotel where guests can book a room</h3>
+            <br>
+            <br>
+            <p>Does this sound like your property?</p>
+            <br>
+            <button (click)="getPropertyTypeId()" class="btn btn-primary" style="width: 100%; height: 8vh">Continue
+            </button>
+            <br>
+            <br>
+            <button class="btn btn-outline-primary" style="width: 100%; height: 8vh" routerLink="/property-dashboard">No
+              I need to make a change
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

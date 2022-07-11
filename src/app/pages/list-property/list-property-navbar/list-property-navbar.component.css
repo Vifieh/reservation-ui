@@ -1,0 +1,21 @@
+nav{
+  background-color: #003580;
+}
+
+nav a {
+  cursor: pointer;
+  color: #ffffff;
+  /*margin-left: 100px;*/
+}
+
+.language {
+  border: 1px solid white;
+}
+
+img {
+  height: 35px;
+  width: 35px;
+  border-radius: 35px;
+}
+
+

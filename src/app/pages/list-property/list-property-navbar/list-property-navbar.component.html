@@ -1,0 +1,58 @@
+<!--<nav class="navbar navbar-light ">-->
+<!--  <div class="container-fluid">-->
+<!--    <a href="#" class="navbar-brand">Reservations.com</a>-->
+<!--    <a class="nav-link d-flex" data-bs-toggle="modal" data-bs-target="#languageModal">-->
+<!--      <img class="language" src="../../../assets/gb.png" data-bs-toggle="tooltip" data-bs-placement="bottom"-->
+<!--           title="Choose your language" alt="">-->
+<!--    </a>-->
+<!--    <a class="nav-link d-flex">-->
+<!--      <i class="fa fa-home"></i>-->
+<!--      <br>-->
+<!--      My Properties-->
+<!--    </a>-->
+<!--  </div>-->
+<!--</nav>-->
+
+<nav class="navbar navbar-expand-lg ">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <a class="navbar-brand fw-bold" style="font-size: 25px">Reservations<span class="fw-bold" style="color:
+    #46a6e7">.com</span></a> </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown me-3">
+          <a data-bs-toggle="modal" data-bs-target="#languageModal"><img src="../../../assets/gb.png"/></a>
+        </li>
+        <li class="nav-item dropdown me-3">
+          <a routerLink="/my-properties" class="nav-link text-light fw-bold" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="font-size: 16px">
+            <i class="fa fa-home fa-2x"></i>
+            My Properties</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="modal fade" id="languageModal" tabindex="-1" aria-labelledby="languageModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-4">.col-md-4</div>
+            <div class="col-md-4">.col-md-4</div>
+            <div class="col-md-4 ms-auto">.col-md-4 .ms-auto</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+.heading {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+}
+
+label {
+  padding: 0.4rem;
+}
+
+.card {
+  padding: 2rem;
+}
+
+input[type=text] {
+  height: 7vh;
+}
+
+select {
+  height: 7vh;
+}
+
+.container {
+  margin-top: 5vh;
+}
+
+.active {
+  border: 3px solid #311b92;
+}

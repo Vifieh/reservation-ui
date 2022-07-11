@@ -1,0 +1,40 @@
+.heading {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+}
+
+.card {
+  padding: 2rem;
+}
+
+input[type=text] {
+  height: 7vh;
+}
+
+select {
+  height: 7vh;
+}
+
+.container {
+  margin-top: 5vh;
+}
+
+label {
+  padding: 0.4rem;
+}
+
+.btn-outline-dark:hover {
+  background-color: gainsboro;
+  color: black;
+}
+
+.help-block {
+  font-size: 15px;
+  margin: 5px 0px 10px;
+  color: #6B6B6B;
+}
+
+.remove_bed_link {
+  color: #a30000;
+}

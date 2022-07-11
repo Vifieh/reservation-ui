@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <a href="#" class="navbar-brand fw-bold" style="font-size: 25px; color: #fff">Reservations<span class="fw-bold" style="color:
+    #46a6e7">.com</span></a></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ul-list">
+        <li class="nav-item">
+          <a class="nav-link" routerLink = "/property-landing-Page"><button type="button" class="btn btn-outline-primary btn-list">List your property</button></a>
+        </li>
+        <li class="nav-item" *ngIf="loginCheck">
+          <a class="nav-link" routerLink = "/register"><button type="button" class="btn btn-outline-primary btn-color">Register</button></a>
+        </li>
+        <li class="nav-item" *ngIf="loginCheck">
+          <a class="nav-link" routerLink = "/login"><button type="button" class="btn btn-outline-primary btn-color">Sign in</button></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

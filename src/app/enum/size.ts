@@ -1,0 +1,3 @@
+export enum Size {
+  SQUARE_METRES = 'SQUARE_METRES', SQUARE_FEET = 'SQUARE_FEET'
+}
