@@ -36,7 +36,7 @@ import {VoiceSearchComponent} from './pages/voice-search/voice-search.component'
 import {PropertyReservationsPageComponent} from './pages/property-reservations-page/property-reservations-page.component';
 import {SuccessPageComponent} from './pages/success-page/success-page.component';
 import {ErrorPageComponent} from './pages/error-page/error-page.component';
-import {PaymentModalPageComponent} from './pages/payment-modal-page/payment-modal-page.component';
+import {PaymentModalPageComponent} from './pages/single-hotel/payment-modal-page/payment-modal-page.component';
 
 
 const routes: Routes = [
@@ -204,7 +204,7 @@ const routes: Routes = [
   },
 
  {
-    path: 'payment-page',
+    path: 'payment-page/:price/:ref',
     component: PaymentModalPageComponent,
   },
 

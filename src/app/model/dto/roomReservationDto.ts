@@ -37,6 +37,13 @@ export interface RoomReservationItemDto {
 
 export interface RoomReservationResponse {
   id: string;
+  checkIn: Date;
+  checkOut: Date;
   totalPrice: number;
+  currency: Currency;
+  numberOfAdults: number;
+  numberOfChildren: number;
+  specialRequest: string;
+  arrivalTime: string;
   ref: string;
 }
