@@ -1,14 +1,13 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import { OwlOptions } from 'ngx-owl-carousel-o';
+import alanBtn from "@alan-ai/alan-sdk-web";
+import {OwlOptions} from 'ngx-owl-carousel-o';
 import {Subscription} from 'rxjs';
-import {CustomDto} from '../../model/dto/customDto';
-import {CountryService} from '../../services/country-service/country.service';
 import {NotificationService} from '../../services/notification/notification.service';
 import {CityService} from '../../services/city-service/city.service';
-import {FileService} from '../../services/file-service/file.service';
-import {FileInfoDto} from '../../model/dto/fileInfoDto';
 import {CityDto} from '../../model/dto/cityDto';
-import {PropertyAddressDto} from '../../model/dto/propertyDto';
+import {Router} from '@angular/router';
+import {FormBuilder, Validators} from '@angular/forms';
+import {VoiceRecognitionService} from '../../services/voice-recognition-service/voice-recognition.service';
 
 @Component({
   selector: 'app-landing-page',
@@ -16,14 +15,14 @@ import {PropertyAddressDto} from '../../model/dto/propertyDto';
   styleUrls: ['./landing-page.component.css']
 })
 export class LandingPageComponent implements OnInit, OnDestroy {
-  customOptions:OwlOptions = {
+  customOptions: OwlOptions = {
     loop: false,
     mouseDrag: true,
     touchDrag: true,
     pullDrag: true,
     dots: true,
     navSpeed: 700,
-    navText: ["<<",">>"],
+    navText: ['<<', '>>'],
     responsive: {
       0: {
         items: 1
@@ -39,18 +38,27 @@ export class LandingPageComponent implements OnInit, OnDestroy {
       }
     },
     nav: true
-  }
+  };
 
   subscriptions: Subscription[] = [];
   cities: CityDto[] = [];
-  cityId?: string;
-  city?: CustomDto;
+  city?: CityDto;
+  location?: string;
+  description?: string;
+  isUserSpeaking: boolean = false;
+  alanBtnInstance;
 
   constructor(
     private cityService: CityService,
-    private fileService: FileService,
+    private formBuilder: FormBuilder,
+    private voiceRecognitionService: VoiceRecognitionService,
+    private router: Router,
     private notificationService: NotificationService,
-  ) { }
+  ) {
+    this.alanBtnInstance = alanBtn({
+      key: '7cf975bf13e78e2dc7ff9085bdb975872e956eca572e1d8b807a3e2338fdd0dc/stage',
+    });
+  }
 
   ngOnDestroy(): void {
     for (const sub of this.subscriptions) {
@@ -60,14 +68,74 @@ export class LandingPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.getCities();
+    this.initVoiceInput();
   }
 
+  searchForm = this.formBuilder.group({
+    searchText: ['', Validators.required],
+  });
+
+
   getCities() {
-    const citiesSub =  this.cityService.getCities().subscribe(response => {
+    const citiesSub = this.cityService.getCities().subscribe(response => {
       this.cities = response;
-      console.log(this.cities);
     });
     this.subscriptions.push(citiesSub);
   }
 
+  getCityByName(cityName: string | undefined) {
+    const citiesSub = this.cityService.getCityByName(cityName).subscribe(response => {
+      this.city = response;
+      console.log(this.city);
+    });
+    this.subscriptions.push(citiesSub);
+  }
+
+  searchData() {
+    this.router.navigate(['/recommender', this.location, this.description]);
+  }
+
+  /**
+   * @description Function to stop recording.
+   */
+  stopRecording() {
+    this.voiceRecognitionService.stop();
+    this.isUserSpeaking = false;
+  }
+
+  /**
+   * @description Function for initializing voice input so user can chat with machine.
+   */
+  initVoiceInput() {
+    // Subscription for initializing and this will call when user stopped speaking.
+    this.voiceRecognitionService.init().subscribe(() => {
+      // User has stopped recording
+      // Do whatever when mic finished listening
+      this.getCityByName(this.transform(this.searchForm.value.searchText));
+      this.router.navigate(['/city-detail', this.city?.id]);
+
+      console.log(this.searchForm.value.searchText);
+    });
+
+    // Subscription to detect user input from voice to text.
+    this.voiceRecognitionService.speechInput().subscribe((input) => {
+      // Set voice text output to
+      // Set voice text output to
+      this.searchForm.controls['searchText'].setValue(input);
+    });
+  }
+
+  /**
+   * @description Function to enable voice input.
+   */
+  startRecording() {
+    this.isUserSpeaking = true;
+    this.voiceRecognitionService.start();
+    this.searchForm.controls['searchText'].reset();
+  }
+
+  transform(word: string) {
+    if (!word) return word;
+    return word[0].toUpperCase() + word.substr(1).toLowerCase();
+  }
 }

@@ -2,6 +2,10 @@ a {
   cursor: pointer;
 }
 
+label {
+  padding: 0.4rem;
+}
+
 .card {
   padding: 2rem;
 }

@@ -2,6 +2,10 @@
   padding: 2rem;
 }
 
+label {
+  padding: 0.4rem;
+}
+
 input[type=text] {
   height: 7vh;
 }

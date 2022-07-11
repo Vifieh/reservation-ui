@@ -35,7 +35,7 @@ export class UserService {
     )
   }
 
-  getUsersByRoleUser(): Observable<UserDetailsDto[]> {
+  getUsersByRole(): Observable<UserDetailsDto[]> {
     return this.http.get<UserDetailsDto[]>(
       `${this.baseUrlPro}/users/role_user`
     )

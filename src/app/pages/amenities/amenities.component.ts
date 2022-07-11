@@ -31,7 +31,7 @@ export class AmenitiesComponent implements OnInit, OnDestroy {
   showSome: boolean = false;
   amenityTypeId?: string;
   isDisplayed: boolean = false;
-  showRooms: false | number  = false;
+  showRooms: boolean = false;
   isShow: boolean = false;
   showVariousRooms: boolean = false;
   showProperties: boolean = false;
@@ -121,16 +121,12 @@ export class AmenitiesComponent implements OnInit, OnDestroy {
     this.showRange = event.target.checked && i === 1;
   }
 
-  checkSomeRooms(event: any) {
-    this.showRooms = event.target.value;
-  }
-
   checkRadioButton(event: any) {
     this.isDisplayed = event.target.value !== 'no';
   }
 
   clickCheckbox(event: any) {
-    this.showSome = event.target.checked;
+    this.showRooms = event.target.checked;
   }
 
   checkAmenity(event: any) {
@@ -172,7 +168,7 @@ export class AmenitiesComponent implements OnInit, OnDestroy {
   }
 
   getRoomsByPropertyId(propertyId?: string | null) {
-    const roomsSub = this.roomService.getRoomsByProperty(propertyId).subscribe(response => {
+    const roomsSub = this.roomService.getRoomsOfUserByProperty(propertyId).subscribe(response => {
       this.rooms = response;
     });
     this.subscriptions.push(roomsSub);

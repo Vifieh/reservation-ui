@@ -5,6 +5,7 @@ import {CustomPayload} from '../../model/payload/customPayload';
 import {Observable} from 'rxjs';
 import {ResponseMessage} from '../../model/responseMessage';
 import {FacilityDto} from '../../model/dto/customDto';
+import {PropertyFacilityDto} from '../../model/dto/propertyFacilityDto';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,12 @@ export class FacilityService {
   getFacilities(): Observable<FacilityDto[]> {
     return this.http.get<FacilityDto[]>(
       `${this.baseUrlPro}/facilities`
+    )
+  }
+
+  getFacilitiesByProperty(propertyId: string | null | undefined): Observable<PropertyFacilityDto[]> {
+    return this.http.get<PropertyFacilityDto[]>(
+      `${this.baseUrlPro}/facilities/properties/${propertyId}`
     )
   }
 

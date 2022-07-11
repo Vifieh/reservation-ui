@@ -44,12 +44,16 @@ import {MyPropertiesComponent} from './pages/my-properties/my-properties.compone
 import {PropertyDetailsComponent} from './pages/property-details/property-details.component';
 import {PropertyDetailsNavbarComponent} from './pages/property-details/property-details-navbar/property-details-navbar.component';
 import {ListPropertyCompletionComponent} from './pages/list-property-completion/list-property-completion.component';
-import { AmenityComponent } from './pages/amenity/amenity.component';
-import { CityDetailComponent } from './pages/city-detail/city-detail.component';
-import { SingleHotelComponent } from './pages/single-hotel/single-hotel.component';
-import { MapComponent } from './pages/map/map.component';
-import { EnumToArrayPipe } from './pipes/enum-to-array/enum-to-array.pipe';
-import { HomeLandingPageComponent } from './pages/home-landing-page/home-landing-page.component';
+import {SingleHotelComponent} from './pages/single-hotel/single-hotel.component';
+import { PendingPropertiesComponent } from './pages/pending-properties/pending-properties.component';
+import { ApprovedPropertiesComponent } from './pages/approved-properties/approved-properties.component';
+import { SubStringPipe } from './pipes/string-to-substring/sub-string.pipe';
+import { RecommenderPageComponent } from './pages/recommender-page/recommender-page.component';
+import { VoiceSearchComponent } from './pages/voice-search/voice-search.component';
+import { PropertyReservationsPageComponent } from './pages/property-reservations-page/property-reservations-page.component';
+import { SuccessPageComponent } from './pages/success-page/success-page.component';
+import { ErrorPageComponent } from './pages/error-page/error-page.component';
+import { PaymentModalPageComponent } from './pages/payment-modal-page/payment-modal-page.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +94,15 @@ import { HomeLandingPageComponent } from './pages/home-landing-page/home-landing
     PropertyDetailsComponent,
     PropertyDetailsNavbarComponent,
     ListPropertyCompletionComponent,
-    HomeLandingPageComponent,
+    PendingPropertiesComponent,
+    ApprovedPropertiesComponent,
+    SubStringPipe,
+    RecommenderPageComponent,
+    VoiceSearchComponent,
+    PropertyReservationsPageComponent,
+    SuccessPageComponent,
+    ErrorPageComponent,
+    PaymentModalPageComponent,
 
   ],
   imports: [

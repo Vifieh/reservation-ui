@@ -20,6 +20,10 @@ select {
   margin-top: 5vh;
 }
 
+label {
+  padding: 0.4rem;
+}
+
 .btn-outline-dark:hover {
   background-color: gainsboro;
   color: black;

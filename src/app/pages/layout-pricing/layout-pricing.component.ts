@@ -34,7 +34,7 @@ export class LayoutPricingComponent implements OnInit, OnDestroy {
     {key: Policy.NO, value: 'Non-smoking'},
     {key: Policy.YES, value: 'Smoking'},
     {key: Policy.BOTH, value: 'I have both smoking and non-smoking options for this room type'}
-    ];
+  ];
   roomSizes = [
     {key: Size.SQUARE_METRES, value: 'square metres'},
     {key: Size.SQUARE_FEET, value: 'square feet'}
@@ -58,7 +58,8 @@ export class LayoutPricingComponent implements OnInit, OnDestroy {
     public formBuilder: FormBuilder,
     private notificationService: NotificationService,
     private emitService: EmitService,
-  ) { }
+  ) {
+  }
 
   ngOnDestroy(): void {
     for (const sub of this.subscriptions) {
@@ -93,10 +94,10 @@ export class LayoutPricingComponent implements OnInit, OnDestroy {
     return this.createRoomForm.controls;
   }
 
-  bedAvailableItems():  FormGroup {
+  bedAvailableItems(): FormGroup {
     return this.formBuilder.group({
-      bedAvailableId: ['', [Validators.required]],
-      numberOfBeds: ['1', [Validators.required]],
+      bedAvailableId: [''],
+      numberOfBeds: ['1'],
     });
   }
 
@@ -119,7 +120,7 @@ export class LayoutPricingComponent implements OnInit, OnDestroy {
   }
 
   viewRoom() {
-    this.isViewRoom =false;
+    this.isViewRoom = false;
     this.showListOfRooms = true;
   }
 
@@ -164,7 +165,7 @@ export class LayoutPricingComponent implements OnInit, OnDestroy {
   creatRoom() {
     this.submitted = true;
     if (!this.createRoomForm.valid) {
-      const message = "please fill all fields in the form";
+      const message = 'please fill all fields in the form';
       this.notificationService.sendMessage({message: message, type: NotificationType.info});
     } else {
       const createRoomSub = this.roomService.createRoom(this.propertyId, this.createRoomForm.value)

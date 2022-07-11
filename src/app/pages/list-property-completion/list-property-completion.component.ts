@@ -51,6 +51,7 @@ export class ListPropertyCompletionComponent implements OnInit, OnDestroy {
     const completeRegistrationSub = this.propertyService.completeRegistration(this.propertyId, null)
       .subscribe(response => {
         this.notificationService.sendMessage({message: response.message, type: NotificationType.success});
+        this.router.navigate(['/my-properties']);
       })
   }
 

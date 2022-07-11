@@ -6,18 +6,41 @@
     <p class="form-text">From cheap hotels to luxurious rooms, anything in between</p>
     <br>
     <form>
-      <input type="text" placeholder="where are you going to?" class="input">
-      <input type="text" placeholder="check-in" onfocus="(this.type='date')" class="input">
-      <input type="text" placeholder="check-out" onfocus="(this.type='date')" class="input">
-      <button type="button" class="dropdown-toggle but" data-bs-toggle="dropdown">
-        <input type="text" placeholder="room" class="in">
-      </button>
-      <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Link 1</a></li>
-        <li><a class="dropdown-item" href="#">Link 2</a></li>
-        <li><a class="dropdown-item" href="#">Link 3</a></li>
-      </ul>
-      <button class="btn btn-primary button">Search</button>
+      <input
+        [(ngModel)]="location"
+        [ngModelOptions]="{standalone: true}"
+        type="text"
+        placeholder="where are you going to?"
+        class="input">
+      <input
+        [(ngModel)]="description"
+        [ngModelOptions]="{standalone: true}"
+        type="text"
+        placeholder="Description"
+        class="input">
+      <!--      <input type="text" placeholder="check-in" onfocus="(this.type='date')" class="input">-->
+      <!--      <input type="text" placeholder="check-out" onfocus="(this.type='date')" class="input">-->
+      <!--      <button type="button" class="dropdown-toggle but" data-bs-toggle="dropdown">-->
+      <!--        <input type="text" placeholder="room" class="in">-->
+      <!--      </button>-->
+      <!--      <ul class="dropdown-menu">-->
+      <!--        <li><a class="dropdown-item" href="#">Link 1</a></li>-->
+      <!--        <li><a class="dropdown-item" href="#">Link 2</a></li>-->
+      <!--        <li><a class="dropdown-item" href="#">Link 3</a></li>-->
+      <!--      </ul>-->
+      <button (click)="searchData()" class="btn btn-primary button">Search</button>
+    </form>
+    <br>
+    <br>
+    <form [formGroup]="searchForm">
+      <input
+        type="text"
+        formControlName="searchText"
+        class="input"
+        placeholder="start typing or click the mic and speak"
+      style="width: 40%">
+      <button class="btn btn-primary button" (click)="startRecording()" *ngIf="!isUserSpeaking">record</button>
+      <button class="btn btn-primary button" *ngIf="isUserSpeaking" (click)="stopRecording()">stop</button>
     </form>
     <br>
     <br>
@@ -27,11 +50,13 @@
     <owl-carousel-o [options]="customOptions">
       <ng-container *ngFor="let city of cities">
         <ng-template carouselSlide>
-          <div class="container" style="text-align: center;">
-            <img [src]="city.fileInfoList[0].url" class="img">&nbsp;&nbsp;
-            <h5>{{city.name}}</h5>
-            <span class="form-text">{{city.propertyAddressDtoList.length}} properties</span>
-          </div>
+          <a routerLink="city-detail/{{city.id}}">
+            <div class="container" style="text-align: center;">
+              <img [src]="city.fileInfoList[0].url" class="img">&nbsp;&nbsp;
+              <h5>{{city.name}}</h5>
+              <span class="form-text">{{city.propertyAddressDtoList.length}} properties</span>
+            </div>
+          </a>
         </ng-template>
       </ng-container>
     </owl-carousel-o>
@@ -203,5 +228,5 @@
     <h3>More accommodation on reservation.com</h3>
     <p>Dive into our world of apartments, villas and other unique accommodation</p>
   </div>
-  <app-footer></app-footer>
 </div>
+<app-footer></app-footer>

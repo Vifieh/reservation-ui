@@ -24,6 +24,12 @@ export class RoomService {
     )
   }
 
+  getRoomsOfUserByProperty(propertyId?: string | null | undefined): Observable<RoomDto[]> {
+      return this.http.get<RoomDto[]>(
+        `${this.baseUrlPro}/rooms?propertyId=${propertyId}`
+      )
+  }
+
   getRoomsByProperty(propertyId?: string | null | undefined): Observable<RoomDto[]> {
       return this.http.get<RoomDto[]>(
         `${this.baseUrlPub}/rooms?propertyId=${propertyId}`

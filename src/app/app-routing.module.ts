@@ -21,15 +21,22 @@ import {PoliciesComponent} from './pages/policies/policies.component';
 import {PaymentsComponent} from './pages/payments/payments.component';
 import {CategoryAmenityComponent} from './pages/category-amenity/category-amenity.component';
 import {AmenityComponent} from './pages/amenity/amenity.component';
-import {CityDetailComponent} from "./pages/city-detail/city-detail.component";
-import {SingleHotelComponent} from "./pages/single-hotel/single-hotel.component";
+import {CityDetailComponent} from './pages/city-detail/city-detail.component';
+import {SingleHotelComponent} from './pages/single-hotel/single-hotel.component';
 import {MapComponent} from './pages/map/map.component';
 import {ListPropertyRegisterComponent} from './pages/list-property-register/list-property-register.component';
 import {ListPropertyLoginComponent} from './pages/list-property-login/list-property-login.component';
 import {MyPropertiesComponent} from './pages/my-properties/my-properties.component';
 import {PropertyDetailsComponent} from './pages/property-details/property-details.component';
 import {ListPropertyCompletionComponent} from './pages/list-property-completion/list-property-completion.component';
-
+import {PendingPropertiesComponent} from './pages/pending-properties/pending-properties.component';
+import {ApprovedPropertiesComponent} from './pages/approved-properties/approved-properties.component';
+import {RecommenderPageComponent} from './pages/recommender-page/recommender-page.component';
+import {VoiceSearchComponent} from './pages/voice-search/voice-search.component';
+import {PropertyReservationsPageComponent} from './pages/property-reservations-page/property-reservations-page.component';
+import {SuccessPageComponent} from './pages/success-page/success-page.component';
+import {ErrorPageComponent} from './pages/error-page/error-page.component';
+import {PaymentModalPageComponent} from './pages/payment-modal-page/payment-modal-page.component';
 
 
 const routes: Routes = [
@@ -153,18 +160,57 @@ const routes: Routes = [
   },
 
   {
-
-    path: 'single-hotel',
+    path: 'single-hotel/:id',
     component: SingleHotelComponent,
   },
   {
-
     path: 'map',
     component: MapComponent,
   },
+
+  {
+    path: 'recommender/:location/:description',
+    component: RecommenderPageComponent,
+  },
+
   {
     path: 'property-landing-Page',
     component: PropertyLandingPageComponent,
+  },
+
+ {
+    path: 'pending-properties',
+    component: PendingPropertiesComponent,
+  },
+
+  {
+    path: 'voice-search',
+    component: VoiceSearchComponent,
+  },
+
+  {
+    path: 'approved-properties',
+    component: ApprovedPropertiesComponent,
+  },
+
+  {
+    path: 'success-page',
+    component: SuccessPageComponent,
+  },
+
+  {
+    path: 'cancel-page',
+    component: ErrorPageComponent,
+  },
+
+ {
+    path: 'payment-page',
+    component: PaymentModalPageComponent,
+  },
+
+  {
+    path: 'reservations/:id',
+    component: PropertyReservationsPageComponent,
   },
 
   {
