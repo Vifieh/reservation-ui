@@ -1,0 +1,20 @@
+.navbar {
+  background-color: #003580;
+}
+
+.nav-item {
+  color: #ffffff;
+  text-align: center;
+}
+
+.nav-link {
+  color: #ffffff;
+}
+.home {
+  margin-right: 3rem;
+}
+
+.active{
+  background-color: #2A6496;
+}
+

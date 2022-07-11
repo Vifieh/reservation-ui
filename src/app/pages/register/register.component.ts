@@ -5,6 +5,8 @@ import {Router} from "@angular/router";
 import {NotificationService} from "../../services/notification/notification.service";
 import {Subscription} from "rxjs";
 import {Role} from '../../enum/role';
+import {NotificationType} from '../../model/notificationMessage';
+import {RecommenderService} from '../../services/recommender-service/recommender.service';
 
 @Component({
   selector: 'app-register',
@@ -33,8 +35,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
   }
 
-  registerForm = this.formBuilder.group(
-    {
+  registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(256)]],
       role: [Role.ROLE_USER, [Validators.required]]
@@ -48,10 +49,13 @@ export class RegisterComponent implements OnInit, OnDestroy {
   register() {
     this.submitted = true;
     if (!this.registerForm.valid) {
-      alert("please fill all fields in the form")
+      const message = "please fill all fields in the form";
+      this.notificationService.sendMessage({message: message, type: NotificationType.info});
     } else {
       const registerSub = this.authenticationService.register(this.registerForm.value)
         .subscribe(response => {
+          const message = "Please check your email to verify your account before logging in";
+          this.notificationService.sendMessage({message: message, type: NotificationType.info});
           this.router.navigate(['/login']);
         });
       this.subscriptions.push(registerSub);

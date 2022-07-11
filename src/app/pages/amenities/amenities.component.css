@@ -1,42 +1,47 @@
-.card{
+.card {
   padding: 2rem;
 }
-input[type=text]
-{
+
+label {
+  padding: 0.4rem;
+}
+
+input[type=text] {
   height: 7vh;
 }
-.input-group-text
-{
+
+.input-group-text {
   height: 7vh;
 }
-select
-{
+
+select {
   height: 7vh;
 }
-.container
-{
+
+.container {
   margin-top: 5vh;
 }
 
-.btn-outline-dark:hover
-{
+.btn-outline-dark:hover {
   background-color: gainsboro;
   color: black;
 }
-.base{
+
+.base {
   border: 2px solid lightgrey;
   padding: 1rem;
 }
 
-.base-1{
+.base-1 {
   border: 2px solid lightgrey;
 }
 
 .amenities-title {
   margin: 30px 0 20px !important;
 }
+
 .pull-left {
-  float: left!important;
+  float: left !important;
 }
 
 .accordion-header {

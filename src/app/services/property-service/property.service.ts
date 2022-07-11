@@ -54,9 +54,9 @@ export class PropertyService {
     )
   }
 
-  getAllProperties(pending: boolean): Observable<PropertyDto[]> {
+  getAllProperties(pending: boolean, completedRegistration: boolean): Observable<PropertyDto[]> {
     return this.http.get<PropertyDto[]>(
-      `${this.baseUrlPro}/properties`
+      `${this.baseUrlPub}/properties?completedRegistration=${completedRegistration}&pending=${pending}`
     )
   }
 
@@ -73,9 +73,10 @@ export class PropertyService {
     )
   }
 
-  // completeRegistration(propertyId?: string): Observable<ResponseMessage> {
-  //   return this.http.patch<ResponseMessage>(
-  //     `${this.baseUrlPro}/registration/properties/${propertyId}`
-  //   )
-  // }
+  approveProperty(propertyId?: String | null | undefined, body?: null): Observable<ResponseMessage> {
+    return this.http.patch<ResponseMessage>(
+      `${this.baseUrlPro}/properties/${propertyId}`,
+      body
+    )
+  }
 }

@@ -212,12 +212,11 @@
     </form>
   </div>
   <div class="col-md-9" *ngIf="showListOfRooms">
-    <div *ngFor="let room of rooms" class="card">
+    <div *ngFor="let room of rooms" class="card" style="margin-bottom: 1rem">
       <div class="row">
         <div class="col-md-6">
           <h5>{{room.roomName}}</h5>
         </div>
-
         <div class="col-md-3">
           <p>Number of this type: {{room.numberOfRooms}}</p>
         </div>

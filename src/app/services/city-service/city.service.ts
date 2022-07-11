@@ -1,10 +1,9 @@
 import {Injectable} from '@angular/core';
-import {environment} from "../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {environment} from '../../../environments/environment';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
 import {ResponseMessage} from 'src/app/model/responseMessage';
-import {CustomPayload} from "../../model/payload/customPayload";
-import {CustomDto} from "../../model/dto/customDto";
+import {CustomPayload} from '../../model/payload/customPayload';
 import {PropertyAddressDto} from '../../model/dto/propertyDto';
 import {CityDto} from '../../model/dto/cityDto';
 
@@ -44,9 +43,15 @@ export class CityService {
     )
   }
 
-  getCity(cityId?: string): Observable<CustomDto> {
-    return this.http.get<CustomDto>(
+  getCity(cityId?: string | null | undefined): Observable<CityDto> {
+    return this.http.get<CityDto>(
       `${this.baseUrlPub}/cities/${cityId}`
+    )
+  }
+
+  getCityByName(cityName?: string | null | undefined): Observable<CityDto> {
+    return this.http.get<CityDto>(
+      `${this.baseUrlPub}/cities/cityName/${cityName}`
     )
   }
 

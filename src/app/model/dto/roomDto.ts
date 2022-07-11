@@ -12,13 +12,23 @@ export interface RoomDto {
   size?: Size;
   smokingPolicy?: Policy;
   currency?: Currency;
-  roomName?: string,
+  roomName?: string;
   roomBedAvailableDtoList?: RoomBedAvailableDto[];
 }
 
 export interface RoomBedAvailableDto {
-  id?: string;
-  bedAvailableId?: string;
+  id?: RoomBedAvailableKey;
+  bedAvailableDto?: BedAvailableDto;
   numberOfBeds?: number;
+}
+
+export interface BedAvailableDto {
+  id?: string;
+  name?: string;
+}
+
+export interface RoomBedAvailableKey {
+  bedAvailableId?: string;
+  roomId?: string;
 }
 

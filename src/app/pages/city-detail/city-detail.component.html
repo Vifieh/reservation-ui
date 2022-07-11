@@ -1,438 +1,300 @@
 <div class="main">
-<app-navbar></app-navbar>
-<br>
+  <app-navbar></app-navbar>
+  <br>
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-3">
-      <form>
-        <h3>Search</h3>
-        <div class="form-group">
-        <label>Destination/property name</label>
-        <input type="text" class="form-control" placeholder="Douala">
-      </div>
-        <br>
-        <div class="form-group">
-        <label>Check-in date</label>
-        <input type="date" class="form-control">
-      </div>
-        <br>
-        <div class="form-group">
-        <label>Check-out date</label>
-        <input type="date" class="form-control">
-      </div>
-        <br>
-        <div class="form-group">
-          <label>Room type</label>
-          <select  class="form-select">
-            <option [ngValue]="null" disabled>Select county</option>
-            <option value="double">double</option>
-          </select>
-        </div>
-        <br>
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-          <label class="form-check-label" for="flexCheckDefault">
-           I'm travelling for work
-          </label>
-        </div>
-        <br>
-        <button class="btn btn-primary" style="width: 100%">Search</button>
-      </form>
-      <br>
-      <div class="card">
-        <h4>Filter by:</h4>
-        <hr>
-        <h6>Sustainability</h6>
-        <div class="row">
-          <div class="col-md-10">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-             Travel sustainability properties
-              </label>
-            </div>
-
+  <div class="container">
+    <br>
+    <div class="row">
+      <div class="col-md-3">
+        <form>
+          <h3>Search</h3>
+          <div class="form-group">
+            <label>Destination/property name</label>
+            <input type="text" class="form-control" placeholder="{{city?.name}}">
           </div>
-          <div class="col-md-2">
-            <span>32</span>
+          <br>
+          <div class="form-group">
+            <label>Check-in date</label>
+            <input type="date" class="form-control">
           </div>
-        </div>
-        <hr>
-        <h6>Popular filters</h6>
-        <div class="row">
-          <div class="col-md-10">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-              Hotels
-              </label>
-            </div>
-
+          <br>
+          <div class="form-group">
+            <label>Check-out date</label>
+            <input type="date" class="form-control">
           </div>
-          <div class="col-md-2">
-            <span>32</span>
+          <br>
+          <div class="form-group">
+            <label>Room type</label>
+            <select class="form-select">
+              <option [ngValue]="null" disabled>Select county</option>
+              <option value="double">double</option>
+            </select>
           </div>
-        </div> <div class="row">
-          <div class="col-md-10">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                five stars
-              </label>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <span>32</span>
-          </div>
-        </div> <div class="row">
-          <div class="col-md-10">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-               Guest houses
-              </label>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <span>32</span>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-10">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                Villas
-              </label>
-            </div>
-
-          </div>
-          <div class="col-md-2">
-            <span>32</span>
-          </div>
-        </div>
-        <hr>
-        <h6>Star rating</h6>
-        <div class="row">
-          <div class="col-md-10">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                Hotels
-              </label>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <span>32</span>
-          </div>
-        </div> <div class="row">
-        <div class="col-md-10">
+          <br>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
-              five stars
+              I'm travelling for work
             </label>
           </div>
-
-        </div>
-        <div class="col-md-2">
-          <span>32</span>
-        </div>
-      </div> <div class="row">
-        <div class="col-md-10">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Guest houses
-            </label>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <span>32</span>
-        </div>
-      </div>
-        <div class="row">
-          <div class="col-md-10">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                Villas
-              </label>
-            </div>
-
-          </div>
-          <div class="col-md-2">
-            <span>32</span>
-          </div>
-        </div>
-        <hr>
-        <h6>Star rating</h6>
-        <div class="row">
-          <div class="col-md-10">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                Hotels
-              </label>
-            </div>
-          </div>
-          <div class="col-md-2">
-            <span>32</span>
-          </div>
-        </div> <div class="row">
-        <div class="col-md-10">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              five stars
-            </label>
-          </div>
-
-        </div>
-        <div class="col-md-2">
-          <span>32</span>
-        </div>
-      </div> <div class="row">
-        <div class="col-md-10">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-            <label class="form-check-label" for="flexCheckDefault">
-              Guest houses
-            </label>
-          </div>
-        </div>
-        <div class="col-md-2">
-          <span>32</span>
-        </div>
-      </div>
-        <div class="row">
-          <div class="col-md-10">
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-              <label class="form-check-label" for="flexCheckDefault">
-                Villas
-              </label>
-            </div>
-
-          </div>
-          <div class="col-md-2">
-            <span>32</span>
-          </div>
-        </div>
-      </div>
-    </div>
-<br>
-
-    <div class="col-md-9">
-
-      <h3>Douala: 156 properties found</h3>
-      <div class="btn-group" role="group" aria-label="Basic outlined example">
-        <button type="button" class="btn btn-primary">Our top topics</button>
-        <button type="button" class="btn btn-outline-primary">Home and Apartment first</button>
-        <button type="button" class="btn btn-outline-primary">Stars (Highest first)</button>
-        <button type="button" class="btn btn-outline-primary">Stars (Lowest first)</button>
-        <button type="button" class="btn btn-outline-primary">Distance from city centers</button>
-        <button type="button" class="btn btn-outline-primary"><i class="fa fa-dot-circle-o fa-2x"></i></button>
-      </div>
-      <br>
-      <br>
-      <div class="card mb-3" style="max-width: 100%;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="/assets/h1.jpg" class="img-fluid rounded-start" alt="hotel image" style="height: 100%">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <div class="row">
-              <div class="col-md-8">
-                <h5 class="card-title">ONOMO Hotel Douala
-                  <i class="fa fa-star fa-1x" style="color: orange"></i> &nbsp;
-                  <i class="fa fa-thumbs-o-up fa-1x" style="color: orange"></i></h5>
-                <a>Douala</a>
-                <a>Show on map</a>
-                <span style="font-size: 10px">2.2 km from centre</span>
+          <br>
+          <button class="btn btn-primary" style="width: 100%">Search</button>
+        </form>
+        <br>
+        <div class="card">
+          <h4>Filter by:</h4>
+          <hr>
+          <h6>Sustainability</h6>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Travel sustainability properties
+                </label>
               </div>
-              <div class="col-md-4">
-                <div class="row" style="text-align: right">
-                  <div class="col-md-9" style="text-align: right">
-                    <span style="font-size: 17px">Very good</span>
+
+            </div>
+            <div class="col-md-2">
+              <span>32</span>
+            </div>
+          </div>
+          <hr>
+          <h6>Popular filters</h6>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Hotels
+                </label>
+              </div>
+
+            </div>
+            <div class="col-md-2">
+              <span>32</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  five stars
+                </label>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <span>32</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Guest houses
+                </label>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <span>32</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Villas
+                </label>
+              </div>
+
+            </div>
+            <div class="col-md-2">
+              <span>32</span>
+            </div>
+          </div>
+          <hr>
+          <h6>Star rating</h6>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  1 star
+                </label>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <span>32</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  2 stars
+                </label>
+              </div>
+
+            </div>
+            <div class="col-md-2">
+              <span>32</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  3 stars
+                </label>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <span>32</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  4 stars
+                </label>
+              </div>
+
+            </div>
+            <div class="col-md-2">
+              <span>32</span>
+            </div>
+          </div>
+          <hr>
+          <h6>Star rating</h6>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Hotels
+                </label>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <span>32</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  five stars
+                </label>
+              </div>
+
+            </div>
+            <div class="col-md-2">
+              <span>32</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Guest houses
+                </label>
+              </div>
+            </div>
+            <div class="col-md-2">
+              <span>32</span>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-10">
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Villas
+                </label>
+              </div>
+
+            </div>
+            <div class="col-md-2">
+              <span>32</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+
+      <div class="col-md-9">
+
+        <h4>{{city?.name}}: {{city?.propertyAddressDtoList?.length!}} properties found</h4>
+        <br>
+        <div class="btn-group" role="group" aria-label="Basic outlined example">
+          <button type="button" class="btn btn-primary">Our top topics</button>
+          <button type="button" class="btn btn-outline-primary">Home and Apartment first</button>
+          <button type="button" class="btn btn-outline-primary">Stars (Highest first)</button>
+          <button type="button" class="btn btn-outline-primary">Stars (Lowest first)</button>
+          <button type="button" class="btn btn-outline-primary">Distance from city centers</button>
+          <button type="button" class="btn btn-outline-primary"><i class="fa fa-dot-circle-o fa-2x"></i></button>
+        </div>
+        <br>
+        <br>
+        <div *ngFor="let property of properties" class="card mb-3" style="max-width: 100%;">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img [src]="property.fileInfoList[0].url" class="img-fluid rounded-start"
+                   alt="{{property.fileInfoList[0].name}}" style="height: 100%">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-8">
+                    <h5 routerLink="/single-hotel/{{property.id}}" class="card-title" style="margin-top: -2rem">{{property.name}} &nbsp;
+                      <span style="color: orange">{{property.rating}}</span><i class="fa fa-star fa-1x"
+                                                                               style="color: orange"></i> &nbsp;
+                      <i class="fa fa-thumbs-o-up fa-1x" style="color: orange"></i></h5>
+                    <a style="color:blue; text-decoration: underline">{{city.name}}</a>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="row" style="text-align: right">
+                      <div class="col-md-9" style="text-align: right">
+                        <span style="font-size: 17px">Very good</span>
+                        <br>
+                        <span class="form-text">553 views</span>
+                      </div>
+                      <div class="col-md-3">
+                        <span class="badge bg-primary" style="font-size: 14px">8.1</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-8" style="font-size: 12px">
                     <br>
-                    <span class="form-text">553 views</span>
-                  </div>
-                  <div class="col-md-3">
-                   <span class="badge bg-primary" style="font-size: 14px">8.1</span>
-                  </div>
-                </div>
-              </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-8" style="font-size: 12px">
-                  <br>
-                  <span>Set in Douala, less than 1 km from Bonanjo Park, ONOMO Hotel Douala offers
+                    <span>Set in Douala, less than 1 km from Bonanjo Park, ONOMO Hotel Douala offers
                     accommodation with a restaurant, free private parking,
                     an outdoor swimming pool and a fitness centre.
                   </span>
-                </div>
-                <div class="col-md-4" style="text-align: right">
-                  <br>
-                  <button class="btn btn-primary">Show prices</button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-      <br>
-      <div class="card mb-3" style="max-width: 100%;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="/assets/h1.jpg" class="img-fluid rounded-start" alt="hotel image" style="height: 100%">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-8">
-                  <h5 class="card-title">ONOMO Hotel Douala
-                    <i class="fa fa-star fa-1x" style="color: orange"></i> &nbsp;
-                    <i class="fa fa-thumbs-o-up fa-1x" style="color: orange"></i></h5>
-                  <a>Douala</a>
-                  <a>Show on map</a>
-                  <span style="font-size: 10px">2.2 km from centre</span>
-                </div>
-                <div class="col-md-4">
-                  <div class="row" style="text-align: right">
-                    <div class="col-md-9" style="text-align: right">
-                      <span style="font-size: 17px">Very good</span>
-                      <br>
-                      <span class="form-text">553 views</span>
-                    </div>
-                    <div class="col-md-3">
-                      <span class="badge bg-primary" style="font-size: 14px">8.1</span>
-                    </div>
+                  </div>
+                  <div class="col-md-4" style="text-align: right">
+                    <br>
+                    <button class="btn btn-primary">Show prices</button>
                   </div>
                 </div>
-              </div>
 
-              <div class="row">
-                <div class="col-md-8" style="font-size: 12px">
-                  <br>
-                  <span>Set in Douala, less than 1 km from Bonanjo Park, ONOMO Hotel Douala offers
-                    accommodation with a restaurant, free private parking,
-                    an outdoor swimming pool and a fitness centre.
-                  </span>
-                </div>
-                <div class="col-md-4" style="text-align: right">
-                  <br>
-                  <button class="btn btn-primary">Show prices</button>
-                </div>
               </div>
-
             </div>
           </div>
         </div>
-      </div>
-      <br>
-      <div class="card mb-3" style="max-width: 100%;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="/assets/h1.jpg" class="img-fluid rounded-start" alt="hotel image" style="height: 100%">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-8">
-                  <h5 class="card-title">ONOMO Hotel Douala
-                    <i class="fa fa-star fa-1x" style="color: orange"></i> &nbsp;
-                    <i class="fa fa-thumbs-o-up fa-1x" style="color: orange"></i></h5>
-                  <a>Douala</a>
-                  <a>Show on map</a>
-                  <span style="font-size: 10px">2.2 km from centre</span>
-                </div>
-                <div class="col-md-4">
-                  <div class="row" style="text-align: right">
-                    <div class="col-md-9" style="text-align: right">
-                      <span style="font-size: 17px">Very good</span>
-                      <br>
-                      <span class="form-text">553 views</span>
-                    </div>
-                    <div class="col-md-3">
-                      <span class="badge bg-primary" style="font-size: 14px">8.1</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-8" style="font-size: 12px">
-                  <br>
-                  <span>Set in Douala, less than 1 km from Bonanjo Park, ONOMO Hotel Douala offers
-                    accommodation with a restaurant, free private parking,
-                    an outdoor swimming pool and a fitness centre.
-                  </span>
-                </div>
-                <div class="col-md-4" style="text-align: right">
-                  <br>
-                  <button class="btn btn-primary">Show prices</button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </div>
-      <br>
-      <div class="card mb-3" style="max-width: 100%;">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img src="/assets/h1.jpg" class="img-fluid rounded-start" alt="hotel image" style="height: 100%">
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-8">
-                  <h5 class="card-title">ONOMO Hotel Douala
-                    <i class="fa fa-star fa-1x" style="color: orange"></i> &nbsp;
-                    <i class="fa fa-thumbs-o-up fa-1x" style="color: orange"></i></h5>
-                  <a>Douala</a>
-                  <a>Show on map</a>
-                  <span style="font-size: 10px">2.2 km from centre</span>
-                </div>
-                <div class="col-md-4">
-                  <div class="row" style="text-align: right">
-                    <div class="col-md-9" style="text-align: right">
-                      <span style="font-size: 17px">Very good</span>
-                      <br>
-                      <span class="form-text">553 views</span>
-                    </div>
-                    <div class="col-md-3">
-                      <span class="badge bg-primary" style="font-size: 14px">8.1</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row">
-                <div class="col-md-8" style="font-size: 12px">
-                  <br>
-                  <span>Set in Douala, less than 1 km from Bonanjo Park, ONOMO Hotel Douala offers
-                    accommodation with a restaurant, free private parking,
-                    an outdoor swimming pool and a fitness centre.
-                  </span>
-                </div>
-                <div class="col-md-4" style="text-align: right">
-                  <br>
-                  <button class="btn btn-primary">Show prices</button>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        </div>
+        <br>
       </div>
     </div>
   </div>
-</div>
 </div>

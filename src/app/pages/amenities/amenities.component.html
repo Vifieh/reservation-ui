@@ -36,7 +36,9 @@
       <div *ngIf="isDisplayed" class="form-group col-md-5">
         <br>
         <label>Select the number of extra beds that can be added.</label>
-        <select class="form-select" style="width: 50%">
+        <select
+          formControlName="numberOfExtraBeds"
+          class="form-select" style="width: 50%">
           <option *ngFor="let number of numbers" value="{{number}}">{{number}}</option>
         </select>
         <br>
@@ -98,10 +100,6 @@
                     {{amenity.name}}
                   </label>
                 </div>
-              </div>
-              <div *ngIf="showSome" class="col-md-6">
-                <input (click)="checkSomeRooms($event)" type="radio" id="no1" name="fav_language" value="no">
-                <label for="no1">Some rooms</label>
               </div>
             </div>
             <div *ngIf="showRooms">
