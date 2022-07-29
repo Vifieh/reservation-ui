@@ -13,18 +13,16 @@ import {PropertyService} from '../../services/property-service/property.service'
   styleUrls: ['./photos.component.css']
 })
 export class PhotosComponent implements OnInit, OnDestroy {
-  // selectedFiles: any;
-  // currentFile: any;
-  // progress = 0;
-  // message = '';
   selectedFiles?: FileList;
-  currentFile?: File;
+  progressInfos: any[] = [];
+  message: string[] = [];
+  previews: string[] = [];
+  currentFile!: File;
   progress = 0;
-  message = '';
   fileInfos?: Observable<any>;
   // fileInfos: Observable<any>;
   propertyId?: string | null;
-  property?: PropertyDto;
+  property!: PropertyDto;
   subscriptions: Subscription[] = [];
 
   constructor(
@@ -43,32 +41,51 @@ export class PhotosComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.propertyId = this.route.snapshot.paramMap.get('id');
-    this.getProperty();
   }
 
   getProperty() {
-  const propertySub = this.propertyService.getProperty(this.propertyId).subscribe(response => {
+  const propertySub = this.propertyService.getProperty(this.propertyId!).subscribe(response => {
     this.property = response;
   });
   this.subscriptions.push(propertySub);
 }
 
-  selectFile(event: any) {
+  selectFiles(event: any): void {
+    this.message = [];
+    this.progressInfos = [];
     this.selectedFiles = event.target.files;
-  }
-
-  uploadFiles() {
-    this.progress = 0;
-    if (this.selectedFiles) {
-      const file: File | null = this.selectedFiles.item(0);
-      if (file) {
-        this.currentFile = file;
-        const uploadFilesSub = this.uploadService.uploadFiles(this.property?.name, this.currentFile).subscribe(response => {
-          this.notificationService.sendMessage({message: response.message, type: NotificationType.success});
-        });
-        this.subscriptions.push(uploadFilesSub);
+    this.previews = [];
+    if (this.selectedFiles && this.selectedFiles[0]) {
+      const numberOfFiles = this.selectedFiles.length;
+      for (let i = 0; i < numberOfFiles; i++) {
+        const reader = new FileReader();
+        reader.onload = (e: any) => {
+          console.log(e.target.result);
+          this.previews.push(e.target.result);
+        };
+        reader.readAsDataURL(this.selectedFiles[i]);
       }
     }
   }
+
+  uploadFiles(): void {
+    this.message = [];
+    if (this.selectedFiles) {
+      for (let i = 0; i < this.selectedFiles.length; i++) {
+        this.upload(i, this.selectedFiles[i]);
+      }
+    }
+  }
+
+  upload(idx: number, file: File): void {
+    this.progressInfos[idx] = { value: 0, fileName: file.name };
+    if (file) {
+      const uploadFilesSub = this.uploadService.uploadFiles(this.propertyId, file).subscribe(response => {
+        this.notificationService.sendMessage({message: response.message, type: NotificationType.success});
+        this.router.navigate(['/policies', this.propertyId]);
+      });
+      this.subscriptions.push(uploadFilesSub);
+    }
+    }
 
 }

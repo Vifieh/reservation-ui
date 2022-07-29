@@ -72,9 +72,9 @@ export class SingleHotelComponent implements OnInit, OnDestroy {
   showTableField: boolean = false;
   showGuestEmail: boolean = true;
   submitted: boolean = false;
+  loginCheck: boolean = false;
   reference: string = '';
   price: number = 0;
-  newReservation: any;
 
   constructor(
     private propertyService: PropertyService,
@@ -252,6 +252,13 @@ export class SingleHotelComponent implements OnInit, OnDestroy {
         this.propertyFacilities = response;
       });
     this.subscriptions.push(propertyFacilitiesSub);
+  }
+
+  checkLoginInfo() {
+    if (localStorage.getItem('data') === null) {
+      this.loginCheck = true;
+      this.router.navigate(['/login']);
+    }
   }
 
 }
