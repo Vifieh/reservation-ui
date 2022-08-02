@@ -23,14 +23,6 @@
             <input type="date" class="form-control">
           </div>
           <br>
-          <div class="form-group">
-            <label>Room type</label>
-            <select class="form-select">
-              <option [ngValue]="null" disabled>Select county</option>
-              <option value="double">double</option>
-            </select>
-          </div>
-          <br>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
             <label class="form-check-label" for="flexCheckDefault">
@@ -38,7 +30,9 @@
             </label>
           </div>
           <br>
-          <button class="btn btn-primary" style="width: 100%">Search</button>
+          <button class="btn btn-primary" style="width: 100%" (click)="checkLoginInfo()"
+                  data-bs-toggle="tooltip" data-bs-placement="top" title="Choose a hotel first">
+            Search</button>
         </form>
         <br>
         <div class="card">

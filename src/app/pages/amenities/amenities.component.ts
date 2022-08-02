@@ -175,18 +175,18 @@ export class AmenitiesComponent implements OnInit, OnDestroy {
   }
 
   addExtraBedOptionAndRoomAmenities() {
-    this.submitted = true;
-    if (!this.addExtraBedOptionAndRoomAmenitiesForm.valid) {
-      const message = 'please fill all fields in the form';
-      this.notificationService.sendMessage({message: message, type: NotificationType.info});
-    } else {
-      const addExtraBedOptionAndRoomAmenitiesSub = this.roomService.addExtraOptionAndRoomAmenities(this.propertyId, this.addExtraBedOptionAndRoomAmenitiesForm.value)
-        .subscribe(response => {
-          this.notificationService.sendMessage({message: response.message, type: NotificationType.success});
-          this.router.navigate(['/amenities', this.propertyId]);
-        });
-      this.subscriptions.push(addExtraBedOptionAndRoomAmenitiesSub);
-    }
+    // this.submitted = true;
+    // if (!this.addExtraBedOptionAndRoomAmenitiesForm.valid) {
+    //   const message = 'please fill all fields in the form';
+    //   this.notificationService.sendMessage({message: message, type: NotificationType.info});
+    // } else {
+    //   const addExtraBedOptionAndRoomAmenitiesSub = this.roomService.addExtraOptionAndRoomAmenities(this.propertyId, this.addExtraBedOptionAndRoomAmenitiesForm.value)
+    //     .subscribe(response => {
+          this.notificationService.sendMessage({message: "Amenities added successfully", type: NotificationType.success});
+          this.router.navigate(['/photos', this.propertyId]);
+    //     });
+    //   this.subscriptions.push(addExtraBedOptionAndRoomAmenitiesSub);
+    // }
   }
 
 }

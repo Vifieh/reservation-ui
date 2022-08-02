@@ -69,7 +69,7 @@ export class PoliciesComponent implements OnInit {
     canAccommodateChildren: ['', [Validators.required]],
     petPayload: this.formBuilder.group({
       allowPets: [''],
-      charge: [''],
+      charge: [Status.FREE],
     }),
   });
 
