@@ -102,7 +102,7 @@ export class FacilitiesServicesComponent implements OnInit, OnDestroy {
     breakfastPayload: this.formBuilder.group({
       unitPrice: [''],
       available: [''],
-      currency: [''],
+      currency: ['XAF'],
       breakfastAvailablePayload: this.formBuilder.array([
         this.defaultPayload(),
       ]),

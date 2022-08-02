@@ -22,6 +22,7 @@ export class CityDetailComponent implements OnInit, OnDestroy {
   cityId?: string | null;
   city!: CityDto;
   stars: number = 0;
+  loginCheck: boolean = false;
 
   constructor(
     private cityService: CityService,
@@ -62,5 +63,12 @@ export class CityDetailComponent implements OnInit, OnDestroy {
       }
     });
     this.subscriptions.push(propertiesSub);
+  }
+
+  checkLoginInfo() {
+    if (localStorage.getItem('data') === null) {
+      this.loginCheck = true;
+      this.router.navigate(['/login']);
+    }
   }
 }

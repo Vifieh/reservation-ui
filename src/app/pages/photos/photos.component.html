@@ -15,7 +15,7 @@
         <br>
         <br>
         <div class="col-md-6 offset-3">
-          <input (change)="selectFile($event)" class="form-control" type="file" id="formFileMultiple" multiple>
+          <input (change)="selectFiles($event)" class="form-control" type="file" id="formFileMultiple" multiple>
         </div>
         <br>
         <button [disabled]="!selectedFiles" (click)="uploadFiles()" class="btn btn-primary"><i class="fa fa-photo fa-1x"></i> Add photo</button>

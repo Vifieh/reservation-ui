@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {environment} from '../../../environments/environment.prod';
+import {environment} from '../../../../environments/environment.prod';
 import {DomSanitizer, SafeResourceUrl} from '@angular/platform-browser';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-payment-modal-page',
@@ -14,23 +15,26 @@ export class PaymentModalPageComponent implements OnInit {
   success_url = environment.success_url;
   cancel_url = environment.cancel_url;
   url!: SafeResourceUrl;
-  @Input() price: number = 0;
-  @Input() reference: string = '';
+  price!: string | null;
+  reference!: string | null;
   // price=5000;
   // reference=1233444;
   show: boolean = false;
 
   constructor(
     public sanitizer: DomSanitizer,
+    private route: ActivatedRoute,
   ) {
   }
 
   ngOnInit(): void {
-    // this.reference = this.navParams.get('payments');
+    this.reference = this.route.snapshot.paramMap.get('ref');
+    this.price = this.route.snapshot.paramMap.get('price');
+
     this.url = this.sanitizer.bypassSecurityTrustResourceUrl(
-      this.zitopayUrl + '&amount=' + this.price! + '&receiver=kelson'
+      this.zitopayUrl + '&amount=' + this.price + '&receiver=kelson'
       + '&notification_url=' + this.notification_url + '&ref=' +
-      this.reference! + '&success_url=' + this.success_url +
+      this.reference + '&success_url=' + this.success_url +
       '&cancel_url=' + this.cancel_url
     );
     console.log(this.price!);
